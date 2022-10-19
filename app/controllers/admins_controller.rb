@@ -44,7 +44,7 @@ rescue from ActiveRecord::RecordNotFound, with: :admin_not_found
 
   allowed params
   def admin_params
-    params.permit(:admin_name)
+    params.permit(:username, :password, :password_confirmation)
   end
 
   #admin not found
