@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
 
-  rescue_from ActiveRecord::RecordNotFound, with: :category_not_found
-  
+  rescue_from ActiveRecord::RecordNotFound, with: :user_not_found
+
   #getting all users
   def index
     users = User.all
@@ -44,7 +44,7 @@ class UsersController < ApplicationController
 
   #allowed params
   def user_params
-    params.permit(:user name)
+    params.permit(:user_name)
   end
 
   #user not found
