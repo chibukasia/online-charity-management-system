@@ -44,7 +44,7 @@ class UsersController < ApplicationController
 
   #allowed params
   def user_params
-    params.permit(:user_name)
+    params.permit(:first_name, :last_name, :username, :email, :phone_number, :role, :password, :password_confirmation)
   end
 
   #user not found
