@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :ngos
   resources :categories
   resources :admins
   resources :users
