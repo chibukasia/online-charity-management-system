@@ -39,7 +39,7 @@ class UsersController < ApplicationController
 
   #find user
   def find_user
-    User.find(params(:id))
+    User.find(params[:id])
   end
 
   #allowed params
