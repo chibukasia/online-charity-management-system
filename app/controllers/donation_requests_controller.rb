@@ -36,13 +36,13 @@ class DonationRequestsController < ApplicationController
     #fetching last six approved and open requests
     def latest_approved_requests
         donation_requests = DonationRequest.where(status: "approved", open: true).order(created_at: :desc).limit(6)
-        render json: donation_requests, status: :ok
+        render json: donation_requests, status: :ok, each_serializer: ApprovedDonationRequestsSerializer
     end
 
     #fetching all approved and open requests
     def approved_open_requests
         donation_requests = DonationRequest.where(status: "approved", open: true).order(created_at: :desc)
-        render json: donation_requests, status: :ok
+        render json: donation_requests, status: :ok, each_serializer: ApprovedDonationRequestsSerializer
     end
 
     # Private methods
