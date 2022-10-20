@@ -14,14 +14,14 @@ class CategoriesController < ApplicationController
 
     # POST a new category
     def create 
-        category = Category.create(category_params)
+        category = Category.create!(category_params)
         render json: category, status: :created
     end
 
     # PATCH a category 
     def update 
         category = find_category
-        category.update(category_params)
+        category.update!(category_params)
         render json: category, status: :accepted
     end 
 

@@ -16,14 +16,14 @@ class NgosController < ApplicationController
 
     # POST a new NGO
     def create 
-        ngo = Ngo.create(ngo_params) 
+        ngo = Ngo.create!(ngo_params) 
         render json: ngo, status: :created
     end 
 
     # PATCH an NGO
     def update 
         ngo = find_ngo
-        ngo.update(ngo_params)
+        ngo.update!(ngo_params)
         render json: ngo, status: :accepted
     end 
 

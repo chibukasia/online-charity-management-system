@@ -15,14 +15,14 @@ class DonationRequestsController < ApplicationController
 
     # POST new donation request
     def create
-        donation_request = DonationRequest.create(donation_request_params)
+        donation_request = DonationRequest.create!(donation_request_params)
         render json: donation_request, status: :created
     end
 
     # PATCH a donation request
     def update
         donation_request = find_donation_request
-        donation_request.update(donation_request_params)
+        donation_request.update!(donation_request_params)
         render json: donation_request, status: :accepted
     end
 
