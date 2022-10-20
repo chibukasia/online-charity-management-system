@@ -1,8 +1,8 @@
 class CreateNgos < ActiveRecord::Migration[7.0]
   def change
     create_table :ngos do |t|
-      t.string :organization_name,
-      t.string :address,
+      t.string :organization_name
+      t.string :address
       t.string :organization_phone_number
       t.string :organization_email
       t.string :registration_number
