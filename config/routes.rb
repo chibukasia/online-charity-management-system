@@ -1,4 +1,7 @@
 Rails.application.routes.draw do
+  resources :donations
+  resources :donation_requests
+  resources :ngos
   resources :categories
   resources :admins
   resources :users
