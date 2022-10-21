@@ -1,9 +1,9 @@
 class DonationRequest < ApplicationRecord
-    # Associations 
+    # Associations
     belongs_to :category
     belongs_to :ngo
-    has_many :donations 
-    has_many :users, through: :donations 
+    has_many :donations
+    has_many :users, through: :donations
 
     # Validates the request form
     validates :title, presence: true, length: {minimum: 12}

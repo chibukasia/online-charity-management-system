@@ -1,5 +1,7 @@
 class UsersController < ApplicationController
 
+  skip_before_action :authorize, only: [:create, :index]
+
   rescue_from ActiveRecord::RecordNotFound, with: :user_not_found
 
   #getting all users
@@ -11,6 +13,9 @@ class UsersController < ApplicationController
   #posting a new user
   def create
     user = User.create!(user_params)
+    #user sessions
+    session[:user_id] = user.id
+    session[:role] = user.role
     render json: user, status: :created
   end
 
@@ -39,7 +44,7 @@ class UsersController < ApplicationController
 
   #find user
   def find_user
-    User.find(params[:id])
+    User.find(session[:user_id])
   end
 
   #allowed params
