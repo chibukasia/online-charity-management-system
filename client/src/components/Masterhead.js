@@ -1,5 +1,5 @@
 import React from 'react'
-
+//This is the masterhead(hero section) component
 const Masterhead = () => {
   return (
     <header className="masthead">

@@ -1,3 +1,5 @@
+//This is data that is used to map over the portfolio section
+
 const Containers=[
     {
         picture: "../img/portfolio/1.jpg",

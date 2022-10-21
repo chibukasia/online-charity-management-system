@@ -1,6 +1,6 @@
 import React from 'react'
 import logo from '../assets/img/navbar-logo.png';
-
+//This is the navigation component
 const Navigation = () => {
   return (
     <nav className="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">

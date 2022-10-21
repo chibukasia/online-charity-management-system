@@ -1,5 +1,5 @@
 import { faComputer, faFileWaveform, faMoneyBill, faSignIn } from "@fortawesome/free-solid-svg-icons";
-
+//This is data that is used to map over the how it works section
 const Data = [
     {
         icon: faComputer,

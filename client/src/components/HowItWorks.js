@@ -2,7 +2,7 @@ import React from 'react'
 import {FontAwesomeIcon} from "@fortawesome/react-fontawesome"
 import {faComputer} from "@fortawesome/free-solid-svg-icons"
 import Data from "../HowItWorks_data"
-
+//This is the how it works section and we have mapped over tghe single component
 const HowItWorks = () => {
   return (
     <section className="page-section" id="how-it-works">
