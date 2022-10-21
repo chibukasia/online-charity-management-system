@@ -1,4 +1,7 @@
 class DonationRequestsController < ApplicationController
+
+    skip_before_action :authorize, only: [:latest_approved_requests]
+
     rescue_from ActiveRecord::RecordNotFound, with: :donation_request_not_found
 
     # GET all donation requests
@@ -15,8 +18,13 @@ class DonationRequestsController < ApplicationController
 
     # POST new donation request
     def create
-        donation_request = DonationRequest.create!(donation_request_params)
-        render json: donation_request, status: :created
+        user = User.find(session[:user_id])
+        if session[:role] == 'ngo'
+            donation_request = user.donation_requests.create!(donation_request_params)
+            render json: donation_request, status: :created
+        else
+            render json: {errors: ["You do not have previlledges to create a donation request"]}, status: :unauthorized
+        end
     end
 
     # PATCH a donation request
