@@ -10,14 +10,14 @@ class UsersController < ApplicationController
 
   #posting a new user
   def create
-    user = User.create(user_params)
+    user = User.create!(user_params)
     render json: user, status: :created
   end
 
   #patching a new user
   def update
     user = find_user
-    user.update(user_params)
+    user.update!(user_params)
     render json: user, status: :accepted
   end
 

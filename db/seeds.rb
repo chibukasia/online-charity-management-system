@@ -13,11 +13,11 @@ puts "Done creating users..."
 
 puts "Creating NGOs.."
 
-Ngo.create(organization_name: "Waridi Organization" ,address: Faker::Address.city, organization_phone_number: Faker::PhoneNumber.cell_phone, organization_email: Faker::Internet.email, description: Faker::Lorem.paragraph, user_id: 10)
-Ngo.create(organization_name: "Anchor Organization" ,address: Faker::Address.city, organization_phone_number: Faker::PhoneNumber.cell_phone, organization_email: Faker::Internet.email, description: Faker::Lorem.paragraph, user_id: 8)
-Ngo.create(organization_name: "TendaWema Organization" ,address: Faker::Address.city, organization_phone_number: Faker::PhoneNumber.cell_phone, organization_email: Faker::Internet.email, description: Faker::Lorem.paragraph, user_id: 3)
-Ngo.create(organization_name: "Blossom Organization" ,address: Faker::Address.city, organization_phone_number: Faker::PhoneNumber.cell_phone, organization_email: Faker::Internet.email, description: Faker::Lorem.paragraph, user_id: 2)
-Ngo.create(organization_name: "HappyHeart Organization" ,address: Faker::Address.city, organization_phone_number: Faker::PhoneNumber.cell_phone, organization_email: Faker::Internet.email, description: Faker::Lorem.paragraph, user_id: 1)
+Ngo.create(organization_name: "Waridi Organization" ,address: Faker::Address.city, organization_phone_number: Faker::PhoneNumber.cell_phone, organization_email: Faker::Internet.email, description: Faker::Lorem.paragraph, user_id: 10, registration_number: Faker::Alphanumeric.alphanumeric(number: 10).upcase)
+Ngo.create(organization_name: "Anchor Organization" ,address: Faker::Address.city, organization_phone_number: Faker::PhoneNumber.cell_phone, organization_email: Faker::Internet.email, description: Faker::Lorem.paragraph, user_id: 8, registration_number: Faker::Alphanumeric.alphanumeric(number: 10).upcase)
+Ngo.create(organization_name: "TendaWema Organization" ,address: Faker::Address.city, organization_phone_number: Faker::PhoneNumber.cell_phone, organization_email: Faker::Internet.email, description: Faker::Lorem.paragraph, user_id: 3, registration_number: Faker::Alphanumeric.alphanumeric(number: 10).upcase)
+Ngo.create(organization_name: "Blossom Organization" ,address: Faker::Address.city, organization_phone_number: Faker::PhoneNumber.cell_phone, organization_email: Faker::Internet.email, description: Faker::Lorem.paragraph, user_id: 2, registration_number: Faker::Alphanumeric.alphanumeric(number: 10).upcase)
+Ngo.create(organization_name: "HappyHeart Organization" ,address: Faker::Address.city, organization_phone_number: Faker::PhoneNumber.cell_phone, organization_email: Faker::Internet.email, description: Faker::Lorem.paragraph, user_id: 1, registration_number: Faker::Alphanumeric.alphanumeric(number: 10).upcase)
 
 puts "Done creating NGOs"
 

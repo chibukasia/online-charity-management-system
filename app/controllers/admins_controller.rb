@@ -10,14 +10,14 @@ rescue from ActiveRecord::RecordNotFound, with: :admin_not_found
 
   #posting a new admin
   def create
-    admin = Admin.create(admin_params)
+    admin = Admin.create!(admin_params)
     render json: admin, status: :created
   end
 
   #patching a new admin
   def update
     admin = find_admin
-    admin.update(admin_params)
+    admin.update!(admin_params)
     render json: admin, status: :accepted
   end
 

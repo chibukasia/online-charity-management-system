@@ -1,5 +1,6 @@
 class ApprovedDonationRequestsSerializer < ActiveModel::Serializer
-  attributes :id, :title, :summary, :target_amount, :category_name
+  attributes :id, :title, :summary, :target_amount
+  belongs_to :category
   belongs_to :ngo
   #summary description
   def summary
