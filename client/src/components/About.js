@@ -1,6 +1,6 @@
 import React from 'react'
-//This is the about section of the homepage
-const About = () => {
+
+function About() {
   return (
     <section className="page-section" id="about">
     <div className="container">

@@ -1,9 +1,8 @@
 import React from 'react'
-//This is the footer of the web app
-const Footer = () => {
+
+function Footer() {
   return (
-   
-<footer class="footer page-footer font-small teal pt-4">
+    <footer class="footer page-footer font-small teal pt-4">
 
   
   <div class="container-fluid text-center text-md-left">
@@ -48,7 +47,6 @@ const Footer = () => {
   
 
 </footer>
-
   )
 }
 
