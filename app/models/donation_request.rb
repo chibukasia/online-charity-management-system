@@ -8,6 +8,6 @@ class DonationRequest < ApplicationRecord
     # Validates the request form
     validates :title, presence: true, length: {minimum: 12}
     validates :description, presence: true, length: {minimum: 100}
-    validates :target_amount, presence: { message: "must be given please" }, comparison: {greater_than: 500}
+    validates :target_amount, presence: true, comparison: {greater_than: 500}
 
 end
