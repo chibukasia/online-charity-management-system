@@ -3,6 +3,7 @@ class NgosController < ApplicationController
     # skip_before_action :authorize, only: [:]
 
     rescue_from ActiveRecord::RecordNotFound, with: :ngo_not_found
+    rescue_from ActiveRecord::RecordNotSaved, with: :record_not_saved
 
     # GET all the NGOs
     def index
@@ -20,7 +21,8 @@ class NgosController < ApplicationController
     def create
         user = User.find(session[:user_id])
         if session[:role] == 'ngo'
-            ngo = user.ngos.create!(ngo_params)
+            ngo = user.create_ngo!(ngo_params)
+            #user.ngo = ngo
             render json: ngo, status: :created
         else
             render json: {errors: ["You do not have previlledges to register an NGO"]}, status: :unauthorized
@@ -57,5 +59,12 @@ class NgosController < ApplicationController
     # Render error if no NGO is found
     def ngo_not_found
         render json: {errors: ["NGO not found"]}, status: :not_found
+    end
+
+    #private
+    private
+
+    def record_not_saved(invalid)
+        render json: {errors: invalid.record.errors.full_messages}
     end
 end
