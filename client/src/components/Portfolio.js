@@ -4,7 +4,9 @@ import ProgressBar from 'react-bootstrap/ProgressBar'
 import Button from 'react-bootstrap/Button';
 import PortfolioModal from './PortfolioModal';
 //Created a portfolio component and mapped over a single container using data from containers_data.js
-const Portfolio = () => {
+
+
+function Portfolio() {
   return (
     <section className="page-section bg-light" id="portfolio">
     <div className="container">
