@@ -23,7 +23,6 @@ class SessionsController < ApplicationController
 
   #log out user ins session
   def destroy
-    user = find_user
     session.delete :user_id
     head :no_content
   end

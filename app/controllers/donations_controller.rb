@@ -32,13 +32,6 @@ class DonationsController < ApplicationController
         render json: donation, status: :accepted
     end
 
-    # DELETE a donation
-    def destroy
-        donation = find_donation
-        donation.destroy
-        head :no_content
-    end
-
     # Private methods
     private
 

@@ -1,7 +1,7 @@
 class User < ApplicationRecord
   # Associations
-  has_one :ngo
-  has_many :donations
+  has_one :ngo 
+  has_many :donations, dependent: :destroy
   has_many :donation_requests, through: :donations
   has_secure_password
 

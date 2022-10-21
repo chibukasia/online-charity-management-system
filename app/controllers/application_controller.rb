@@ -12,7 +12,13 @@ class ApplicationController < ActionController::API
 
     #authorize user
     def authorize
-        render json: { errors: ["You must login or sign up to continue"]}, status: :unauthorized unless session.include? :user_id
+        if session.include? :user_id 
+            nil
+        elsif session.include? :admin_id
+            nil 
+        else
+            render json: { errors: ["You must login or sign up to continue"]}, status: :unauthorized 
+        end
     end
 
     # Sends an arrays of error messages for invalid entries

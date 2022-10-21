@@ -1,6 +1,6 @@
 class AdminsController < ApplicationController
-
-rescue from ActiveRecord::RecordNotFound, with: :admin_not_found
+skip_before_action :authorize, only: [:create]
+rescue_from ActiveRecord::RecordNotFound, with: :admin_not_found
 
   #getting all the admins
   def index
@@ -11,6 +11,8 @@ rescue from ActiveRecord::RecordNotFound, with: :admin_not_found
   #posting a new admin
   def create
     admin = Admin.create!(admin_params)
+    session[:admin_id] = admin.id 
+    session[:role] = "admin"
     render json: admin, status: :created
   end
 
@@ -39,7 +41,7 @@ rescue from ActiveRecord::RecordNotFound, with: :admin_not_found
 
   #find the admin
   def find_admin
-    Admin.find(params[:id])
+    Admin.find(session[:admin_id])
   end
 
   # allowed params
