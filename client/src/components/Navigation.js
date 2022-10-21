@@ -1,5 +1,6 @@
 import React from 'react'
 import logo from '../assets/img/navbar-logo.png';
+import {Link} from 'react-router-dom'
 //This is the navigation component
 const Navigation = () => {
   return (
@@ -13,7 +14,7 @@ const Navigation = () => {
             <div className="collapse navbar-collapse" id="navbarResponsive">
               <ul className="navbar-nav text-uppercase ms-auto py-4 py-lg-0">
                 <li className="nav-item"><a className="nav-link" href="#services">How it works</a></li>
-                <li className="nav-item"><a className="nav-link" href="#portfolio">Featured Campaigns</a></li>
+                <Link className="nav-item"><a className="nav-link" to="/portfolio">Featured Campaigns</a></Link>
                 <li className="nav-item"><a className="nav-link" href="#about">About</a></li>
               </ul>
             </div>

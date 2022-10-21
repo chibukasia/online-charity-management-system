@@ -1,7 +1,8 @@
 import './App.css';
+import {Routes, Route} from 'react-router-dom'
 import Navigation from './components/Navigation';
 import Masterhead from './components/Masterhead';
-import Portfolio from './components/Portfolio';
+import {Portfolio} from './components/Portfolio';
 import About from './components/About';
 import Footer from './components/Footer';
 import HowItWorks from './components/HowItWorks';
@@ -9,8 +10,7 @@ import HowItWorks from './components/HowItWorks';
 
 function App() {
   return (
-    <div className="App">
-    <div>
+    <>
         {/* Navigation*/}
         <Navigation />
         
@@ -19,13 +19,16 @@ function App() {
         {/* Services*/}
         <HowItWorks />
         {/* Portfolio Grid*/}
-        <Portfolio />
+      <Routes>
+          <Route path='portfolio' element={<Portfolio />} />
+      </Routes>
+        
         {/* About*/}
         <About />
         {/* Footer*/}
         <Footer/>
-       </div> 
-       </div> );
+       </> 
+        );
 }
 
 export default App;
