@@ -9,6 +9,10 @@ Rails.application.routes.draw do
   get '/latest_approved_requests', to: 'donation_requests#latest_approved_requests'
   # route for all approved and open requests
   get '/approved_open_requests', to: 'donation_requests#approved_open_requests'
+  # route for NGOs donation requests 
+  get '/ngo_requests', to: 'donation_requests#ngo_requests'
+  # route for ngo specific donations 
+  get '/ngo_donations', to: 'donations#ngo_donations'
   # route for user sign up
   post '/user_signup', to: 'users#create'
   # route for user login

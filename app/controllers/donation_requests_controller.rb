@@ -7,13 +7,13 @@ class DonationRequestsController < ApplicationController
     # GET all donation requests
     def index
         donation_requests = DonationRequest.all
-        render json: donation_requests, status: :ok
+        render json: donation_requests, status: :ok, each_serializer: CustomDonationRequestSerializer
     end
 
     # GET one donation request
     def show
         donation_request = find_donation_request
-        render json: donation_request, status: :ok
+        render json: donation_request, status: :ok, serializer: CustomDonationRequestSerializer
     end
 
     # POST new donation request
@@ -51,6 +51,18 @@ class DonationRequestsController < ApplicationController
     def approved_open_requests
         donation_requests = DonationRequest.where(status: "approved", open: true).order(created_at: :desc)
         render json: donation_requests, status: :ok, each_serializer: ApprovedDonationRequestsSerializer
+    end
+
+    # GET NGOs specific donatin requests 
+    def ngo_requests
+        user = User.find(session[:user_id]) # find user in session
+        ngo = Ngo.find_by(user_id: session[:id]) # find ngo for the user in session 
+        if user && user.role == "ngo" # check if the user is authorized
+            donation_requests = DonationRequest.where(ngo_id: ngo.id).order(created_at: :desc)
+            render json: donation_requests, status: :ok 
+        else
+            render json: {errors: ["User not authorized"]}, status: :unauthorized, each_serializer: CustomDonationRequestSerializer
+        end
     end
 
     # Private methods
