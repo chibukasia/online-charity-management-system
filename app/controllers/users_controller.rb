@@ -1,6 +1,6 @@
 class UsersController < ApplicationController
 
-  skip_before_action :authorize, only: [:create]
+  skip_before_action :authorize, only: [:create, :index]
 
   rescue_from ActiveRecord::RecordNotFound, with: :user_not_found
 
