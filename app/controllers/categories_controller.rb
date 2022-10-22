@@ -16,22 +16,23 @@ class CategoriesController < ApplicationController
 
     # POST a new category
     def create
-        category = Category.create!(category_params)
-        render json: category, status: :created
+        if session[:role] == "admin"
+            category = Category.create!(category_params)
+            render json: category, status: :created
+        else
+            unauthorized_admin
+        end
     end
 
     # PATCH a category
     def update
         category = find_category
-        category.update!(category_params)
-        render json: category, status: :accepted
-    end
-
-    # DELETE a category
-    def destroy
-        category = find_category
-        category.destroy
-        head :no_content
+        if session[:role] == "admin"
+            category.update!(category_params)
+            render json: category, status: :accepted
+        else
+            unauthorized_admin
+        end
     end
 
     # Private methods
@@ -50,5 +51,9 @@ class CategoriesController < ApplicationController
     # Category not found
     def category_not_found
         render json: {errors: ["Category not found"]}, status: :not_found
+    end
+
+    def unauthorized_admin 
+        render json: {errors: ["Not authorized to perform action"]}, status: :unauthorized
     end
 end
