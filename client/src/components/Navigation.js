@@ -18,6 +18,8 @@ function Navigation() {
                 <Link className="nav-item" to= '/workings'>How it works</Link>
                 <Link className="nav-item" to='/portfolio'>Featured Campaigns</Link>
                 <Link className="nav-item" to='/about'>About</Link>
+                <Link className="nav-item" to='/login'>Sign-In/Up</Link>
+
               </ul>
             </div>
           </div>
