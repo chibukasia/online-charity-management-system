@@ -63,7 +63,7 @@ class DonationRequestsController < ApplicationController
 
     # Permit params for a donation request
     def donation_request_params
-        params.permit(:title, :description, :target_amount, :amount_raised, :status, :open, :category_id, :ngo_id)
+        params.permit(:title, :description, :target_amount, :amount_raised, :status, :open, :category_id, :ngo_id, :image, :bank_statement)
     end
 
     # Render error for a donation request not found
