@@ -32,14 +32,14 @@ class DonationsController < ApplicationController
         render json: donation, status: :accepted
     end
 
-    # GET donations for a specific NGO 
-    def ngos_donations
+    # GET donations for a specific NGO
+    def ngo_donations
         user = User.find(session[:user_id]) # find user in session
         if user && user.role == "ngo" # check if the user in session is authorized
-            donations = Donation.where(user_id: user.id).order(created_at: :desc) 
-            render json: donations, status: :ok 
+            donations = Donation.where(user_id: user.id).order(created_at: :desc)
+            render json: donations, status: :ok, each_serializer: NgoCustomDonationSerializer
         else
-            render json: {errors: ["User not authorized"]}, status: :unauthorized, each_serializer: NgoCustomDonationSerializer
+            render json: {errors: ["User not authorized"]}, status: :unauthorized
         end
     end
 
