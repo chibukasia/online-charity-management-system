@@ -41,7 +41,7 @@ function LoginForm({ onLogin }) {
   }
 
   return (
-    <form onSubmit={handleSubmit}>
+    <form onSubmit={handleSubmit} className="signup-form">
       <FormField>
         <Label htmlFor="username">Username</Label>
         <Input

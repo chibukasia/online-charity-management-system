@@ -4,7 +4,9 @@ import header from "../assets/img/header-bg.jpg"
 function Header() {
   return (
     <div id = "header">
-      {/* <img src={header} style={{width: "100%", height: "800px"}}/> */}
+      <h3 style={{fontStyle: "italic", paddingTop: "10px", color: "#fff"}} >KENYA'S BEST </h3>
+      <h1 style={{paddingTop: "50px", color: "#fff"}}>CROWDFUNDING CAMPAIGN</h1>
+      <button type="button">LEARN MORE</button>
     </div>
   );
 }

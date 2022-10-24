@@ -8,20 +8,15 @@ function Navigation({user, setUser}) {
 
   // Handle logout or delete user session 
   function handleLogout(){
-    fetch("/user_logout",{
-      method: "DELETE"
-    })
-    .then(res=>{
-      if(res.ok){
-        res.json().then(()=>setUser(null))
-      }else{
-        console.log("Can't log out")
+    fetch("/user_logout", { method: "DELETE" }).then((r) => {
+      if (r.ok) {
+        setUser(null);
       }
-    })
+    });
     
   }
   return (
-    <nav className="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
+    <nav className="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" id="mainNav">
           <div className="container">
             <Link className="navbar-brand" to="/"><img className="navbar-brand-logo" src={logo} /></Link>
             <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
@@ -34,9 +29,9 @@ function Navigation({user, setUser}) {
                 <Link className="nav-item" to='/portfolio'>Featured Campaigns</Link>
                 <Link className="nav-item" to='/about'>About</Link> */}
                 {user ?(
-                  <Link className="nav-item" to='/'>Log Out</Link>
+                  <Link className="nav-item" to='/'  onClick={handleLogout}>Log Out</Link>
                 ):(
-                  <Link className="nav-item" to='/login' onClick={handleLogout}>Sign-In/Up</Link>
+                  <Link className="nav-item" to='/login'>Sign-In/Up</Link>
                 )}
                 
                 
