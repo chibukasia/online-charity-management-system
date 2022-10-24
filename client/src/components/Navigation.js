@@ -4,7 +4,7 @@ import {Link } from 'react-router-dom'
 //This is the navigation component
 
 
-function Navigation({user, setUser}) {
+function Navigation({user, setUser, admin}) {
 
   // Handle logout or delete user session 
   function handleLogout(){
@@ -28,7 +28,7 @@ function Navigation({user, setUser}) {
                 {/* <Link className="nav-item" to= '/workings'>How it works</Link>
                 <Link className="nav-item" to='/portfolio'>Featured Campaigns</Link>
                 <Link className="nav-item" to='/about'>About</Link> */}
-                {user ?(
+                {user || admin ?(
                   <Link className="nav-item" to='/'  onClick={handleLogout}>Log Out</Link>
                 ):(
                   <Link className="nav-item" to='/login'>Sign-In/Up</Link>
