@@ -25,7 +25,8 @@ function LandingPage(){
     return(
         <div className="landing-page">
             <Header />
-            <h2>See our donations</h2>
+            
+            <h2>Ongoing Fundraises</h2>
             <div className="landing-page-cards">
                 {cardsDisplay}
             </div>

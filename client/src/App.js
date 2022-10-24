@@ -13,11 +13,10 @@ function App() {
   const [user, setUser] = useState(null)
 
   // Get the user who is is session
-  useEffect(()=>{
-    fetch("/user_me")
-    .then(res=>{
-      if (res.ok){
-        res.json().then(data => setUser(data))
+  useEffect(() => {
+    fetch("/user_me").then((res) => {
+      if (res.ok) {
+        res.json().then((data) => setUser(data));
       }
     })
   },[])
