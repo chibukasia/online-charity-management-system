@@ -1,29 +1,37 @@
 import './App.css';
 import {Routes, Route} from 'react-router-dom'
 import Navigation from './components/Navigation';
-import Masterhead from './components/Masterhead';
-import Portfolio from './components/Portfolio';
-import About from './components/About';
-import Footer from './components/Footer';
-import HowItWorks from './components/HowItWorks';
+import LandingPage from './components/LandingPage';
 import Login from './components/Login';
+import { useEffect, useState } from 'react';
+import HomePage from './components/HomePage';
 
 
 function App() {
+  
+  const [user, setUser] = useState(null)
+
+  // Get the user who is is session
+  useEffect(()=>{
+    fetch("/user_me")
+    .then(res=>{
+      if (res.ok){
+        res.json().then(data => setUser(data))
+      }
+    })  
+  },[])
+  
   return (
     <>
         {/* Navigation*/}
-        <Navigation />
-       
+      <Navigation user={user} setUser={setUser}/>
+      
+       {/* navigation routes */}
       <Routes>
-          <Route path='/' element={<Masterhead/>} />
-          <Route path='/workings' element={<HowItWorks/>} />
-          <Route path='portfolio' element={<Portfolio/>} />
-          <Route path='/about' element={<About/>} />
-          <Route path='/login' element={<Login/>} />
-
+        <Route path='/' element={<LandingPage/>} />
+          <Route exact path='/home' element={<HomePage />} />
+          <Route path='/login' element={<Login onLogin = {setUser}/>} />
       </Routes>
-      <Footer />
        
        </> 
         );

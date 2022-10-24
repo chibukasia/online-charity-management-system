@@ -4,7 +4,22 @@ import {Link } from 'react-router-dom'
 //This is the navigation component
 
 
-function Navigation() {
+function Navigation({user, setUser}) {
+
+  // Handle logout or delete user session 
+  function handleLogout(){
+    fetch("/user_logout",{
+      method: "DELETE"
+    })
+    .then(res=>{
+      if(res.ok){
+        res.json().then(()=>setUser(null))
+      }else{
+        console.log("Can't log out")
+      }
+    })
+    
+  }
   return (
     <nav className="navbar navbar-expand-lg navbar-dark fixed-top" id="mainNav">
           <div className="container">
@@ -15,10 +30,16 @@ function Navigation() {
             </button>
             <div className="collapse navbar-collapse" id="navbarResponsive">
               <ul className="navbar-nav text-uppercase ms-auto py-4 py-lg-0">
-                <Link className="nav-item" to= '/workings'>How it works</Link>
+                {/* <Link className="nav-item" to= '/workings'>How it works</Link>
                 <Link className="nav-item" to='/portfolio'>Featured Campaigns</Link>
-                <Link className="nav-item" to='/about'>About</Link>
-                <Link className="nav-item" to='/login'>Sign-In/Up</Link>
+                <Link className="nav-item" to='/about'>About</Link> */}
+                {user ?(
+                  <Link className="nav-item" to='/'>Log Out</Link>
+                ):(
+                  <Link className="nav-item" to='/login' onClick={handleLogout}>Sign-In/Up</Link>
+                )}
+                
+                
 
               </ul>
             </div>

@@ -36,3 +36,13 @@
     transform: rotate(360deg);
   }
 }
+
+#header{
+  background-image: url(./assets/img/header-bg.jpg);
+  width: 100%;
+  height: 800px;
+}
+.card:hover{
+  cursor: pointer;
+  background-color: #39afee;
+}
