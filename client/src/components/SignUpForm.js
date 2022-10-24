@@ -5,6 +5,7 @@ function SignUpForm({ onLogin }) {
   const [first_name, setFirst_name] = useState("");
   const [last_name, setLast_name] = useState("");
   const [username, setUsername] = useState("");
+  const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [passwordConfirmation, setPasswordConfirmation] = useState("");
   const [phone_number, setPhone_number] = useState("");
@@ -25,6 +26,7 @@ function SignUpForm({ onLogin }) {
         first_name,
         last_name,
         username,
+        email,
         password,
         password_confirmation: passwordConfirmation,
         phone_number,
@@ -70,6 +72,16 @@ function SignUpForm({ onLogin }) {
           autoComplete="off"
           value={username}
           onChange={(e) => setUsername(e.target.value)}
+        />
+      </FormField>
+      <FormField>
+        <Label htmlFor="email">Email</Label>
+        <Input
+          type="text"
+          id="email"
+          autoComplete="off"
+          value={email}
+          onChange={(e) => setEmail(e.target.value)}
         />
       </FormField>
       <FormField>
