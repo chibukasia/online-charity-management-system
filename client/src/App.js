@@ -34,7 +34,8 @@ function App() {
           <Route path='/login' element={<Login onLogin = {setUser}/>} />
           <Route path='/adminsignup' element={<AdminSignUp />} />
       </Routes>
-
+      <HowItWorks />
+      <Footer/>
        </>
         );
 }
