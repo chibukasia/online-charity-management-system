@@ -59,6 +59,9 @@ function App() {
           <Route exact path='/how_it_works' element={<HowItWorks/>} />
           <Route exact path='/aboutus' element={<AboutUs/>} />
           <Route exact path='/donation_request_page' element={<DonationRequestPage/>} />
+          <Route exact path='/ngo_registration' element={<NgoRegistrationForm/>}/>
+          <Route exact path='/donation_request_form' element={<DonationRequestForm/>} user={user}/>
+          <Route path='*' element={<PageNotFound/>}/>
       </Routes>
       <Footer/>
        </div>
