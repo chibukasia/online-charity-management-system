@@ -6,7 +6,7 @@ function SignUpForm({ onLogin }) {
   const [errors, setErrors] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
 
-  // set the navigate variable 
+  // set the navigate variable
   const navigate = useNavigate()
 
   const [formData, setFormData] = useState({
@@ -41,8 +41,8 @@ function SignUpForm({ onLogin }) {
       setIsLoading(false);
       if (r.ok) {
         r.json().then((user) => {
-          onLogin(user) 
-          if(user.role == "donor"){
+          onLogin(user)
+          if(user.role === "donor"){
             navigate('/home')
           }else{
             navigate('/ngo_registration')

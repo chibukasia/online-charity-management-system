@@ -11,9 +11,11 @@ import AdminLogin from './components/AdminLogin';
 import NgoDashbord from './components/NgoDashbord';
 import HowItWorks from './components/HowItWorks';
 import AboutUs from './components/AboutUs';
+import DonationRequestPage from './components/DonationRequestPage';
 import DonationRequestForm from './components/DonationRequestForm';
 import NgoRegistrationForm from './components/NgoRegistrationForm';
 import PageNotFound from './components/PageNotFound';
+
 
 
 function App() {
@@ -28,7 +30,7 @@ function App() {
           res.json().then((data) => setUser(data));
         }
       })   
-  },[]) 
+  },[user]) 
 
   // Get the admin in session
   useEffect(()=>{
@@ -37,7 +39,7 @@ function App() {
           res.json().then((data) => setUser(data));
         }
       })
-  },[])
+  },[admin])
 
   return (
     <div className='body'>
@@ -56,6 +58,7 @@ function App() {
           <Route exact path='/adminlogin' element={<AdminLogin setAdmin = {setAdmin}/>} />
           <Route exact path='/how_it_works' element={<HowItWorks/>} />
           <Route exact path='/aboutus' element={<AboutUs/>} />
+          <Route exact path='/donation_request_page' element={<DonationRequestPage/>} />
           <Route exact path='/ngo_registration' element={<NgoRegistrationForm/>}/>
           <Route exact path='/donation_request_form' element={<DonationRequestForm/>} user={user}/>
           <Route path='*' element={<PageNotFound/>}/>
