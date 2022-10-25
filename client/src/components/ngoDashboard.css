@@ -1,0 +1,10 @@
+.dashboard-main{
+    display: inline;
+
+}
+.dashboard-nav{
+    float: left;
+}
+.dashboard-container{
+    float: right;
+}
