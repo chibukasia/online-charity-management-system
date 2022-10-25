@@ -29,6 +29,8 @@ Rails.application.routes.draw do
   get '/admin', to: 'admin_sessions#show'
   # route to logout admin in session
   delete '/admin_logout', to: 'admin_sessions#destroy'
+  # Get NGO of a user in session
+  get '/session_ngo', to: 'ngos#session_ngo'
 
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 

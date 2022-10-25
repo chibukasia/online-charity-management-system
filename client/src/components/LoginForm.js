@@ -31,7 +31,7 @@ function LoginForm({ onLogin }) {
           if (user.role == "donor"){
             navigate('/home')
           }else{
-            navigate('/home')
+            navigate('/ngo_dashboard')
           }
         });
       } else {
