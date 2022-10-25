@@ -30,13 +30,13 @@ function DonorSidebar() {
             <li className="nav-text">
               <Link to="/home">
               <FaIcons.FaEnvelopeOpenText />
-                <span>All Donations </span>
+                <span>My Donations </span>
               </Link>
             </li>
             <li className="nav-text">
               <Link to="/home">
                 <AiIcons.AiFillHome />
-                <span>On-Going Campaigns </span>
+                <span>My Profile </span>
               </Link>
             </li>
             <li className="nav-text">
@@ -46,16 +46,6 @@ function DonorSidebar() {
               </Link>
             </li>
 
-            {/* {SidebarData.map((item, index) => {
-              return (
-                <li key={index} className={item.cName}>
-                  <Link to={item.path}>
-                    {item.icon}
-                    <span>{item.title}</span>
-                  </Link>
-                </li>
-              );
-            })} */}
           </ul>
         </nav>
       </IconContext.Provider>
