@@ -13,7 +13,7 @@ function AdminLogin({ setAdmin }) {
   const [errors, setErrors] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
 
-  // get the user from based on the login credentials
+  // get the admin from based on the login credentials
   function handleSubmit(e) {
     e.preventDefault();
     setIsLoading(true);

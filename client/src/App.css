@@ -36,6 +36,20 @@
     transform: rotate(360deg);
   }
 }
+
+.body{
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+}
+/* Nav section */
+.navbar{
+  margin-bottom: 40px;
+}
+
+.footer{
+  margin-top: auto;
+}
 /* Header section */
 #header{
   background-image: url(./assets/img/header-bg.jpg);

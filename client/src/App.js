@@ -6,7 +6,6 @@ import Login from './components/Login';
 import { useEffect, useState } from 'react';
 import HomePage from './components/HomePage';
 import AdminSignUp from './components/AdminSignUp';
-import HowItWorks from './components/HowItWorks';
 import Footer from './components/Footer'
 import AdminLogin from './components/AdminLogin';
 
@@ -40,7 +39,7 @@ function App() {
   },[])
 
   return (
-    <>
+    <div className='body'>
         {/* Navigation*/}
       <Navigation user={user} setUser={setUser} admin={admin}/>
 
@@ -52,9 +51,8 @@ function App() {
           <Route path='/adminsignup' element={<AdminSignUp setAdmin = {setAdmin}/>} />
           <Route exact path='/adminlogin' element={<AdminLogin setAdmin = {setAdmin}/>} />
       </Routes>
-      <HowItWorks />
       <Footer/>
-       </>
+       </div>
         );
 }
 
