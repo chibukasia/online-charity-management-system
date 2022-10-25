@@ -25,13 +25,19 @@ function Navigation({user, setUser, admin}) {
             </button>
             <div className="collapse navbar-collapse" id="navbarResponsive">
               <ul className="navbar-nav text-uppercase ms-auto py-4 py-lg-0">
-                {/* <Link className="nav-item" to= '/workings'>How it works</Link>
-                <Link className="nav-item" to='/portfolio'>Featured Campaigns</Link>
-                <Link className="nav-item" to='/about'>About</Link> */}
+                
+                
+                <a className="nav-item" href='#landingpage'>Home</a>
+                <a className="nav-item" href='#aboutus'>About Us</a>
+                <a className="nav-item" href='#how-it-works'>How it works</a>
+                <a className="nav-item" href='#fundraises'>Featured Campaigns</a>
                 {user || admin ?(
                   <Link className="nav-item" to='/'  onClick={handleLogout}>Log Out</Link>
                 ):(
-                  <Link className="nav-item" to='/login'>Sign-In/Up</Link>
+                  <>
+                    <Link className="nav-item" to='/login'>Sign-In/Up</Link>
+                  </>
+                  
                 )}
                 
                 

@@ -9,6 +9,8 @@ import AdminSignUp from './components/AdminSignUp';
 import Footer from './components/Footer'
 import AdminLogin from './components/AdminLogin';
 import NgoDashbord from './components/NgoDashbord';
+import HowItWorks from './components/HowItWorks';
+import AboutUs from './components/AboutUs';
 
 
 function App() {
@@ -52,6 +54,8 @@ function App() {
           <Route path='/login' element={<Login onLogin = {setUser}/>} />
           <Route path='/adminsignup' element={<AdminSignUp setAdmin = {setAdmin}/>} />
           <Route exact path='/adminlogin' element={<AdminLogin setAdmin = {setAdmin}/>} />
+          <Route exact path='/how_it_works' element={<HowItWorks/>} />
+          <Route exact path='/aboutus' element={<AboutUs/>} />
       </Routes>
       <Footer/>
        </div>

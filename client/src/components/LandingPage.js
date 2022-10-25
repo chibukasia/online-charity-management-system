@@ -25,14 +25,19 @@ function LandingPage(){
         return <DonationRequestCard key={request.id} request={request} />
     })
     return(
-        <div className="landing-page">
+        <div className="landing-page" id="landingpage">
             <Header />
-            <HowItWorks />
-            <h2>Ongoing Fundraises</h2>
+            <div id="how-it-works">
+              <HowItWorks />
+            </div>
+            <h2 id="fundraises">Ongoing Fundraises</h2>
             <div className="landing-page-cards">
                 {cardsDisplay}
             </div>
-            <AboutUs/>
+            <div id="aboutus">
+                <AboutUs/>
+            </div>
+            
         </div>
     )
 }
