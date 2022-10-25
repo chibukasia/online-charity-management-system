@@ -27,7 +27,7 @@ function Navigation({user, setUser, admin}) {
               <ul className="navbar-nav text-uppercase ms-auto py-4 py-lg-0">
                 
                 
-                <a className="nav-item" href='#landingpage'>Home</a>
+                <Link className="nav-item" to='/'>Home</Link>
                 <a className="nav-item" href='#aboutus'>About Us</a>
                 <a className="nav-item" href='#how-it-works'>How it works</a>
                 <a className="nav-item" href='#fundraises'>Featured Campaigns</a>
