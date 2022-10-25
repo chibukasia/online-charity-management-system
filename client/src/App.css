@@ -112,6 +112,17 @@
   flex-wrap: wrap;
 }
 
+.section-container{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+.section-container-card{
+  width: 31.5%;
+  margin: 10px;
+  text-align: center;
+}
+
 /* Sign and login forms */ 
 .signup-form{
   margin-top: 80px;
@@ -131,6 +142,12 @@
   .card{
     width: 100%;
     margin: 10px;
+  }
+
+  .section-container-card{
+    width: 100%;
+    margin: 10px;
+    text-align: center;
   }
   
 }

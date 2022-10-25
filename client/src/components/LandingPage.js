@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import Header from "./Header";
 import DonationRequestCard from "./DonationRequestCard";
 import HowItWorks from "./HowItWorks";
+import AboutUs from "./AboutUs";
 function LandingPage(){ 
     // use states
     const [latestRequests, setLatestRequests] = useState([])
@@ -31,6 +32,7 @@ function LandingPage(){
             <div className="landing-page-cards">
                 {cardsDisplay}
             </div>
+            <AboutUs/>
         </div>
     )
 }
