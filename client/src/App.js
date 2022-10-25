@@ -12,6 +12,9 @@ import NgoDashbord from './components/NgoDashbord';
 import HowItWorks from './components/HowItWorks';
 import AboutUs from './components/AboutUs';
 import DonationRequestPage from './components/DonationRequestPage';
+import DonationRequestForm from './components/DonationRequestForm';
+import NgoRegistrationForm from './components/NgoRegistrationForm';
+import PageNotFound from './components/PageNotFound';
 
 
 
