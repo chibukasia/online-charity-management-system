@@ -11,6 +11,8 @@ import AdminLogin from './components/AdminLogin';
 import NgoDashbord from './components/NgoDashbord';
 import HowItWorks from './components/HowItWorks';
 import AboutUs from './components/AboutUs';
+import DonationRequestPage from './components/DonationRequestPage';
+
 
 
 function App() {
@@ -27,8 +29,8 @@ function App() {
         }
       })
     }
-    
-  },[]) 
+
+  },[user])
 
   // Get the admin in session
   useEffect(()=>{
@@ -39,7 +41,7 @@ function App() {
         }
       })
     }
-  },[])
+  },[admin])
 
   return (
     <div className='body'>
@@ -56,6 +58,7 @@ function App() {
           <Route exact path='/adminlogin' element={<AdminLogin setAdmin = {setAdmin}/>} />
           <Route exact path='/how_it_works' element={<HowItWorks/>} />
           <Route exact path='/aboutus' element={<AboutUs/>} />
+          <Route exact path='/donation_request_page' element={<DonationRequestPage/>} />
       </Routes>
       <Footer/>
        </div>
