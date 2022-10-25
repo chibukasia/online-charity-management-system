@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react"; 
 import Header from "./Header";
 import DonationRequestCard from "./DonationRequestCard";
+import HowItWorks from "./HowItWorks";
 function LandingPage(){ 
     // use states
     const [latestRequests, setLatestRequests] = useState([])
@@ -25,7 +26,7 @@ function LandingPage(){
     return(
         <div className="landing-page">
             <Header />
-            
+            <HowItWorks />
             <h2>Ongoing Fundraises</h2>
             <div className="landing-page-cards">
                 {cardsDisplay}

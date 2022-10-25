@@ -6,7 +6,7 @@ import Button from "./styles/Button";
 import Error from "./styles/Error";
 
 
-function AdminSignUp() {
+function AdminSignUp({setAdmin}) {
 
     // use states
     const [isLoading, setIsLoading] = useState(false)
@@ -39,7 +39,7 @@ function AdminSignUp() {
         })
         .then(res => {
             if (res.ok){
-                res.json().then(admin => console.log(admin))
+                res.json().then(admin => setAdmin(admin))
             }else{
                 res.json().then(error => setErrors(error.errors))
             }
@@ -48,7 +48,7 @@ function AdminSignUp() {
   return (
     <div>
       <h1>Create an Admin</h1>
-      <form onSubmit = {handleSubmit}>
+      <form onSubmit = {handleSubmit} className="signup-form">
       {errors.map((err) => (
           <Error key={err}>{err}</Error>
         ))}

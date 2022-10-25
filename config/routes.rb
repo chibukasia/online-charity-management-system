@@ -22,9 +22,9 @@ Rails.application.routes.draw do
   # route to logout user in session
   delete '/user_logout', to: 'sessions#destroy'
   # route to create a new admin
-  post 'admin_signup', to: 'admins#create'
+  post '/admin_signup', to: 'admins#create'
   # route to login admin
-  post 'admin_login', to: 'admin_sessions#create'
+  post '/admin_login', to: 'admin_sessions#create'
   # route to get admin in session
   get '/admin', to: 'admin_sessions#show'
   # route to logout admin in session
