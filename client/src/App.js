@@ -25,31 +25,28 @@ function App() {
 
   // Get the user who is is session
   useEffect(() => {
-    if (user){
       fetch("/user_me").then((res) => {
         if (res.ok) {
           res.json().then((data) => setUser(data));
         }
-      })
-    }
-
-  },[user])
+      })   
+  },[user]) 
 
   // Get the admin in session
   useEffect(()=>{
-    if (admin){
       fetch("/admin").then((res) => {
         if (res.ok) {
           res.json().then((data) => setUser(data));
         }
       })
-    }
   },[admin])
 
   return (
     <div className='body'>
         {/* Navigation*/}
-      <Navigation user={user} setUser={setUser} admin={admin}/>
+      <nav style={{marginBottom: "100px"}}>
+        <Navigation user={user} setUser={setUser} admin={admin}/>
+      </nav>
 
        {/* navigation routes */}
       <Routes>

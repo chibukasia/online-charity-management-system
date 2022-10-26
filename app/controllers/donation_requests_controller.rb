@@ -20,7 +20,7 @@ class DonationRequestsController < ApplicationController
     def create
         user = User.find(session[:user_id])
         if session[:role] == 'ngo'
-            donation_request = user.donation_requests.create!(donation_request_params)
+            donation_request = user.donation_requests.create!(donation_request_params) => Multipart, Urlencoded
             render json: donation_request, status: :created
         else
             render json: {errors: ["You do not have previlledges to create a donation request"]}, status: :unauthorized
