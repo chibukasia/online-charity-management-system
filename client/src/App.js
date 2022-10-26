@@ -12,6 +12,8 @@ import NgoDashbord from './components/NgoDashbord';
 import HowItWorks from './components/HowItWorks';
 import AboutUs from './components/AboutUs';
 import DonorDashboard from './components/DonorDashboard';
+import UserProfile from './components/UserProfile';
+
 
 
 
@@ -59,6 +61,8 @@ function App() {
           <Route exact path='/how_it_works' element={<HowItWorks/>} />
           <Route exact path='/aboutus' element={<AboutUs/>} />
           <Route exact path='/donor_dashboard' element={<DonorDashboard/>} />
+          <Route exact path='/user_profile' element={<UserProfile/>} />
+
       </Routes>
       <Footer/>
        </div>
