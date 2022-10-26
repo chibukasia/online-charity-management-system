@@ -15,6 +15,8 @@ import DonationRequestPage from './components/DonationRequestPage';
 import DonationRequestForm from './components/DonationRequestForm';
 import NgoRegistrationForm from './components/NgoRegistrationForm';
 import PageNotFound from './components/PageNotFound';
+import DonorDashboard from './components/DonorDashboard';
+import UserProfile from './components/UserProfile';
 
 
 
@@ -61,6 +63,8 @@ function App() {
           <Route exact path='/donation_request_page' element={<DonationRequestPage/>} />
           <Route exact path='/ngo_registration' element={<NgoRegistrationForm/>}/>
           <Route exact path='/donation_request_form' element={<DonationRequestForm/>} user={user}/>
+          <Route exact path='/donor_dashboard' element={<DonorDashboard/>} />
+          <Route exact path='/user_profile' element={<UserProfile/>} />
           <Route path='*' element={<PageNotFound/>}/>
       </Routes>
       <Footer/>
