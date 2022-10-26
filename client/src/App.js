@@ -30,7 +30,7 @@ function App() {
           res.json().then((data) => setUser(data));
         }
       })   
-  },[user]) 
+  },[]) 
 
   // Get the admin in session
   useEffect(()=>{
@@ -39,12 +39,12 @@ function App() {
           res.json().then((data) => setUser(data));
         }
       })
-  },[admin])
+  },[])
 
   return (
     <div className='body'>
         {/* Navigation*/}
-      <nav style={{marginBottom: "100px"}}>
+      <nav style={{marginBottom: "90px"}}>
         <Navigation user={user} setUser={setUser} admin={admin}/>
       </nav>
 
@@ -52,7 +52,7 @@ function App() {
       <Routes>
         <Route path='/' element={<LandingPage/>} />
           <Route exact path='/home' element={<HomePage />} />
-          <Route exact path='/ngo_dashboard' element={<NgoDashbord/>} />
+          <Route exact path='/ngo_dashboard' element={<NgoDashbord user={user}/>} />
           <Route path='/login' element={<Login onLogin = {setUser}/>} />
           <Route path='/adminsignup' element={<AdminSignUp setAdmin = {setAdmin}/>} />
           <Route exact path='/adminlogin' element={<AdminLogin setAdmin = {setAdmin}/>} />

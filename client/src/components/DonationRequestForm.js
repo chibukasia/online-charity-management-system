@@ -55,6 +55,9 @@ function DonationRequestForm({user}) {
     // POST the form data to the server
     fetch("/donation_requests",{
         method: "POST",
+        headers: {
+          "Content-Type": "multipart/form-data"
+        },
         body: formData
     })
     .then(res=>{
@@ -67,7 +70,7 @@ function DonationRequestForm({user}) {
             })
         }else{
             
-            res.json().then(err=>setErrors(err.errors))
+            res.json().then(err=>console.log(err))
         }
     })
   }
@@ -75,7 +78,7 @@ function DonationRequestForm({user}) {
   return (
     <div className="form-div">
       <h2>Donation Request Form</h2>
-      <form className="form" onSubmit={handleSubmit} >
+      <form encType="multipart/form-data" className="form" onSubmit={handleSubmit} >
         <FormField>
           {errors.map((err) => (
             <Error key={err}>{err}</Error>
@@ -83,19 +86,19 @@ function DonationRequestForm({user}) {
         </FormField>
         <FormField>
           <Label htmlFor="title">Donation request title</Label>
-          <Input type="text" name="title" id="title" required/>
+          <Input type="text" name="title" id="title" />
         </FormField>
         <FormField>
           <Label htmlFor="description">Description</Label>
-          <Textarea rows="10" name="description" required/>
+          <Textarea rows="10" name="description" />
         </FormField>
         <FormField>
           <Label htmlFor="target_amount"> Target Amount</Label>
-          <Input type="number" name="target_amount" id="target_amount" required/>
+          <Input type="number" name="target_amount" id="target_amount" />
         </FormField>
         <FormField>
           <Label htmlFor="category_id">Select Category</Label>
-          <select name="category_id" id="category_id" required>
+          <select name="category_id" id="category_id" >
             {categoryNames.map((categoryName) => {
               return (
                 <option value={categoryName.id} key={categoryName.id}>
@@ -107,11 +110,11 @@ function DonationRequestForm({user}) {
         </FormField>
         <FormField>
           <Label htmlFor="image">Upload Supporting Image</Label>
-          <Input type="file" name="image" id="image" required/>
+          <Input type="file" name="image" id="image" />
         </FormField>
         <FormField>
           <Label htmlFor="bank_statement">Upload latest bank statement</Label>
-          <Input type="file" name="bank_statement" id="bank_statement" required/>
+          <Input type="file" name="bank_statement" id="bank_statement" />
         </FormField>
         <FormField>
           <Button color="primary" type="submit">
