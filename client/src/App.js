@@ -18,6 +18,8 @@ import DonorPage from './components/DonorPage';
 import PageNotFound from './components/PageNotFound';
 import DonorDashboard from './components/DonorDashboard';
 import UserProfile from './components/UserProfile';
+import EditUserProfile from './components/Update_User';
+
 
 
 function App() {
@@ -66,6 +68,8 @@ function App() {
           <Route exact path='/donation_request_form' element={<DonationRequestForm/>} user={user}/>
           <Route exact path='/donor_dashboard' element={<DonorDashboard/>} />
           <Route exact path='/user_profile' element={<UserProfile/>} />
+          <Route exact path='/edit_user_profile' element={<EditUserProfile/>} />
+
           <Route path='*' element={<PageNotFound/>}/>
       </Routes>
       <Footer/>
