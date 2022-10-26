@@ -14,6 +14,7 @@ import AboutUs from './components/AboutUs';
 import DonationRequestPage from './components/DonationRequestPage';
 import DonationRequestForm from './components/DonationRequestForm';
 import NgoRegistrationForm from './components/NgoRegistrationForm';
+import DonorPage from './components/DonorPage';
 import PageNotFound from './components/PageNotFound';
 import DonorDashboard from './components/DonorDashboard';
 import UserProfile from './components/UserProfile';
@@ -59,6 +60,7 @@ function App() {
           <Route exact path='/adminlogin' element={<AdminLogin setAdmin = {setAdmin}/>} />
           <Route exact path='/how_it_works' element={<HowItWorks/>} />
           <Route exact path='/aboutus' element={<AboutUs/>} />
+          <Route exact path='/donor_page' element={<DonorPage/>} />
           <Route exact path='/donation_request_page' element={<DonationRequestPage/>} />
           <Route exact path='/ngo_registration' element={<NgoRegistrationForm/>}/>
           <Route exact path='/donation_request_form' element={<DonationRequestForm/>} user={user}/>
