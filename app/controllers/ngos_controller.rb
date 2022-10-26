@@ -43,6 +43,16 @@ class NgosController < ApplicationController
         head :no_content
     end
 
+    # GET NGO of a logged in NGO
+    def session_ngo 
+        user = User.find(session[:user_id])
+        if user.role == "ngo"
+            ngo = Ngo.find_by(user_id: user.id)
+            render json: ngo, status: :ok
+        else
+            render json: {errors: ["You do not have the required previlledges"]}, status: :unauthorized
+        end
+    end
     # Private methods
     private
 

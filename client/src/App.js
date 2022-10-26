@@ -11,10 +11,12 @@ import AdminLogin from './components/AdminLogin';
 import NgoDashbord from './components/NgoDashbord';
 import HowItWorks from './components/HowItWorks';
 import AboutUs from './components/AboutUs';
+import DonationRequestPage from './components/DonationRequestPage';
+import DonationRequestForm from './components/DonationRequestForm';
+import NgoRegistrationForm from './components/NgoRegistrationForm';
+import PageNotFound from './components/PageNotFound';
 import DonorDashboard from './components/DonorDashboard';
 import UserProfile from './components/UserProfile';
-
-
 
 
 function App() {
@@ -24,31 +26,28 @@ function App() {
 
   // Get the user who is is session
   useEffect(() => {
-    if (user){
       fetch("/user_me").then((res) => {
         if (res.ok) {
           res.json().then((data) => setUser(data));
         }
-      })
-    }
-    
-  },[]) 
+      })   
+  },[user]) 
 
   // Get the admin in session
   useEffect(()=>{
-    if (admin){
       fetch("/admin").then((res) => {
         if (res.ok) {
           res.json().then((data) => setUser(data));
         }
       })
-    }
-  },[])
+  },[admin])
 
   return (
     <div className='body'>
         {/* Navigation*/}
-      <Navigation user={user} setUser={setUser} admin={admin}/>
+      <nav style={{marginBottom: "100px"}}>
+        <Navigation user={user} setUser={setUser} admin={admin}/>
+      </nav>
 
        {/* navigation routes */}
       <Routes>
@@ -60,9 +59,12 @@ function App() {
           <Route exact path='/adminlogin' element={<AdminLogin setAdmin = {setAdmin}/>} />
           <Route exact path='/how_it_works' element={<HowItWorks/>} />
           <Route exact path='/aboutus' element={<AboutUs/>} />
+          <Route exact path='/donation_request_page' element={<DonationRequestPage/>} />
+          <Route exact path='/ngo_registration' element={<NgoRegistrationForm/>}/>
+          <Route exact path='/donation_request_form' element={<DonationRequestForm/>} user={user}/>
           <Route exact path='/donor_dashboard' element={<DonorDashboard/>} />
           <Route exact path='/user_profile' element={<UserProfile/>} />
-
+          <Route path='*' element={<PageNotFound/>}/>
       </Routes>
       <Footer/>
        </div>
