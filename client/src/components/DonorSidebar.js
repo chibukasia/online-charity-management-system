@@ -7,7 +7,7 @@ import { Link } from "react-router-dom";
 import "./Navbar.css";
 import { IconContext } from "react-icons";
 
-function Navbar() {
+function DonorSidebar() {
   const [sidebar, setSidebar] = useState(true);
 
   const showSidebar = () => setSidebar(!sidebar);
@@ -30,31 +30,13 @@ function Navbar() {
             <li className="nav-text">
               <Link to="/home">
               <FaIcons.FaEnvelopeOpenText />
-                <span>All Requests </span>
+                <span>My Donations </span>
               </Link>
             </li>
             <li className="nav-text">
               <Link to="/home">
                 <AiIcons.AiFillHome />
-                <span>Pending </span>
-              </Link>
-            </li>
-            <li className="nav-text">
-              <Link to="/home">
-                <IoIcons.IoIosPaper />
-                <span>Approved</span>
-              </Link>
-            </li>
-            <li className="nav-text">
-              <Link to="/home">
-                <IoIcons.IoMdPeople />
-                <span>Rejected</span>
-              </Link>
-            </li>
-            <li className="nav-text">
-              <Link to="/home">
-              <IoIcons.IoMdHelpCircle />
-                <span>Donations</span>
+                <span>My Profile </span>
               </Link>
             </li>
             <li className="nav-text">
@@ -63,6 +45,7 @@ function Navbar() {
                 <span>Reports</span>
               </Link>
             </li>
+
           </ul>
         </nav>
       </IconContext.Provider>
@@ -70,4 +53,4 @@ function Navbar() {
   );
 }
 
-export default Navbar;
+export default DonorSidebar;

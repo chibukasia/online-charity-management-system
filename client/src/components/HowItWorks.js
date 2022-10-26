@@ -27,7 +27,7 @@ function HowItWorks() {
           <div className="section-container-card">
             <span className="fa-stack fa-4x">
               <FaIcons.FaDonate />
-              <i class="fa fa-user-plus" aria-hidden="true"></i>
+              <i className="fa fa-user-plus" aria-hidden="true"></i>
               <i className="fa fa-shopping-cart fa-stack-1x fa-inverse" />
             </span>
             <h4 className="my-3">Donate</h4>

@@ -14,11 +14,11 @@ class DonationRequest < ApplicationRecord
 
     # Generate a url for the image uploaded
     def image_url
-        Rails.application.routes.url_helpers.url_for(image) unless image.attached?
+        Rails.application.routes.url_helpers.url_for(image) if image.attached?
     end 
     
     # Genarate a url for the bank statement uploaded
     def bank_statement_url
-        Rails.application.routes.url_helpers.url_for(bank_statement) unless bank_statement.attached?
+        Rails.application.routes.url_helpers.url_for(bank_statement) if bank_statement.attached?
     end
 end
