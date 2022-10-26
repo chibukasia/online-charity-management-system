@@ -1,10 +1,45 @@
 .dashboard-main{
-    display: inline;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
 
 }
 .dashboard-nav{
     float: left;
+    width: 20%;
+    background-color: #060b26;
 }
 .dashboard-container{
     float: right;
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
 }
+#card{
+    width: 20%;
+    margin: 10px;
+  }
+
+@media only screen and (max-width: 600px) {
+   .dashboard-main{
+       width: 100%;
+   }
+   .dashboard-nav{
+    width: 100%;
+    
+}
+.dashboard-container{   
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+}
+   
+#card{
+    width: 100%;
+    margin: 10px;
+  }
+
+  }
