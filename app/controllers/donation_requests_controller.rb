@@ -20,7 +20,7 @@ class DonationRequestsController < ApplicationController
     def create
         user = User.find(session[:user_id])
         if session[:role] == 'ngo'
-            donation_request = user.donation_requests.create!(donation_request_params) => Multipart, Urlencoded
+            donation_request = user.donation_requests.create!(donation_request_params)
             render json: donation_request, status: :created
         else
             render json: {errors: ["You do not have previlledges to create a donation request"]}, status: :unauthorized
@@ -56,12 +56,12 @@ class DonationRequestsController < ApplicationController
     # GET NGOs specific donatin requests
     def ngo_requests
         user = User.find(session[:user_id]) # find user in session
-        ngo = Ngo.find_by(user_id: session[:id]) # find ngo for the user in session
+        ngo = Ngo.find_by(user_id: user.id) # find ngo for the user in session
         if user && user.role == "ngo" && ngo # check if the user is authorized
             donation_requests = DonationRequest.where(ngo_id: ngo.id).order(created_at: :desc)
-            render json: donation_requests, status: :ok
+            render json: donation_requests, status: :ok, each_serializer: CustomDonationRequestSerializer
         else
-            render json: {errors: ["User not authorized"]}, status: :unauthorized, each_serializer: CustomDonationRequestSerializer
+            render json: {errors: ["User not authorized"]}, status: :unauthorized
         end
     end
 
