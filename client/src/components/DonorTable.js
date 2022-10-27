@@ -18,8 +18,7 @@ function DonorTable() {
       title: "John Smith",
       date: "1 March",
       amount: 785,
-      category: "Food Relief",
-      status: "Approved",
+      category: "Food Relief"
     },
     {
       id: 2235235,
@@ -28,8 +27,7 @@ function DonorTable() {
       title: "Michael Doe",
       date: "1 March",
       amount: 900,
-      category: "Sanitary Pads",
-      status: "Pending",
+      category: "Sanitary Pads"
     },
     {
       id: 2342353,
@@ -38,8 +36,7 @@ function DonorTable() {
       title: "John Smith",
       date: "1 March",
       amount: 35,
-      category: "Housing",
-      status: "Rejected",
+      category: "Housing"
     },
     {
       id: 2357741,
@@ -48,8 +45,7 @@ function DonorTable() {
       title: "Jane Smith",
       date: "1 March",
       amount: 920,
-      category: "Water & Electricity",
-      status: "Approved",
+      category: "Water & Electricity"
     },
     {
       id: 2342355,
@@ -58,8 +54,7 @@ function DonorTable() {
       title: "Harold Carol",
       date: "1 March",
       amount: 2000,
-      category: "Water & Electricity",
-      status: "Pending",
+      category: "Water & Electricity"
     },
   ];
   return (
@@ -73,7 +68,6 @@ function DonorTable() {
             <TableCell className="tableCell">Date</TableCell>
             <TableCell className="tableCell">Amount</TableCell>
             <TableCell className="tableCell">Category</TableCell>
-            <TableCell className="tableCell">Status</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
@@ -90,10 +84,7 @@ function DonorTable() {
               <TableCell className="tableCell">{row.date}</TableCell>
               <TableCell className="tableCell">{row.amount}</TableCell>
               <TableCell className="tableCell">{row.category}</TableCell>
-              <TableCell className="tableCell">
-                <span className={`status ${row.status}`}>{row.status}</span>
-              </TableCell>
-            </TableRow>
+                          </TableRow>
           ))}
         </TableBody>
       </Table>
