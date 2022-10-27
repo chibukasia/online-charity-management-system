@@ -12,8 +12,8 @@ function NgoApprovedRequests({ ngoRequests }) {
   });
   return (
     <>
-      <h2>APPROVED REQUESTS</h2>
-      <div className="reuests-container">{cardsDisplay}</div>
+      {/* <h2>APPROVED REQUESTS</h2> */}
+      {cardsDisplay}
     </>
   );
 }

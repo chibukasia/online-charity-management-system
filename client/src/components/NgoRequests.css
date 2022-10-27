@@ -1,5 +1,6 @@
-.reuests-container{
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
+.requests-container{
+    display: inline;
+    float: right;
+    /* flex-direction: row;
+    flex-wrap: wrap; */
 }

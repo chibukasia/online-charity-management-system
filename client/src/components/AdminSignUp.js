@@ -47,8 +47,8 @@ function AdminSignUp({setAdmin}) {
     }
   return (
     <div>
-      <h1>Create an Admin</h1>
-      <form onSubmit = {handleSubmit} className="signup-form">
+      <h2>Create an Admin</h2>
+      <form onSubmit = {handleSubmit} className="signup-form form-div">
       {errors.map((err) => (
           <Error key={err}>{err}</Error>
         ))}

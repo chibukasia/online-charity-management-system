@@ -33,7 +33,7 @@ class NgosController < ApplicationController
     def update
         ngo = find_ngo
         ngo.update!(ngo_params)
-        render json: ngo, status: :accepted
+        render json: {message: "Ngo updated successfullly", body: ngo}, status: :accepted
     end
 
     # DELETE an NGO

@@ -30,10 +30,11 @@ function RequestDetailsModal(props) {
     state="Closed"
     divColor = "open"
   }
-
+  
   // Capitalize the string
   // const capitalizedStatus = props.request.status.charAt(0).toUpperCase() + props.request.status.slice(1) 
-
+  // console.log(props.request.category.category_name)
+  // console.log(props.request.status)
   return (
     <Modal
       {...props}
@@ -49,13 +50,13 @@ function RequestDetailsModal(props) {
       </Modal.Header>
       <Modal.Body>
         <h5>Category</h5>
-        <p>{props.request.category.category_name}</p>
+        {/* <p>{props.request.category.category_name}</p> */}
         <h5>Amount Raised:</h5>
         <p>KSH {props.request.amount_raised}</p>
         <h5>Target Amount:</h5>
         <p>KSH {props.request.target_amount}</p>
         <h5>Status:</h5>
-        {/* <p>{capitalizedStatus}</p> */}
+        <p>{props.request.status}</p>
         <h5>State:</h5>
         <div className={divColor}>{state}<i className={"fa fa-check-circle"} style={{color:"white"}}></i></div>
         <h4>Progress Status</h4>
