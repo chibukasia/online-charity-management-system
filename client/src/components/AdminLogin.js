@@ -17,7 +17,7 @@ function AdminLogin({ setAdmin }) {
   function handleSubmit(e) {
     e.preventDefault();
     setIsLoading(true);
-    fetch("/user_login", {
+    fetch("/admin_login", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -36,7 +36,8 @@ function AdminLogin({ setAdmin }) {
   }
 
   return (
-    <form onSubmit={handleSubmit} className="signup-form">
+    <form onSubmit={handleSubmit} className="signup-form form-div">
+      <h2>Admin Login</h2>
       <FormField>
         <Label htmlFor="username">Username</Label>
         <Input

@@ -3,11 +3,11 @@ import { FormField, Error, Input, Button, Label, Textarea } from "./styles";
 import './requestForm.css'
 import { useNavigate } from "react-router-dom";
 
-function DonationRequestForm({user, setNgoRequests, ngoRequests}) {
+function DonationRequestForm({user, setNgoRequests, ngoRequests, ngo}) {
   const [categoryNames, setCategoryNames] = useState([]);
   const [errors, setErrors] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
-  const [ngo, setNgo] = useState(null)
+  // const [ngo, setNgo] = useState(null)
 
   const navigate = useNavigate()
   // Get all the categories
@@ -23,16 +23,16 @@ function DonationRequestForm({user, setNgoRequests, ngoRequests}) {
   }, []);
 
   // Get the NGO associated with the user
-  useEffect(()=>{
-    fetch('/session_ngo')
-    .then(res=>{
-        if (res.ok){
-            res.json().then(data=>setNgo(data))
-        }else{
-            res.json().then(err=>setErrors(err.errors))
-        }
-    })
-  },[])
+  // useEffect(()=>{
+  //   fetch('/session_ngo')
+  //   .then(res=>{
+  //       if (res.ok){
+  //           res.json().then(data=>setNgo(data))
+  //       }else{
+  //           res.json().then(err=>setErrors(err.errors))
+  //       }
+  //   })
+  // },[])
   
   // submit form data to the server
   function handleSubmit(e){
