@@ -26,6 +26,14 @@ import NgoPendingRequests from './components/NgoPendingRequests.';
 import NgoRejectedRequests from './components/NgoRejectedRequests';
 import NgoReports from './components/NgoReports';
 import RequestDetails from './components/RequestDetails';
+import AdminApprovedRequests from './components/AdminApprovedRequests';
+import AdminDashboard from './components/AdminDashboard';
+import AdminTable from './components/AdminTable';
+import AdminAllRequests from './components/AdminAllRequests';
+import AdminPendingRequests from './components/AdminPendingRequests';
+import AdminRejectedRequests from './components/AdminRejectedRequests';
+import AdminReports from './components/AdminReports';
+import AdminNewCategoryForm from './components/AdminNewCategoryForm'
 
 
 
@@ -96,6 +104,15 @@ function App() {
             <Route exact path='rejected' element={<NgoRejectedRequests ngoRequests={ngoRequests}/>}/>
             <Route exact path='ngo_reports' element={<NgoReports />}/>
             <Route exact path='donation_request_form' element={<DonationRequestForm user={user} ngoRequests={ngoRequests} setNgoRequests={setNgoRequests}/>} />
+          </Route>
+          <Route exact path='/admin_dashboard' element={<AdminDashboard user={user}/>}>
+            <Route exact path='admin_table' element={<AdminTable/>}/>
+            <Route exact path='all_ngo_requests' element={<AdminAllRequests ngoRequests={ngoRequests}/>}/>
+            <Route exact path='admin_approved' element={<AdminApprovedRequests ngoRequests={ngoRequests}/>} />
+            <Route exact path='admin_pending' element={<AdminPendingRequests ngoRequests={ngoRequests}/>}/>
+            <Route exact path='admin_rejected' element={<AdminRejectedRequests ngoRequests={ngoRequests}/>}/>
+            <Route exact path='admin_reports' element={<AdminReports />}/>
+            <Route exact path='new_category_form' element={<AdminNewCategoryForm user={user} ngoRequests={ngoRequests} setNgoRequests={setNgoRequests}/>} />
           </Route>
           <Route path='/login' element={<Login onLogin = {setUser}/>} />
           <Route path='/adminsignup' element={<AdminSignUp setAdmin = {setAdmin}/>} />

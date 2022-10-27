@@ -17,7 +17,7 @@ function AdminLogin({ setAdmin }) {
   function handleSubmit(e) {
     e.preventDefault();
     setIsLoading(true);
-    fetch("/user_login", {
+    fetch("/admin_login", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -28,6 +28,7 @@ function AdminLogin({ setAdmin }) {
       if (r.ok) {
         r.json().then((admin) => {
           setAdmin(admin)
+          navigate('/admin_dashboard')
         });
       } else {
         r.json().then((err) => setErrors(err.errors));
