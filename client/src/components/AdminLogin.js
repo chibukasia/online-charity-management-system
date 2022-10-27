@@ -28,6 +28,7 @@ function AdminLogin({ setAdmin }) {
       if (r.ok) {
         r.json().then((admin) => {
           setAdmin(admin)
+          navigate('/admin_dashboard')
         });
       } else {
         r.json().then((err) => setErrors(err.errors));
