@@ -88,6 +88,7 @@ function App() {
       <Routes>
         <Route path='/' element={<LandingPage/>} />
           <Route exact path='/home' element={<HomePage />} />
+
           <Route exact path='/ngo_dashboard' element={<NgoDashbord user={user}/>}>
             <Route exact path='donar_table' element={<DonorTable/>}/>
             <Route exact path='ngo_requests' element={<NgoRequests ngoRequests={ngoRequests}/>}/>
@@ -97,6 +98,12 @@ function App() {
             <Route exact path='ngo_reports' element={<NgoReports />}/>
             <Route exact path='donation_request_form' element={<DonationRequestForm user={user} ngoRequests={ngoRequests} setNgoRequests={setNgoRequests}/>} />
           </Route>
+
+          <Route exact path='/donor_dashboard' element={<DonorDashboard user={user}/>}>
+            <Route exact path='user_profile' element={<UserProfile/>} />
+            <Route exact path='edit_user_profile' element={<EditUserProfile/>} />
+          </Route>
+
           <Route path='/login' element={<Login onLogin = {setUser}/>} />
           <Route path='/adminsignup' element={<AdminSignUp setAdmin = {setAdmin}/>} />
           <Route exact path='/adminlogin' element={<AdminLogin setAdmin = {setAdmin}/>} />
@@ -105,9 +112,7 @@ function App() {
           <Route exact path='/donor_page' element={<DonorPage/>} />
           <Route exact path='/donation_request_page' element={<DonationRequestPage/>} />
           <Route exact path='/ngo_registration' element={<NgoRegistrationForm/>}/>
-          <Route exact path='/donor_dashboard' element={<DonorDashboard/>} />
-          <Route exact path='/user_profile' element={<UserProfile/>} />
-          <Route exact path='/edit_user_profile' element={<EditUserProfile/>} />
+         
 
           <Route path='*' element={<PageNotFound/>}/>
       </Routes>
