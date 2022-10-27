@@ -100,8 +100,10 @@ function App() {
           </Route>
 
           <Route exact path='/donor_dashboard' element={<DonorDashboard user={user}/>}>
-            <Route exact path='user_profile' element={<UserProfile/>} />
-            <Route exact path='edit_user_profile' element={<EditUserProfile/>} />
+            <Route exact path='user_profile' element={<UserProfile user={user}/>} />
+            <Route exact path='edit_user_profile' element={<EditUserProfile user={user}/>} />
+            <Route exact path='donar_table' element={<DonorTable/>}/>
+
           </Route>
 
           <Route path='/login' element={<Login onLogin = {setUser}/>} />
