@@ -11,8 +11,8 @@ function NgoPendingRequests({ ngoRequests }) {
   });
   return (
     <>
-      <h2>PENDING REQUESTS</h2>
-      <div className="reuests-container">{cardsDisplay}</div>
+      {/* <h2>PENDING REQUESTS</h2> */}
+      {cardsDisplay}
     </>
   );
 }

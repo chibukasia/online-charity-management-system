@@ -11,8 +11,8 @@ function NgoRejectedRequests({ ngoRequests }) {
   });
   return (
     <>
-      <h2>REJECTED REQUESTS</h2>
-      <div className="reuests-container">{cardsDisplay}</div>
+      {/* <h2>REJECTED REQUESTS</h2> */}
+     {cardsDisplay}
     </>
   );
 }
