@@ -104,6 +104,7 @@ GEM
     irb (1.4.2)
       reline (>= 0.3.0)
     jsonapi-renderer (0.2.2)
+    language_server-protocol (3.17.0.1)
     loofah (2.19.0)
       crass (~> 1.0.2)
       nokogiri (>= 1.5.9)
@@ -127,6 +128,7 @@ GEM
     nokogiri (1.13.9-x86_64-linux)
       racc (~> 1.4)
     pg (1.4.4)
+    prettier_print (1.0.2)
     puma (5.6.5)
       nio4r (~> 2.0)
     racc (1.6.0)
@@ -164,8 +166,15 @@ GEM
     rake (13.0.6)
     reline (0.3.1)
       io-console (~> 0.5)
+    ruby-lsp (0.3.4)
+      language_server-protocol (~> 3.17.0)
+      sorbet-runtime
+      syntax_tree (>= 3.6.3)
     ruby-vips (2.1.4)
       ffi (~> 1.12)
+    sorbet-runtime (0.5.10511)
+    syntax_tree (4.0.2)
+      prettier_print (>= 1.0.2)
     thor (1.2.1)
     timeout (0.3.0)
     tzinfo (2.0.5)
@@ -191,10 +200,11 @@ DEPENDENCIES
   puma (~> 5.0)
   rack-cors
   rails (~> 7.0.4)
+  ruby-lsp (~> 0.3.4)
   tzinfo-data
 
 RUBY VERSION
    ruby 3.1.2p20
 
 BUNDLED WITH
-   2.3.20
+   2.3.24

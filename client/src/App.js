@@ -18,6 +18,7 @@ import DonorPage from './components/DonorPage';
 import PageNotFound from './components/PageNotFound';
 import DonorDashboard from './components/DonorDashboard';
 import UserProfile from './components/UserProfile';
+import NgoUpdateForm from './components/NgoUpdateForm';
 
 
 function App() {
@@ -31,8 +32,8 @@ function App() {
         if (res.ok) {
           res.json().then((data) => setUser(data));
         }
-      })   
-  },[user]) 
+      })
+  },[user])
 
   // Get the admin in session
   useEffect(()=>{
@@ -66,6 +67,7 @@ function App() {
           <Route exact path='/donation_request_form' element={<DonationRequestForm/>} user={user}/>
           <Route exact path='/donor_dashboard' element={<DonorDashboard/>} />
           <Route exact path='/user_profile' element={<UserProfile/>} />
+          <Route exact path='/ngo_registration' element={<NgoUpdateForm/>}/> {/* path for the updateform on ngos*/}
           <Route path='*' element={<PageNotFound/>}/>
       </Routes>
       <Footer/>

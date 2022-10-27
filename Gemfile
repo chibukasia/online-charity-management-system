@@ -61,3 +61,5 @@ group :development do
   gem "faker"
 
 end
+
+gem "ruby-lsp", "~> 0.3.4", :group => :development

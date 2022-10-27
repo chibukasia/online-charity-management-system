@@ -1,11 +1,13 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import { useNavigate, Link } from 'react-router-dom';
+import {withRouter} from 'react-router';
 import { FormField, Error, Input, Button, Label, Textarea } from "./styles";
 
 
-function NgoRegistrationForm() {
+function NgoRegistrationForm(props) {
 
   // set the states
+  const [data, setData] = useState([])
   const [errors, setErrors] = useState([])
   const [isLoading, setIsLoading] = useState(false)
   const [formData, setFormData] = useState({
@@ -27,6 +29,13 @@ function NgoRegistrationForm() {
 
       setFormData({...formData, [name]: value})
   }
+
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  useEffect(async () => {
+    let result =await fetch("" + props.match.params.id);
+    result =await result.json();
+    setData(result)
+  })
 
   // submit form data to server
   function handleSubmit(e){
@@ -63,27 +72,27 @@ function NgoRegistrationForm() {
             </FormField>
             <FormField>
                 <Label htmlFor='organization_name'>Organization Name</Label>
-                <Input type="text" name="organization_name" id='organization_name' onChange={handleChange}/>
+                <Input type="text" defaultValue={data.organization_name} name="organization_name" id='organization_name' onChange={handleChange}/>
             </FormField>
             <FormField>
                 <Label htmlFor='organization_email'>Organization Email</Label>
-                <Input type="text" name="organization_email" id='organization_email' onChange={handleChange}/>
+                <Input type="text" defaultValue={data.organization_email} name="organization_email" id='organization_email' onChange={handleChange}/>
             </FormField>
             <FormField>
                 <Label htmlFor='organization_phone_number'>Organization Phone Number</Label>
-                <Input type="text" name="organization_phone_number" id='organization_phone_number' onChange={handleChange}/>
+                <Input type="text" defaultValue={data.organization_phone_number} name="organization_phone_number" id='organization_phone_number' onChange={handleChange}/>
             </FormField>
             <FormField>
                 <Label htmlFor='address'>Address</Label>
-                <Input type="text" name="address" id='address' onChange={handleChange}/>
+                <Input type="text" defaultValue={data.address} name="address" id='address' onChange={handleChange}/>
             </FormField>
             <FormField>
                 <Label htmlFor='registration_number'>Licence Registration Number</Label>
-                <Input type="text" name="registration_number" id='registration_number' onChange={handleChange}/>
+                <Input type="text" defaultValue={data.registration_number} name="registration_number" id='registration_number' onChange={handleChange}/>
             </FormField>
             <FormField>
                 <Label htmlFor="description">Description</Label>
-                <Textarea rows="10" name="description" id="description" onChange={handleChange}/>
+                <Textarea rows="10" defaultValue={data.description} name="description" id="description" onChange={handleChange}/>
             </FormField>
             <FormField>
                         {/* submit button */}
@@ -103,4 +112,5 @@ function NgoRegistrationForm() {
   )
 }
 
-export default NgoRegistrationForm
+export default withRouter(NgoRegistrationForm)
+
