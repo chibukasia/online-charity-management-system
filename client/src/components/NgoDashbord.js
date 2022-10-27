@@ -5,71 +5,53 @@ import RequestCard from "./RequestCard";
 import * as FaIcons from "react-icons/fa";
 import * as AiIcons from "react-icons/ai";
 import * as IoIcons from "react-icons/io";
-import { Link } from "react-router-dom";
+import { Link, Outlet, useParams } from "react-router-dom";
 
 function NgoDashbord({user}) {
 
-  const [ngoRequests, setNgoRequests] = useState([])
-  const [errors, setErrors] = useState([])
-
-
-  useEffect(()=>{
-    fetch("/ngo_requests")
-    .then(res=>{
-      if(res.ok){
-        res.json().then(data=>setNgoRequests(data))
-      }else{
-        res.json().then(err=>setErrors(err.errors))
-      }
-    })
-  },[])
-
-  
-  const cardsDisplay = ngoRequests.map(request=>{
-    return <RequestCard key={request.id} request={request}/>
-  })
   return (
     <div className="dashboard-main">
       
       <div className="dashboard-nav">
       <ul className="nav-menu-items" >
-            {/* <li className="navbar-toggle">
-              <Link to="#" className="nav-text">
-                <AiIcons.AiOutlineClose />
-              </Link>
-            </li> */}
             <li className="nav-text">
-              <Link to="/home">
+              <Link to="ngo_requests">
               <FaIcons.FaEnvelopeOpenText />
                 <span>All Requests </span>
               </Link>
             </li>
             <li className="nav-text">
-              <Link to="/home">
+              <Link to="donation_request_form">
                 <AiIcons.AiFillHome />
-                <span>Pending </span>
+                <span>Create New Request </span>
               </Link>
             </li>
             <li className="nav-text">
-              <Link to="/home">
+              <Link to="approved">
+                <AiIcons.AiFillHome />
+                <span>Approved Requests</span>
+              </Link>
+            </li>
+            <li className="nav-text">
+              <Link to="pending">
                 <IoIcons.IoIosPaper />
-                <span>Approved</span>
+                <span>Pending Request</span>
               </Link>
             </li>
             <li className="nav-text">
-              <Link to="/home">
+              <Link to="rejected">
                 <IoIcons.IoMdPeople />
-                <span>Rejected</span>
+                <span>Rejected Request</span>
               </Link>
             </li>
             <li className="nav-text">
-              <Link to="/home">
+              <Link to="donar_table">
               <IoIcons.IoMdHelpCircle />
                 <span>Donations</span>
               </Link>
             </li>
             <li className="nav-text">
-              <Link to="/home">
+              <Link to="ngo_reports">
                 <IoIcons.IoMdPeople />
                 <span>Reports</span>
               </Link>
@@ -77,7 +59,7 @@ function NgoDashbord({user}) {
           </ul>
       </div>
       <div className="dashboard-container">
-        {cardsDisplay}
+        <Outlet />
       </div>
     </div>
   );

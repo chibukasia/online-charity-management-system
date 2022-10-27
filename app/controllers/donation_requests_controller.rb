@@ -19,7 +19,7 @@ class DonationRequestsController < ApplicationController
     # POST new donation request
     def create
         user = User.find(session[:user_id])
-        if session[:role] == 'ngo'
+        if user.role == 'ngo'
             donation_request = user.donation_requests.create!(donation_request_params)
             render json: donation_request, status: :created
         else

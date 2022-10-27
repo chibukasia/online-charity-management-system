@@ -3,7 +3,7 @@ import { FormField, Error, Input, Button, Label, Textarea } from "./styles";
 import './requestForm.css'
 import { useNavigate } from "react-router-dom";
 
-function DonationRequestForm({user}) {
+function DonationRequestForm({user, setNgoRequests, ngoRequests}) {
   const [categoryNames, setCategoryNames] = useState([]);
   const [errors, setErrors] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
@@ -33,7 +33,7 @@ function DonationRequestForm({user}) {
         }
     })
   },[])
-
+  
   // submit form data to the server
   function handleSubmit(e){
     e.preventDefault()
@@ -51,26 +51,24 @@ function DonationRequestForm({user}) {
     formData.append("ngo_id", ngo.id)
     formData.append("image", e.target.image.files[0])
     formData.append("bank_statement", e.target.bank_statement.files[0]) 
+    
 
     // POST the form data to the server
     fetch("/donation_requests",{
         method: "POST",
-        headers: {
-          "Content-Type": "multipart/form-data"
-        },
         body: formData
     })
     .then(res=>{
         if(res.ok){
             res.json().then(data=>{
+              setNgoRequests([...ngoRequests, data])
                 setIsLoading(true)
-                // console.log(data)
                 navigate('/ngo_dashboard')
                 
             })
         }else{
             
-            res.json().then(err=>console.log(err))
+            res.json().then(err=>setErrors(err.errors))
         }
     })
   }
@@ -85,19 +83,22 @@ function DonationRequestForm({user}) {
           ))}
         </FormField>
         <FormField>
-          <Label htmlFor="title">Donation request title</Label>
+          <p>Required <span style={{color: "red"}}>*</span></p>
+        </FormField>
+        <FormField>
+          <Label htmlFor="title">Donation request title<span style={{color: "red"}}>*</span></Label>
           <Input type="text" name="title" id="title" />
         </FormField>
         <FormField>
-          <Label htmlFor="description">Description</Label>
+          <Label htmlFor="description">Description<span style={{color: "red"}}>*</span></Label>
           <Textarea rows="10" name="description" />
         </FormField>
         <FormField>
-          <Label htmlFor="target_amount"> Target Amount</Label>
+          <Label htmlFor="target_amount"> Target Amount<span style={{color: "red"}}>*</span></Label>
           <Input type="number" name="target_amount" id="target_amount" />
         </FormField>
         <FormField>
-          <Label htmlFor="category_id">Select Category</Label>
+          <Label htmlFor="category_id">Select Category<span style={{color: "red"}}>*</span></Label>
           <select name="category_id" id="category_id" >
             {categoryNames.map((categoryName) => {
               return (
@@ -109,11 +110,11 @@ function DonationRequestForm({user}) {
           </select>
         </FormField>
         <FormField>
-          <Label htmlFor="image">Upload Supporting Image</Label>
+          <Label htmlFor="image">Upload Supporting Image<span style={{color: "red"}}>*</span></Label>
           <Input type="file" name="image" id="image" />
         </FormField>
         <FormField>
-          <Label htmlFor="bank_statement">Upload latest bank statement</Label>
+          <Label htmlFor="bank_statement">Upload latest bank statement<span style={{color: "red"}}>*</span></Label>
           <Input type="file" name="bank_statement" id="bank_statement" />
         </FormField>
         <FormField>
