@@ -5,9 +5,10 @@ import RequestCard from "./RequestCard";
 import * as FaIcons from "react-icons/fa";
 import * as AiIcons from "react-icons/ai";
 import * as IoIcons from "react-icons/io";
-import { Link, Outlet } from "react-router-dom";
+import { Link, Outlet, useParams } from "react-router-dom";
 
 function NgoDashbord({user}) {
+
   return (
     <div className="dashboard-main">
       
@@ -20,21 +21,27 @@ function NgoDashbord({user}) {
               </Link>
             </li>
             <li className="nav-text">
+              <Link to="donation_request_form">
+                <AiIcons.AiFillHome />
+                <span>Create New Request </span>
+              </Link>
+            </li>
+            <li className="nav-text">
               <Link to="approved">
                 <AiIcons.AiFillHome />
-                <span>Approved </span>
+                <span>Approved Requests</span>
               </Link>
             </li>
             <li className="nav-text">
               <Link to="pending">
                 <IoIcons.IoIosPaper />
-                <span>Pending</span>
+                <span>Pending Request</span>
               </Link>
             </li>
             <li className="nav-text">
               <Link to="rejected">
                 <IoIcons.IoMdPeople />
-                <span>Rejected</span>
+                <span>Rejected Request</span>
               </Link>
             </li>
             <li className="nav-text">
