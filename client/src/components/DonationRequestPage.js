@@ -1,54 +1,91 @@
 import React, {useEffect, useState} from "react";
+import { useParams } from "react-router-dom";
+import DonationModal from "./DonationModal";
+import ProgressBar from "./styles/ProgressBar";
 
-function DonationRequestPage() {
+function DonationRequestPage({ngoRequests}) {
   //use state
   const [donationRequest, setDonationRequest] = useState([])
   const [errors, setErrors] = useState([])
+  const params = useParams()
+  const [modalShow, setModalShow] = useState(false);
 
-  //get donation request
-  useEffect(() =>{
-    fetch("/ngo_requests")
-    .then(res=>{
-      if (res.ok){
-        res.json().then(data=>setDonationRequest(data))
-      }else{
-        res.json().then(err=>setErrors(err.errors))
-      }
-    })
-  },[])
+  //console.log(params)
+
+  const request = ngoRequests.find(req=>req.id == params.id)
+  // console.log(request)
+
+  if(request){
+    let percentage = Math.floor((request.amount_raised / request.target_amount) * 100)
+  
+  // set the background color based on percentage
+  let bgcolor = ''
+  if (percentage <= 25){
+    bgcolor = "red"
+  }else if (percentage >25 && percentage <= 50){
+    bgcolor = "yellow"
+  }else if (percentage >50 && percentage <= 75){
+    bgcolor = '#DAF7A6'
+  }else{
+    bgcolor='#0A7510'
+  }
+
+  // set show model to true to show the modal
+  function handleShow() {
+    setModalShow(true);
+  }
+
+  // set show model to false to hide the modal
+  function handlHide() {
+    setModalShow(false);
+  }
+  
   return (
-    <div className="organization">
+    <div className="form-div">
       <div>
-        <h1>Doing it</h1>
+        <h2>Donation Request Details</h2>
+        <h1>{request.title}</h1>
       </div>
       <div className="category">
-        <h1>Social Services</h1>
+        <h4>category: {request.category.category_name}</h4>
+        <h5>Target Amount:</h5>
+        <p>KSH {request.target_amount}</p>
+        <h5>Amount Raised:</h5>
+        <p>KSH {request.amount_raised}</p>
+        <h4>Progress Status</h4>
+        <ProgressBar bgcolor={bgcolor} progress={percentage}  height={30}/>
       </div>
       <div className="request">
-        <h1>Fund the kibera law-suit against pollution</h1>
+        <h3>Request Description</h3>
         <p>
-          Lorem Ipsum is simply dummy text of the printing and typesetting
-          industry. Lorem Ipsum has been the industry's standard dummy text ever
-          since the 1500s, when an unknown printer took a galley of type and
-          scrambled it to make a type specimen book. It has survived not only
-          five centuries, but also the leap into electronic typesetting,
-          remaining essentially unchanged. It was popularised in the 1960s with
-          the release of Letraset sheets containing Lorem Ipsum passages, and
-          more recently with desktop publishing software like Aldus PageMaker
-          including versions of Lorem Ipsum.
+          {request.description}
         </p>
-        <h5>Target Amout: 700,000</h5>
-        <h5>Amount Raised: 203,000</h5>
+        <h5>Supporting Image</h5>
+        <img src={request.image_url} alt={request.title} style={{width: "450px", height: "450px"}}/>
+        <hr/>
+        <hr/>
       </div>
       <div>
-        <h2>Wakili Organization</h2>
+        <h2>Organization Details</h2>
+        <h1>{request.ngo.organization_name}</h1>
 
-        <h6>Our email: wakiliorg@gmail.com</h6>
-        <h6>Our telephone-line: 641-595-34930</h6>
-        <h6>Our address: 3407 Park Boulevard, Deep River</h6>
+        <h5>Our Email:</h5>
+        <p>{request.ngo.organization_email}</p>
+        <h5>Our Telephone-line:</h5>
+        <p>{request.ngo.organization_phone_number}</p>
+        <h5>Our Address: </h5>
+        <p>{request.ngo.address}</p>
       </div>
+      <div>
+        <button type="button" onClick={handleShow}>Donate</button>
+      </div>
+      <DonationModal show={modalShow} onHide={handlHide} request={request}/>
     </div>
   );
+  }
+  else{
+    return <h1>Loading...</h1>
+  }
 }
 
 export default DonationRequestPage;

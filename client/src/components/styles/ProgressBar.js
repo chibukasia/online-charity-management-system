@@ -13,8 +13,11 @@ function ProgressBar({bgcolor,progress,height}){
 	const Childdiv = {
 		height: '100%',
 		width: `${progress}%`,
+		maxWidth: "100%",
 		backgroundColor: bgcolor,
 	    borderRadius:40,
+		ariaValuemin:"0",
+        ariaValuemax:"100",
 		textAlign: 'right'
 	}
 	// Set the text of the progress bar

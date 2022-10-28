@@ -31,11 +31,11 @@ function LoginForm({ onLogin }) {
           if (user.role == "donor"){
             navigate('/home')
           }else{
-            navigate('/ngo_dashboard')
+            navigate('/ngo_dashboard/ngo_requests')
           }
         });
       } else {
-        r.json().then((err) => console.log(err));
+        r.json().then((err) => setErrors(err.errors));
       }
     });
   }

@@ -31,7 +31,7 @@ function DonorDashboard({user}) {
               </Link>
             </li>
             <li className="nav-text">
-              <Link to="donar_table">
+              <Link to="donor_table">
                 <IoIcons.IoIosPaper />
                 <span>Donation Reports</span>
               </Link>

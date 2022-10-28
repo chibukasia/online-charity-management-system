@@ -1,5 +1,5 @@
 class DonationSerializer < ActiveModel::Serializer
-  attributes :amount
-  #belongs_to :user
-  #belongs_to :donation_request
+  attributes :amount, :created_at
+  belongs_to :donation_request
+  belongs_to :user
 end

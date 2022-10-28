@@ -1,10 +1,13 @@
-.card {
+.user-card {
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
-    max-width: 500px;
-    height: 30rem; 
+    width: 60%;
     max-height: 1000px;
     margin: auto;
-    text-align: center;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    height: auto;
+    text-align: left; 
   }
   .form-floating{
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
@@ -15,15 +18,13 @@
 
   }
   
-
-  
   button {
     border: none;
     outline: 0;
     display: inline-block;
     padding: 8px;
     color: white;
-    background-color: #000;
+    background-color: rgba(255, 198, 10, 0.884);
     text-align: center;
     cursor: pointer;
     width: 100%;
@@ -38,4 +39,32 @@
   
   button:hover, a:hover {
     opacity: 0.7;
+  }
+
+  .avatar {
+    vertical-align: middle;
+    width: 70px;
+    height: 70px;
+    border-radius: 50%;
+  }
+
+  .alert {
+    padding: 20px;
+    background-color: #51d663;
+    color: white;
+  }
+  
+  .closebtn {
+    margin-left: 15px;
+    color: white;
+    font-weight: bold;
+    float: right;
+    font-size: 22px;
+    line-height: 20px;
+    cursor: pointer;
+    transition: 0.3s;
+  }
+  
+  .closebtn:hover {
+    color: black;
   }

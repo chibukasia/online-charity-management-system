@@ -47,6 +47,10 @@
   margin-bottom: 40px;
 }
 
+.nav-item{
+  color: white;
+  font-size: 18px;
+}
 .footer{
   margin-top: auto;
 }
@@ -125,7 +129,7 @@
 
 /* Sign and login forms */ 
 .signup-form{
-  margin-top: 80px;
+  margin-top: 50px;
 }
 
 .open{
