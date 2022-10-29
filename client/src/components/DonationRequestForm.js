@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useRef } from "react";
 import { FormField, Error, Input, Button, Label, Textarea } from "./styles";
 import './requestForm.css'
 import { useNavigate } from "react-router-dom";
@@ -10,6 +10,7 @@ function DonationRequestForm({user, setNgoRequests, ngoRequests, ngo}) {
   // const [ngo, setNgo] = useState(null)
 
   const navigate = useNavigate()
+  const formReset = useRef()
   // Get all the categories
   useEffect(() => {
    
@@ -21,18 +22,6 @@ function DonationRequestForm({user, setNgoRequests, ngoRequests, ngo}) {
         }
       });
   }, []);
-
-  // Get the NGO associated with the user
-  // useEffect(()=>{
-  //   fetch('/session_ngo')
-  //   .then(res=>{
-  //       if (res.ok){
-  //           res.json().then(data=>setNgo(data))
-  //       }else{
-  //           res.json().then(err=>setErrors(err.errors))
-  //       }
-  //   })
-  // },[])
   
   // submit form data to the server
   function handleSubmit(e){
@@ -63,8 +52,8 @@ function DonationRequestForm({user, setNgoRequests, ngoRequests, ngo}) {
             res.json().then(data=>{
               setNgoRequests([...ngoRequests, data])
                 setIsLoading(true)
-                navigate('/ngo_dashboard')
-                
+                navigate('/ngo_dashboard/ngo_requests')
+                formReset.current.reset()
             })
         }else{
             
@@ -76,7 +65,7 @@ function DonationRequestForm({user, setNgoRequests, ngoRequests, ngo}) {
   return (
     <div className="form-div">
       <h2>Donation Request Form</h2>
-      <form encType="multipart/form-data" className="form" onSubmit={handleSubmit} >
+      <form encType="multipart/form-data" className="form" onSubmit={handleSubmit} ref={formReset}>
         <FormField>
           {errors.map((err) => (
             <Error key={err}>{err}</Error>

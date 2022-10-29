@@ -5,7 +5,7 @@ import React, { useState } from "react";
 
 const UserProfile = ({user}) => {
 let name= ""
-if (user) {
+if (user ) {
   name= `${user.first_name} ${user.last_name}`
   return (  
     <div className="user-card animate-bottom">

@@ -6,12 +6,6 @@ import * as IoIcons from "react-icons/io";
 import { Link, Outlet, useParams } from "react-router-dom";
 
 
-
-
-
-
-
-
 function DonorDashboard({user}) {
   return (
     <div className="dashboard-main">

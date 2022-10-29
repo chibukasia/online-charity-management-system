@@ -20,6 +20,10 @@
     margin-right: auto;
     
 }
+.admin-dashboard-container{
+    float: right;
+    width: 80%;
+}
 #card{
     width: 20%;
     margin: 10px;

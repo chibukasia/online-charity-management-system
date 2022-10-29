@@ -5,7 +5,7 @@ class DonationsController < ApplicationController
     # GET all the donations
     def index
         donations = Donation.all
-        render json: donations, status: :ok, each_serializer: NgoCustomDonationSerializer
+        render json: donations, status: :ok, include: ['user','donation_request', 'donation_request.ngo', 'donation_request.category']
     end
 
     # GET one donation

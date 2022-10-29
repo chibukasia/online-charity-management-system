@@ -7,14 +7,14 @@ import * as AiIcons from "react-icons/ai";
 import * as IoIcons from "react-icons/io";
 import { Link, Outlet, useParams } from "react-router-dom";
 
-function AdminDashboard() {
+function AdminDashboard({admin}) { 
   return (
     <div className="dashboard-main">
       
     <div className="dashboard-nav">
     <ul className="nav-menu-items" >
           <li className="nav-text">
-            <Link to="all_ngo_requests">
+            <Link to="all_requests">
             <FaIcons.FaEnvelopeOpenText />
               <span>All Requests </span>
             </Link>
@@ -57,7 +57,7 @@ function AdminDashboard() {
           </li>
         </ul>
     </div>
-    <div className="dashboard-container">
+    <div className="admin-dashboard-container">
       <Outlet />
     </div>
   </div>
