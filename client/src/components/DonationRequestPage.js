@@ -1,9 +1,10 @@
-import React, {useEffect, useState} from "react";
+import React, {useState} from "react";
 import { useParams } from "react-router-dom";
 import DonationModal from "./DonationModal";
 import ProgressBar from "./styles/ProgressBar";
+import './styles/Loader.css'
 
-function DonationRequestPage({ngoRequests}) {
+function DonationRequestPage({ngoRequests, setDonations, donations, donationRequests, setDonationRequests}) {
   //use state
   const [donationRequest, setDonationRequest] = useState([])
   const [errors, setErrors] = useState([])
@@ -17,7 +18,6 @@ function DonationRequestPage({ngoRequests}) {
 
   if(request){
     let percentage = Math.floor((request.amount_raised / request.target_amount) * 100)
-  
   // set the background color based on percentage
   let bgcolor = ''
   if (percentage <= 25){
@@ -43,10 +43,14 @@ function DonationRequestPage({ngoRequests}) {
   return (
     <div className="form-div">
       <div>
-        <h2>Donation Request Details</h2>
-        <h1>{request.title}</h1>
+        <h3>Donation Request Details</h3>
+        <hr/>
+        <h2>{request.title}</h2>
       </div>
       <div className="category">
+      <div>
+        <button type="button" onClick={handleShow}>Donate</button>
+      </div>
         <h4>category: {request.category.category_name}</h4>
         <h5>Target Amount:</h5>
         <p>KSH {request.target_amount}</p>
@@ -76,15 +80,20 @@ function DonationRequestPage({ngoRequests}) {
         <h5>Our Address: </h5>
         <p>{request.ngo.address}</p>
       </div>
-      <div>
-        <button type="button" onClick={handleShow}>Donate</button>
-      </div>
-      <DonationModal show={modalShow} onHide={handlHide} request={request}/>
+      <DonationModal 
+        show={modalShow} 
+        onHide={handlHide} 
+        request={request} 
+        donations={donations} 
+        setDonations={setDonations}
+        donationRequests={donationRequests} 
+        setDonationRequests={setDonationRequests}
+        />
     </div>
   );
   }
   else{
-    return <h1>Loading...</h1>
+    return <div className="loader"></div>
   }
 }
 

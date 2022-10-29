@@ -171,7 +171,7 @@ function App() {
           <Route exact path='/how_it_works' element={<HowItWorks/>} />
           <Route exact path='/aboutus' element={<AboutUs/>} />
           <Route exact path='/donor_page' element={<DonorPage/>} />
-          <Route exact path='/donation_request_details/:id' element={<DonationRequestPage ngoRequests={donationRequests}/>} />
+          <Route exact path='/donation_request_details/:id' element={<DonationRequestPage ngoRequests={donationRequests} donations={donations} setDonations={setDonations} donationRequests={donationRequests} setDonationRequests={setDonationRequests}/>} />
           <Route exact path='/ngo_registration' element={<NgoRegistrationForm/>}/>
           <Route path='*' element={<PageNotFound/>}/>
       </Routes>

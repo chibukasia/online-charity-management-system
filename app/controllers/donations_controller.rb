@@ -19,7 +19,7 @@ class DonationsController < ApplicationController
         user = User.find(session[:user_id])
         if user.role == 'donor'
             donation = user.donations.create!(donation_params)
-            render json: donation, status: :created
+            render json: donation, status: :created, include: ['user','donation_request', 'donation_request.ngo', 'donation_request.category']
         else
             render json: {errors: ["You do not have access rights to donate"]}, status: :unauthorized
         end
@@ -29,7 +29,7 @@ class DonationsController < ApplicationController
     def update
         donation = find_donation
         donation.update!(donation_params)
-        render json: donation, status: :accepted
+        render json: donation, status: :accepted, include: ['user','donation_request', 'donation_request.ngo', 'donation_request.category']
     end
 
     # GET donations for a specific NGO

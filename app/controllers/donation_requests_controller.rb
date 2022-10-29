@@ -21,7 +21,7 @@ class DonationRequestsController < ApplicationController
         user = User.find(session[:user_id])
         if user.role == 'ngo'
             donation_request = DonationRequest.create!(donation_request_params)
-            render json: donation_request, status: :created
+            render json: donation_request, status: :created, serializer: CustomDonationRequestSerializer
         else
             render json: {errors: ["You do not have previlledges to create a donation request"]}, status: :unauthorized
         end

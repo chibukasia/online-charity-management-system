@@ -1,4 +1,6 @@
 .form-div{
-    width: 40%;
+    width: 50%;
     margin: 10px auto;
+    background-color: rgb(227, 243, 238);
+    padding: 20px;
 }

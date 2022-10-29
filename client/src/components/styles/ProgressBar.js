@@ -6,7 +6,7 @@ function ProgressBar({bgcolor,progress,height}){
 		height: height,
 		width: '100%',
 		backgroundColor: 'whitesmoke',
-		borderRadius: 40,
+		borderRadius: 30,
 	}
 	
     // set the current progress abr
@@ -15,7 +15,7 @@ function ProgressBar({bgcolor,progress,height}){
 		width: `${progress}%`,
 		maxWidth: "100%",
 		backgroundColor: bgcolor,
-	    borderRadius:40,
+	    borderRadius:30,
 		ariaValuemin:"0",
         ariaValuemax:"100",
 		textAlign: 'right'

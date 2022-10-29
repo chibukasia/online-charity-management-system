@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 //import Button from 'react-bootstrap/Button';
 import Modal from 'react-bootstrap/Modal';
 import { FormField, Error, Input, Button, Label } from "./styles";
@@ -7,6 +7,8 @@ function DonationModal(props){
 
   const[errors, setErrors] = useState([])
   const [data, setData] = useState('')
+
+  const formReset = useRef()
   // calculate the percentage of amount donated
   const percentage = Math.floor((props.request.amount_raised / props.request.target_amount) * 100)
 
@@ -53,15 +55,15 @@ function DonationModal(props){
       .then(res=>{
           if(res.ok){
               res.json().then(donation=> {
-                  console.log(donation)
+                  props.setDonations([...props.donations, donation])
+                  formReset.current.reset()
                 })
           }else{
               res.json().then(err=>setErrors(err.errors))
           }
       })
 
-      let newData = 
-      newAmount = newAmount + parseInt(data)
+      let newData = newAmount = newAmount + parseInt(data)
       fetch(`/donation_requests/${props.request.id}`,{
           method: "PATCH",
           headers: {
@@ -74,7 +76,17 @@ function DonationModal(props){
       })
       .then(res=>{
         if (res.ok){
-            res.json().then(data=>console.log(data))
+            res.json().then(data=>{
+              const updatedRequests = props.donationRequests.map(req=>{
+                if (req.id==data.id){
+                  return data
+                }else{
+                  return req
+                }
+              })
+
+              props.setDonationRequests(updatedRequests)
+            })
         }else{
             res.json().then(err=>setErrors(err.errors))
         }
@@ -96,14 +108,14 @@ function DonationModal(props){
       </Modal.Header>
       <Modal.Body>
         <h4>Donate</h4>
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit} ref={formReset}>
             <FormField>
                 {errors.map(err=>{
                     return <Error key={err}>{err}</Error>
                 })}
             </FormField>
             <FormField>
-                <Label htmlFor='amount'>Enter Amount</Label>
+                <Label htmlFor='amount'>Enter Amount in KSH</Label>
                 <Input type="number" name='amount' id='amount' onChange={((e)=>setData(e.target.value))}/>
                 <Button type='submit'>Donate</Button>
             </FormField>
