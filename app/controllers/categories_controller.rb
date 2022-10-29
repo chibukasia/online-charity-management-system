@@ -18,7 +18,7 @@ class CategoriesController < ApplicationController
     def create
         if session[:role] == "admin"
             category = Category.create!(category_params)
-            render json: category, status: :created
+            render json: {body: category, message: "Category added succesfully!"}, status: :created
         else
             unauthorized_admin
         end

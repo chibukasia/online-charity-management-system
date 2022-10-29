@@ -13,6 +13,8 @@ Rails.application.routes.draw do
   get '/ngo_requests', to: 'donation_requests#ngo_requests'
   # route for ngo specific donations 
   get '/ngo_donations', to: 'donations#ngo_donations'
+  # user donations 
+  get '/user_donations', to: 'donations#user_donations'
   # route for user sign up
   post '/user_signup', to: 'users#create'
   # route for user login

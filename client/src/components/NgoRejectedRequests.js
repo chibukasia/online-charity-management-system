@@ -3,7 +3,7 @@ import RequestCard from "./RequestCard";
 
 function NgoRejectedRequests({ ngoRequests }) {
   const approvedRequests = ngoRequests.filter(
-    (request) => request.status == "rejetced"
+    (request) => request.status == "rejected"
   );
 
   const cardsDisplay = approvedRequests.map((request) => {

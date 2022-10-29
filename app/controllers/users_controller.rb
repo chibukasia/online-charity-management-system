@@ -23,7 +23,7 @@ class UsersController < ApplicationController
   def update
     user = find_user
     user.update!(user_params)
-    render json: user, status: :accepted
+    render json: {message: "Profile updated successfully", body: user}, status: :accepted
   end
 
   #getting one user

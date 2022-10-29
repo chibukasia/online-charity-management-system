@@ -8,16 +8,6 @@ import * as IoIcons from "react-icons/io";
 import { Link, Outlet, useParams } from "react-router-dom";
 
 function NgoDashbord({ user, ngoRequests }) {
-  const [shoAll, setShowAll] = useState(true);
-
-  // show or hide requests
-  // function handShow(){
-  //   setShowAll(true)
-  // }
-
-  function hideShow() {
-    setShowAll(false);
-  }
 
   const cardsDisplay = ngoRequests.map(request=>{
     return <RequestCard key={request.id} request={request}/>
@@ -28,64 +18,58 @@ function NgoDashbord({ user, ngoRequests }) {
         {}
         <ul className="nav-menu-items">
           <li className="nav-text">
-            <Link to="ngo_requests" onClick={hideShow}>
+            <Link to="ngo_requests" >
               <FaIcons.FaEnvelopeOpenText />
               <span>All Requests </span>
             </Link>
           </li>
           <li className="nav-text">
-            <Link to="donation_request_form" onClick={hideShow}>
+            <Link to="donation_request_form" >
               <AiIcons.AiFillHome />
               <span>Create New Request </span>
             </Link>
           </li>
           <li className="nav-text">
-            <Link to="approved" onClick={hideShow}>
+            <Link to="approved" >
               <AiIcons.AiFillHome />
               <span>Approved Requests</span>
             </Link>
           </li>
           <li className="nav-text">
-            <Link to="pending" onClick={hideShow}>
+            <Link to="pending" >
               <IoIcons.IoIosPaper />
               <span>Pending Request</span>
             </Link>
           </li>
           <li className="nav-text">
-            <Link to="rejected" onClick={hideShow}>
+            <Link to="rejected" >
               <IoIcons.IoMdPeople />
               <span>Rejected Request</span>
             </Link>
           </li>
           <li className="nav-text">
-            <Link to="ngo_donations" onClick={hideShow}>
+            <Link to="ngo_donations" >
               <IoIcons.IoMdHelpCircle />
               <span>Donations</span>
             </Link>
           </li>
           <li className="nav-text">
-            <Link to="ngo_reports" onClick={hideShow}>
+            <Link to="ngo_reports" >
               <IoIcons.IoMdPeople />
               <span>Reports</span>
             </Link>
           </li>
           <li className="nav-text">
-            <Link to="edit_ngo" onClick={hideShow}>
+            <Link to="edit_ngo" >
               <IoIcons.IoMdPeople />
               <span>Edit NGO</span>
             </Link>
           </li>
         </ul>
       </div>
-      {shoAll ? (
-        <div className="dashboard-container">
-          {cardsDisplay}
-        </div>
-      ) : (
         <div className="dashboard-container">
           <Outlet />
         </div>
-      )}
     </div>
   );
 }

@@ -7,6 +7,7 @@ function EditNgo({ ngo, setNgo }) {
   const [errors, setErrors] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [message, setMessage] = useState(null);
+  const [show, setShow] = useState(false)
   const [formData, setFormData] = useState({
     organization_name: ngo.organization_name,
     organization_email: ngo.organization_email,
@@ -16,6 +17,10 @@ function EditNgo({ ngo, setNgo }) {
     description: ngo.description,
   });
 
+  // Hide show
+  function hideShow(){
+    setShow(false)
+  }
   // navigation variable
   const navigate = useNavigate();
   // handle form control
@@ -42,6 +47,7 @@ function EditNgo({ ngo, setNgo }) {
         res.json().then((data) => {
           setNgo(data);
           console.log(data);
+          setShow(true)
           setMessage(data.message);
           //   setIsLoading(true)
         });
@@ -62,9 +68,11 @@ function EditNgo({ ngo, setNgo }) {
             <Error key={err}>{err}</Error>
           ))}
         </FormField>
-        <FormField>
-            {message ? <Success>{message}</Success>: null}
-        </FormField>
+        {show ?(
+          <div className="alert">
+            <span className="closebtn" onClick={hideShow}>&times;</span> 
+            <strong>{message}</strong> 
+          </div>): null}
         <FormField>
           <Label htmlFor="organization_name">Organization Name</Label>
           <Input

@@ -45,8 +45,10 @@ function App() {
   const [admin, setAdmin] = useState(null)
   const [ngoRequests, setNgoRequests] = useState([]);
   const [donationRequests, setDonationRequests] = useState([])
+  const [donations, setDonations] = useState([])
   const [errors, setErrors] = useState([]);
-  const [ngo, setNgo] = useState(null)
+  const [ngo, setNgo] = useState(null) 
+  const [categories, setCategories] = useState([])
 
   // Get the user who is is session
   useEffect(() => {
@@ -75,7 +77,7 @@ function App() {
         res.json().then((err) => setErrors(err.errors));
       }
     });
-  }, []);
+  }, [categories, user]);
 
   // Get the NGO associated with the user
   useEffect(()=>{
@@ -87,8 +89,31 @@ function App() {
             res.json().then(err=>setErrors(err.errors))
         }
     })
-  },[])
+  },[user])
+
+  // Get all the donations 
+  useEffect(()=>{
+    fetch("/donations")
+    .then(res=>{
+      if (res.ok){
+        res.json().then(data=>setDonations(data))
+      }else{
+        res.json().then(err=>setErrors(err.errors))
+      }
+    })
+  },[categories, user])
   
+  // Get all categories 
+  useEffect(()=>{
+    fetch("/categories")
+    .then(res=>{
+      if (res.ok){
+        res.json().then(data=>setCategories(data))
+      }else{
+        res.json().then(err=>setErrors(err.errors))
+      }
+    })
+  },[])
   // Get all the donation requets
   useEffect(() => {
     fetch("/donation_requests").then((res) => {
@@ -98,7 +123,7 @@ function App() {
         res.json().then((err) => setErrors(err.errors));
       }
     });
-  }, [ngoRequests, user]);
+  }, [ngoRequests, user, categories]);
   return (
     <div className='body'>
         {/* Navigation*/}
@@ -112,7 +137,7 @@ function App() {
           <Route exact path='/home' element={<HomePage />} />
 
           <Route exact path='/ngo_dashboard' element={<NgoDashbord user={user} ngoRequests={ngoRequests}/>}>
-            <Route exact path='ngo_donations' element={<NgoDonations/>}/>
+            <Route exact path='ngo_donations' element={<NgoDonations donations={donations} user={user} ngo={ngo} ngoRequests={ngoRequests}/>}/>
             <Route exact path='donar_table' element={<DonorTable/>}/>
             <Route exact path='ngo_requests' element={<NgoRequests ngoRequests={ngoRequests}/>}/>
             <Route exact path='approved' element={<NgoApprovedRequests ngoRequests={ngoRequests}/>} />
@@ -120,24 +145,24 @@ function App() {
             <Route exact path='rejected' element={<NgoRejectedRequests ngoRequests={ngoRequests}/>}/>
             <Route exact path='ngo_reports' element={<NgoReports />}/>
             <Route exact path='donation_request_form' element={<DonationRequestForm user={user} ngoRequests={ngoRequests} setNgoRequests={setNgoRequests} ngo={ngo} setNgo={setNgo}/>} />
-            <Route exact path='edit_ngo' element={<EditNgo ngo={ngo} setNgo={setNgo}/>}/>
+            <Route exact path='edit_ngo' element={<EditNgo ngo={ngo} setNgo={setNgo} user={user}/>}/>
           </Route>
 
           <Route exact path='/donor_dashboard' element={<DonorDashboard user={user}/>}>
             <Route exact path='user_profile' element={<UserProfile user={user}/>} />
-            <Route exact path='edit_user_profile' element={<EditUserProfile user={user}/>} />
-            <Route exact path='donar_table' element={<DonorTable/>}/>
+            <Route exact path='edit_user_profile' element={<EditUserProfile user={user} setUser={setUser}/>} />
+            <Route exact path='donor_table' element={<DonorTable donations={donations} user={user}/>}/>
 
           </Route>
 
-          <Route exact path='/admin_dashboard' element={<AdminDashboard user={user}/>}>
-            <Route exact path='admin_table' element={<AdminTable/>}/>
-            <Route exact path='all_ngo_requests' element={<AdminAllRequests ngoRequests={ngoRequests}/>}/>
-            <Route exact path='admin_approved' element={<AdminApprovedRequests ngoRequests={ngoRequests}/>} />
-            <Route exact path='admin_pending' element={<AdminPendingRequests ngoRequests={ngoRequests}/>}/>
-            <Route exact path='admin_rejected' element={<AdminRejectedRequests ngoRequests={ngoRequests}/>}/>
+          <Route exact path='/admin' element={<AdminDashboard user={admin}/>}>
+            <Route exact path='admin_table' element={<AdminTable donations={donations}/>}/>
+            <Route exact path='all_requests' element={<AdminAllRequests donationRequests={donationRequests} setDonationRequests={setDonationRequests}/>}/>
+            <Route exact path='admin_approved' element={<AdminApprovedRequests donationRequests={donationRequests} setDonationRequests={setDonationRequests}/>} />
+            <Route exact path='admin_pending' element={<AdminPendingRequests  donationRequests={donationRequests}/>}/>
+            <Route exact path='admin_rejected' element={<AdminRejectedRequests donationRequests={donationRequests}/>}/>
             <Route exact path='admin_reports' element={<AdminReports />}/>
-            <Route exact path='new_category_form' element={<AdminNewCategoryForm user={user} ngoRequests={ngoRequests} setNgoRequests={setNgoRequests}/>} />
+            <Route exact path='new_category_form' element={<AdminNewCategoryForm categories={categories} setCategories={setCategories}/>} />
           </Route>
 
           <Route path='/login' element={<Login onLogin = {setUser}/>} />
@@ -146,10 +171,8 @@ function App() {
           <Route exact path='/how_it_works' element={<HowItWorks/>} />
           <Route exact path='/aboutus' element={<AboutUs/>} />
           <Route exact path='/donor_page' element={<DonorPage/>} />
-          <Route exact path='/donation_request_page' element={<DonationRequestPage/>} />
+          <Route exact path='/donation_request_details/:id' element={<DonationRequestPage ngoRequests={donationRequests}/>} />
           <Route exact path='/ngo_registration' element={<NgoRegistrationForm/>}/>
-         
-
           <Route path='*' element={<PageNotFound/>}/>
       </Routes>
       <Footer/>

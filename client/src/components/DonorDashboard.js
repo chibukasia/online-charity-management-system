@@ -6,12 +6,6 @@ import * as IoIcons from "react-icons/io";
 import { Link, Outlet, useParams } from "react-router-dom";
 
 
-
-
-
-
-
-
 function DonorDashboard({user}) {
   return (
     <div className="dashboard-main">
@@ -31,7 +25,7 @@ function DonorDashboard({user}) {
               </Link>
             </li>
             <li className="nav-text">
-              <Link to="donar_table">
+              <Link to="donor_table">
                 <IoIcons.IoIosPaper />
                 <span>Donation Reports</span>
               </Link>

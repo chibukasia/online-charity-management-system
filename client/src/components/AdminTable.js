@@ -9,7 +9,7 @@ import Paper from "@mui/material/Paper";
 
 import React from 'react'
 
-function AdminTable() {
+function AdminTable({donations}) {
   const rows = [
     {
       id: 1143155,
@@ -87,42 +87,30 @@ function AdminTable() {
       <Table sx={{ minWidth: 650 }} aria-label="simple table">
         <TableHead>
           <TableRow>
-            <TableCell className="tableCell"> ID</TableCell>
-            <TableCell className="tableCell"> Donor Name</TableCell>
+            <TableCell className="tableCell"> Donor Name</TableCell>  
+            <TableCell className="tableCell"> Donor Email</TableCell>  
+            <TableCell className="tableCell"> Donor Phone</TableCell>         
+            <TableCell className="tableCell">Request Title</TableCell>
             <TableCell className="tableCell">Organization Name</TableCell>
-            <TableCell className="tableCell">Title</TableCell>
-            <TableCell className="tableCell">Details</TableCell>
-            <TableCell className="tableCell">Date</TableCell>
             <TableCell className="tableCell">Amount</TableCell>
-            <TableCell className="tableCell">Target Amount</TableCell>
-            <TableCell className="tableCell">Category</TableCell>
-            <TableCell className="tableCell">Status</TableCell>
-            <TableCell className="tableCell">State</TableCell>
+            <TableCell className="tableCell">Date</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
-          {rows.map((row) => (
+          {donations.map((row) => (
             <TableRow key={row.id}>
-              <TableCell className="tableCell">{row.id}</TableCell>
-              <TableCell className="tableCell">{row.donor_name}</TableCell>
+              <TableCell className="tableCell">{`${row.user.first_name} ${row.user.last_name}`}</TableCell>
+              <TableCell className="tableCell">{row.user.email}</TableCell>
+              <TableCell className="tableCell">{row.user.phone_number}</TableCell>
               <TableCell className="tableCell">
                 <div className="cellWrapper">
-                  <img src={row.img} alt="" className="image" />
-                  {row.organization_name}
+                  <img src={row.donation_request.image_url} alt="" className="image" />
+                  {row.donation_request.title}
                 </div>
               </TableCell>
-              <TableCell className="tableCell">{row.title}</TableCell>
-              <TableCell className="tableCell">{row.details}</TableCell>
-              <TableCell className="tableCell">{row.date}</TableCell>
+              <TableCell className="tableCell">{row.donation_request.ngo.organization_name}</TableCell>
               <TableCell className="tableCell">{row.amount}</TableCell>
-              <TableCell className="tableCell">{row.target_amount}</TableCell>
-              <TableCell className="tableCell">{row.category}</TableCell>
-              <TableCell className="tableCell">
-                <span className={`status ${row.status}`}>{row.status}</span>
-              </TableCell>
-              <TableCell className="tableCell">
-                <span className={`status ${row.status}`}>{row.state}</span>
-              </TableCell>
+              <TableCell className="tableCell">{new Date(row.created_at).toLocaleDateString()}</TableCell>
             </TableRow>
           ))}
         </TableBody>

@@ -6,7 +6,7 @@ class DonationRequestsController < ApplicationController
 
     # GET all donation requests
     def index
-        donation_requests = DonationRequest.all
+        donation_requests = DonationRequest.all.order(created_at: :desc)
         render json: donation_requests, status: :ok, each_serializer: CustomDonationRequestSerializer
     end
 

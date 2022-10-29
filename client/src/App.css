@@ -47,6 +47,10 @@
   margin-bottom: 40px;
 }
 
+.nav-item{
+  color: white;
+  font-size: 18px;
+}
 .footer{
   margin-top: auto;
 }
@@ -125,7 +129,7 @@
 
 /* Sign and login forms */ 
 .signup-form{
-  margin-top: 80px;
+  margin-top: 50px;
 }
 
 .open{
@@ -136,11 +140,26 @@
   padding: 0 10px;
 }
 .closed{
-  width: 80px;
+  width: 90px;
   color: white;
   background-color: #ce2417;
   border-radius: 10px;
   padding: 0 10px;
+}
+
+.approve-btn{
+  width: 30%;
+  border-radius: 10px;
+  background-color: #14c71d;
+  color: white;
+}
+
+.reject-btn{
+  width: 30%;
+  float: right;
+  border-radius: 10px;
+  background-color: #ce2417;
+  color: white;
 }
 
 /* MOBILE VIEW */

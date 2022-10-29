@@ -1,20 +1,20 @@
 import "./Profile.css"
+import './styles/Loader.css'
 import React, { useState } from "react";
 
 
 const UserProfile = ({user}) => {
 let name= ""
-if (user) {
-  console.log(user)
+if (user ) {
   name= `${user.first_name} ${user.last_name}`
   return (  
-    <div className="card">
-      <h1>{name}</h1> 
-      <p> {user.email} </p>
-      <p>{user.username}</p>
-      <p>{user.role}</p>
-      <p>{user.phone_number}</p>
-      <p><button>Delete Profile</button></p>
+    <div className="user-card animate-bottom">
+      <h1>Name: {name}</h1> 
+      <p> Email: {user.email} </p>
+      <p>Username: {user.username}</p>
+      <p>Role: {user.role}</p>
+      <p>Phone: {user.phone_number}</p>
+      <p><button type="button" className="user-button">Delete Profile</button></p>
     
     </div>
         );
@@ -22,7 +22,7 @@ if (user) {
 }
 else {
   return (
-    <h1>Loading.....</h1>
+    <div className="loader"></div>
   )
 }
 
