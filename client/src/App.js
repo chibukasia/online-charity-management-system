@@ -101,7 +101,7 @@ function App() {
         res.json().then(err=>setErrors(err.errors))
       }
     })
-  },[categories, user])
+  },[categories, user, donationRequests])
   
   // Get all categories 
   useEffect(()=>{
@@ -159,8 +159,8 @@ function App() {
             <Route exact path='admin_table' element={<AdminTable donations={donations}/>}/>
             <Route exact path='all_requests' element={<AdminAllRequests donationRequests={donationRequests} setDonationRequests={setDonationRequests}/>}/>
             <Route exact path='admin_approved' element={<AdminApprovedRequests donationRequests={donationRequests} setDonationRequests={setDonationRequests}/>} />
-            <Route exact path='admin_pending' element={<AdminPendingRequests  donationRequests={donationRequests}/>}/>
-            <Route exact path='admin_rejected' element={<AdminRejectedRequests donationRequests={donationRequests}/>}/>
+            <Route exact path='admin_pending' element={<AdminPendingRequests  donationRequests={donationRequests} setDonationRequests={setDonationRequests}/>}/>
+            <Route exact path='admin_rejected' element={<AdminRejectedRequests donationRequests={donationRequests} setDonationRequests={setDonationRequests}/>}/>
             <Route exact path='admin_reports' element={<AdminReports />}/>
             <Route exact path='new_category_form' element={<AdminNewCategoryForm categories={categories} setCategories={setCategories}/>} />
           </Route>

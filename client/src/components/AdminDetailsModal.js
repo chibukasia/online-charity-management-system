@@ -1,9 +1,18 @@
-import React from "react";
+import React, { useState } from "react";
 import Button from "react-bootstrap/Button";
 import Modal from "react-bootstrap/Modal";
 import ProgressBar from "./styles/ProgressBar";
 
 function AdminDetailsModal(props) {
+
+  const [updatedData, setUpdatedData] = useState({
+    title: props.request.title,
+    target_amount: props.request.target_amount,
+    amount_raised: props.request.amount_raised,
+    description: props.request.description,
+    status: props.request.status, 
+    open: props.request.open 
+  })
   // calculate the percentage of amount donated
   const percentage = Math.floor(
     (props.request.amount_raised / props.request.target_amount) * 100
@@ -28,13 +37,13 @@ function AdminDetailsModal(props) {
     divColor = "open";
   } else {
     state = "Closed";
-    divColor = "open";
+    divColor = "closed";
   }
 
   // Capitalize the string
-  const capitalizedStatus =
-    props.request.status.charAt(0).toUpperCase() +
-    props.request.status.slice(1);
+  // const capitalizedStatus =
+  //   props.request.status.charAt(0).toUpperCase() +
+  //   props.request.status.slice(1);
   
   const url = `/donation_requests/${props.request.id}`
   // Update rejected request
@@ -50,14 +59,15 @@ function AdminDetailsModal(props) {
           })
       }).then(res=>res.json())
       .then(data=>{
-          const updatedRequets = props.donationrequests.map(req=>{
+          const updatedRequests = props.donationrequests.map(req=>{
               if (req.id == data.id){
                   return data
               }else{
                   return req 
               }
           })
-          props.setdonationrequests(updatedRequets)
+          console.log(data)
+          props.setdonationrequests(updatedRequests)
       })
   }
 
@@ -74,7 +84,8 @@ function AdminDetailsModal(props) {
             open: true
         })
     }).then(res=>res.json())
-    .then(data=>{
+    .then(data=>
+      {
         const updatedRequets = props.donationrequests.map(req=>{
             if (req.id == data.id){
                 return data
@@ -108,6 +119,7 @@ function AdminDetailsModal(props) {
           <p>
             {props.request.category.category_name.charAt(0).toUpperCase() +
               props.request.category.category_name.slice(1)}
+              
           </p>
           <h5>Date</h5>
           <p>{new Date(props.request.created_at).toLocaleDateString()}</p>
@@ -116,11 +128,10 @@ function AdminDetailsModal(props) {
           <h5>Target Amount:</h5>
           <p>KSH {props.request.target_amount}</p>
           <h5>Status:</h5>
-          <p>{capitalizedStatus}</p>
+          <p>{props.request.status.charAt(0).toUpperCase() + props.request.status.slice(1)}</p>
           <h5>State:</h5>
           <div className={divColor}>
-            {state}
-            <i className={"fa fa-check-circle"} style={{ color: "white" }}></i>
+            {state} <i className={"fa fa-check-circle"} style={{ color: "white" }}></i>
           </div>
           <h4>Progress Status</h4>
           <ProgressBar bgcolor={bgcolor} progress={percentage} height={30} />

@@ -31,7 +31,7 @@ class DonationRequestsController < ApplicationController
     def update
         donation_request = find_donation_request
         donation_request.update!(donation_request_params)
-        render json: donation_request, status: :accepted
+        render json: donation_request, status: :accepted, serializer: CustomDonationRequestSerializer
     end
 
     # DELETE a donation request

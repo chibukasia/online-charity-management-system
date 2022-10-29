@@ -35,7 +35,7 @@ function AdminRejectedRequests({ donationRequests, setDonationRequests }) {
         </TableHead>
         <TableBody>
         {rejectedRequests.map((row) => (
-            <TableRows row={row} key={row.id} setDonationRequests={setDonationRequests} donationRequests={donationRequests}/>           
+            <TableRows row={row} key={row.id} setDonationRequests={setDonationRequests} donationRequests={donationRequests}/>            
           ))}
         </TableBody>
       </Table>
