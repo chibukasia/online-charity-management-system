@@ -1,0 +1,19 @@
+---
+development:
+  cloud_name: dteeghuun
+  api_key: '726789971631989'
+  api_secret: Dja7RxuaiGXwD1cnTOuwSTiUIn8
+  enhance_image_tag: true
+  static_file_support: false
+production:
+  cloud_name: dteeghuun
+  api_key: '726789971631989'
+  api_secret: Dja7RxuaiGXwD1cnTOuwSTiUIn8
+  enhance_image_tag: true
+  static_file_support: true
+test:
+  cloud_name: dteeghuun
+  api_key: '726789971631989'
+  api_secret: Dja7RxuaiGXwD1cnTOuwSTiUIn8
+  enhance_image_tag: true
+  static_file_support: false

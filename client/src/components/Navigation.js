@@ -2,8 +2,6 @@ import React from 'react'
 import logo from '../assets/img/logo.png';
 import {Link } from 'react-router-dom'
 import MyImage from '../assets/img/avatar.png'
-//This is the navigation component
-
 
 function Navigation({user, setUser, admin}) {
 
@@ -31,9 +29,10 @@ function Navigation({user, setUser, admin}) {
                 <Link className="nav-item" to='/' >Home</Link>
                 <a className="nav-item" href='#aboutus'>About Us</a>
                 <a className="nav-item" href='#how-it-works'>How it works</a>
-                <a className="nav-item" href='#fundraises'>Featured Campaigns</a>
+                <a className="nav-item" href='#fundraises'>Campaigns</a>
                 {user || admin ?(
-                <>
+                <>                 
+                  <Link className='nav-item' to='/home'>Fundraises</Link>
                   <Link className="nav-item" to='/'  onClick={handleLogout}>Log Out</Link>
                   <Link className='nav-item' to='/donor_dashboard/user_profile'> <img src={MyImage} title="View Profile" style={{width: "25px", height: "25px", borderRadius: "50%"}}/></Link>
                 </>

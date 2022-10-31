@@ -1,5 +1,4 @@
 import React,{useState} from "react";
-import AdminDetailsModal from "./AdminDetailsModal";
 import "./table.css";
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";

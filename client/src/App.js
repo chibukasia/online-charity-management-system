@@ -101,7 +101,7 @@ function App() {
         res.json().then(err=>setErrors(err.errors))
       }
     })
-  },[categories, user])
+  },[categories, user, donationRequests, admin])
   
   // Get all categories 
   useEffect(()=>{
@@ -123,7 +123,7 @@ function App() {
         res.json().then((err) => setErrors(err.errors));
       }
     });
-  }, [ngoRequests, user, categories]);
+  }, [ngoRequests, user, categories, admin]);
   return (
     <div className='body'>
         {/* Navigation*/}
@@ -159,8 +159,8 @@ function App() {
             <Route exact path='admin_table' element={<AdminTable donations={donations}/>}/>
             <Route exact path='all_requests' element={<AdminAllRequests donationRequests={donationRequests} setDonationRequests={setDonationRequests}/>}/>
             <Route exact path='admin_approved' element={<AdminApprovedRequests donationRequests={donationRequests} setDonationRequests={setDonationRequests}/>} />
-            <Route exact path='admin_pending' element={<AdminPendingRequests  donationRequests={donationRequests}/>}/>
-            <Route exact path='admin_rejected' element={<AdminRejectedRequests donationRequests={donationRequests}/>}/>
+            <Route exact path='admin_pending' element={<AdminPendingRequests  donationRequests={donationRequests} setDonationRequests={setDonationRequests}/>}/>
+            <Route exact path='admin_rejected' element={<AdminRejectedRequests donationRequests={donationRequests} setDonationRequests={setDonationRequests}/>}/>
             <Route exact path='admin_reports' element={<AdminReports />}/>
             <Route exact path='new_category_form' element={<AdminNewCategoryForm categories={categories} setCategories={setCategories}/>} />
           </Route>
@@ -171,7 +171,7 @@ function App() {
           <Route exact path='/how_it_works' element={<HowItWorks/>} />
           <Route exact path='/aboutus' element={<AboutUs/>} />
           <Route exact path='/donor_page' element={<DonorPage/>} />
-          <Route exact path='/donation_request_details/:id' element={<DonationRequestPage ngoRequests={donationRequests}/>} />
+          <Route exact path='/donation_request_details/:id' element={<DonationRequestPage ngoRequests={donationRequests} donations={donations} setDonations={setDonations} donationRequests={donationRequests} setDonationRequests={setDonationRequests}/>} />
           <Route exact path='/ngo_registration' element={<NgoRegistrationForm/>}/>
           <Route path='*' element={<PageNotFound/>}/>
       </Routes>

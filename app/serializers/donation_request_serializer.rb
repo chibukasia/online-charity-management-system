@@ -1,6 +1,8 @@
 class DonationRequestSerializer < ActiveModel::Serializer
-  attributes :id, :title, :target_amount, :amount_raised, :open, :image_url, :bank_statement_url
+  attributes :id, :title, :description, :target_amount, :amount_raised, :status, :open, :summary, :created_at, :image_url, :bank_statement_url
   belongs_to :ngo
+  belongs_to :category
+  has_many :donations
 
   #description summary
   def summary

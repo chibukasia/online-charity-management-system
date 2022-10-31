@@ -100,11 +100,11 @@ function DonationRequestForm({user, setNgoRequests, ngoRequests, ngo}) {
         </FormField>
         <FormField>
           <Label htmlFor="image">Upload Supporting Image<span style={{color: "red"}}>*</span></Label>
-          <Input type="file" name="image" id="image" />
+          <Input type="file" name="image" id="image" required/>
         </FormField>
         <FormField>
           <Label htmlFor="bank_statement">Upload latest bank statement<span style={{color: "red"}}>*</span></Label>
-          <Input type="file" name="bank_statement" id="bank_statement" />
+          <Input type="file" name="bank_statement" id="bank_statement" required/>
         </FormField>
         <FormField>
           <Button color="primary" type="submit">

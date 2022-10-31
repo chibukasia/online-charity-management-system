@@ -30,10 +30,10 @@ function DonationRequestCard({request}) {
       <div className="card-body">
         <h5 className="card-title">{request.ngo.organization_name}</h5>
         <h5 className="card-title">{request.title}</h5>
-        <h6 className="card-title">{request.category.category_name}</h6>
+        <h6 className="card-title">{request.category.category_name.charAt(0).toUpperCase() + request.category.category_name.slice(1)}</h6>
         <p className="card-text">
           {request.summary}
-          <Link to={`/donation_request_details/${request.id}`} style={{color: "blueviolet"}}>View details</Link>
+          <Link to={`/donation_request_details/${request.id}`} style={{color: "blueviolet", fontSize: "18px"}}>View details</Link>
         </p>
         <p>Amount Raised - Ksh: {request.amount_raised}</p>
         <p>Target Amount - Ksh: {request.target_amount}</p>

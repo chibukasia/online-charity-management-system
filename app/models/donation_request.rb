@@ -11,6 +11,8 @@ class DonationRequest < ApplicationRecord
     validates :title, presence: true, length: {minimum: 12}
     validates :description, presence: true, length: {minimum: 100}
     validates :target_amount, presence: true, comparison: {greater_than: 500}
+    validates :image, attached: true, blob: { content_type: :image }
+    validates :bank_statement, attached: true, blob: {content_type: ["application/pdf"]}
 
     # Generate a url for the image uploaded
     def image_url
