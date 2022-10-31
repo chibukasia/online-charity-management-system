@@ -39,7 +39,10 @@ function AdminSignUp({setAdmin}) {
         })
         .then(res => {
             if (res.ok){
-                res.json().then(admin => setAdmin(admin))
+                res.json().then(admin => {
+                  localStorage.setItem("jwt", admin.jwt)
+                  setAdmin(admin.admin)
+                })
             }else{
                 res.json().then(error => setErrors(error.errors))
             }

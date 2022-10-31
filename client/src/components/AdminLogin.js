@@ -26,8 +26,9 @@ function AdminLogin({ setAdmin }) {
     }).then((r) => {
       setIsLoading(false);
       if (r.ok) {
-        r.json().then((admin) => {
-          setAdmin(admin)
+        r.json().then((data) => {
+          localStorage.setItem("jwt", data.jwt)
+          setAdmin(data.admin)
           navigate('/admin/all_requests')
         });
       } else {

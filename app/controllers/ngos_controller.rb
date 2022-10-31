@@ -19,8 +19,8 @@ class NgosController < ApplicationController
 
     # POST a new NGO
     def create
-        user = User.find(session[:user_id])
-        if session[:role] == 'ngo'
+        user = current_user
+        if user && user.role == 'ngo'
             ngo = user.create_ngo!(ngo_params)
             #user.ngo = ngo
             render json: ngo, status: :created
@@ -45,8 +45,8 @@ class NgosController < ApplicationController
 
     # GET NGO of a logged in NGO
     def session_ngo 
-        user = User.find(session[:user_id])
-        if user.role == "ngo"
+        user = current_user
+        if user && user.role == "ngo"
             ngo = Ngo.find_by(user_id: user.id)
             render json: ngo, status: :ok
         else

@@ -2,7 +2,7 @@ import React,{useState} from "react";
 import { Link, useNavigate } from "react-router-dom";
 import DonationModal from "./DonationModal";
 
-function DonationRequestCard({request}) {
+function DonationRequestCard({request, token}) {
   const [modalShow, setModalShow] = useState(false);
   const navigate = useNavigate()
 
@@ -52,7 +52,7 @@ function DonationRequestCard({request}) {
         <button className="btn btn-primary" id="donate-btn" onClick={handleShow}>
           Donate
         </button>
-        <DonationModal show={modalShow} onHide={handlHide} request={request}/>
+        <DonationModal show={modalShow} onHide={handlHide} request={request} token={token}/>
       </div>
     </div>
   );

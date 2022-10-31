@@ -1,6 +1,5 @@
 class AdminsController < ApplicationController
-skip_before_action :authorize, only: [:create]
-rescue_from ActiveRecord::RecordNotFound, with: :admin_not_found
+skip_before_action :authorize, only: [:create, :index]
 
   #getting all the admins
   def index
@@ -11,28 +10,27 @@ rescue_from ActiveRecord::RecordNotFound, with: :admin_not_found
   #posting a new admin
   def create
     admin = Admin.create!(admin_params)
-    session[:admin_id] = admin.id 
-    session[:role] = "admin"
-    render json: admin, status: :created
+    # session[:admin_id] = admin.id 
+    # session[:role] = "admin"
+    token = encode_token(admin_id: admin.id)
+    render json: {admin: admin, jwt: token}, status: :created
   end
 
   #patching a new admin
   def update
-    admin = find_admin
+    admin = current_admin
     admin.update!(admin_params)
     render json: admin, status: :accepted
   end
 
   #gatting an admin
-  def show
-    admin = find_admin
-    render json: admin, status: :ok
+  def show 
+    render json: current_admin, status: :ok
   end
 
   #deleting an admin
   def destroy
-    admin = find_admin
-    admin.destroy
+    current_admin.destroy
     head :no_content
   end
 
@@ -40,9 +38,9 @@ rescue_from ActiveRecord::RecordNotFound, with: :admin_not_found
   private
 
   #find the admin
-  def find_admin
-    Admin.find(session[:admin_id])
-  end
+  # def find_admin
+  #   Admin.find(session[:admin_id])
+  # end
 
   # allowed params
   def admin_params
@@ -50,8 +48,8 @@ rescue_from ActiveRecord::RecordNotFound, with: :admin_not_found
   end
 
   #admin not found
-  def admin_not_found
-    render json: {errors: ["Admin not found"]}, status: :not_found
-  end
+  # def admin_not_found
+  #   render json: {errors: ["Admin not found"]}, status: :not_found
+  # end
 
 end

@@ -40,9 +40,10 @@ function SignUpForm({ onLogin }) {
     }).then((r) => {
       setIsLoading(false);
       if (r.ok) {
-        r.json().then((user) => {
-          onLogin(user)
-          if(user.role === "donor"){
+        r.json().then((data) => {
+          localStorage.setItem("jwt", data.jwt)
+          onLogin(data.user)
+          if(data.user.role === "donor"){
             navigate('/home')
           }else{
             navigate('/ngo_registration')

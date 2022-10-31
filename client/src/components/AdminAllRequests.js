@@ -9,7 +9,7 @@ import TableRow from "@mui/material/TableRow";
 import TableRows from "./TableRow";
 import Paper from "@mui/material/Paper";
 
-function AdminAllRequests({ donationRequests, setDonationRequests }) {
+function AdminAllRequests({ donationRequests, setDonationRequests, token }) {
   return (
     <>
       <h2>ALL REQUESTS</h2>
@@ -30,7 +30,7 @@ function AdminAllRequests({ donationRequests, setDonationRequests }) {
         </TableHead>
         <TableBody>
           {donationRequests.map((row) => (
-            <TableRows row={row} key={row.id} setDonationRequests={setDonationRequests} donationRequests={donationRequests}/>           
+            <TableRows row={row} key={row.id} setDonationRequests={setDonationRequests} donationRequests={donationRequests} token={token}/>           
           ))}
         </TableBody>
       </Table>
