@@ -123,7 +123,7 @@ function App() {
         res.json().then((err) => setErrors(err.errors));
       }
     });
-  }, [ngoRequests, user, categories, admin, donations]);
+  }, [ngoRequests, user, categories, admin]);
   return (
     <div className='body'>
         {/* Navigation*/}
