@@ -101,7 +101,7 @@ function App() {
         res.json().then(err=>setErrors(err.errors))
       }
     })
-  },[categories, user, donationRequests])
+  },[categories, user, donationRequests, admin])
   
   // Get all categories 
   useEffect(()=>{
@@ -123,7 +123,7 @@ function App() {
         res.json().then((err) => setErrors(err.errors));
       }
     });
-  }, [ngoRequests, user, categories]);
+  }, [ngoRequests, user, categories, admin, donations]);
   return (
     <div className='body'>
         {/* Navigation*/}
