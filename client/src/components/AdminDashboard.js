@@ -15,46 +15,41 @@ function AdminDashboard({admin}) {
     <ul className="nav-menu-items" >
           <li className="nav-text">
             <Link to="all_requests">
-            <FaIcons.FaEnvelopeOpenText />
+            <FaIcons.FaGlobeAfrica />
               <span>All Requests </span>
             </Link>
           </li>
           <li className="nav-text">
             <Link to="new_category_form">
-              <AiIcons.AiFillHome />
+              <AiIcons.AiFillPlusCircle />
               <span>Create New Category </span>
             </Link>
           </li>
           <li className="nav-text">
             <Link to="admin_approved">
-              <AiIcons.AiFillHome />
+              <FaIcons.FaThumbsUp />
               <span> Admin Approved Requests</span>
             </Link>
           </li>
           <li className="nav-text">
             <Link to="admin_pending">
-              <IoIcons.IoIosPaper />
+              <IoIcons.IoIosPause />
               <span>Admin Pending Request</span>
             </Link>
           </li>
           <li className="nav-text">
             <Link to="admin_rejected">
-              <IoIcons.IoMdPeople />
+              <FaIcons.FaTimes />
               <span>Admin Rejected Request</span>
             </Link>
           </li>
           <li className="nav-text">
             <Link to="admin_table">
-            <IoIcons.IoMdHelpCircle />
+            <FaIcons.FaHands />
               <span>Donations</span>
             </Link>
           </li>
-          <li className="nav-text">
-            <Link to="admin_reports">
-              <IoIcons.IoMdPeople />
-              <span>Reports</span>
-            </Link>
-          </li>
+          
         </ul>
     </div>
     <div className="admin-dashboard-container">

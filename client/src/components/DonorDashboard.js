@@ -1,8 +1,6 @@
 import React from "react";
 import "./ngoDashboard.css";
 import * as FaIcons from "react-icons/fa";
-import * as AiIcons from "react-icons/ai";
-import * as IoIcons from "react-icons/io";
 import { Link, Outlet, useParams } from "react-router-dom";
 
 
@@ -14,19 +12,19 @@ function DonorDashboard({user}) {
       <ul className="nav-menu-items" >
             <li className="nav-text">
               <Link to="user_profile">
-                <AiIcons.AiFillHome />
+                <FaIcons.FaUser />
                 <span>My Profile </span>
               </Link>
             </li>
             <li className="nav-text">
               <Link to="edit_user_profile">
-                <IoIcons.IoIosPaper />
+                <FaIcons.FaEdit />
                 <span>Edit Profile</span>
               </Link>
             </li>
             <li className="nav-text">
               <Link to="donor_table">
-                <IoIcons.IoIosPaper />
+                <FaIcons.FaFileImage />
                 <span>Donation Reports</span>
               </Link>
             </li>
