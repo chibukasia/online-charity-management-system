@@ -19,49 +19,44 @@ function NgoDashbord({ user, ngoRequests }) {
         <ul className="nav-menu-items">
           <li className="nav-text">
             <Link to="ngo_requests" >
-              <FaIcons.FaEnvelopeOpenText />
+              <FaIcons.FaGlobeAfrica />
               <span>All Requests </span>
             </Link>
           </li>
           <li className="nav-text">
             <Link to="donation_request_form" >
-              <AiIcons.AiFillHome />
+              <AiIcons.AiFillPlusCircle />
               <span>Create New Request </span>
             </Link>
           </li>
           <li className="nav-text">
             <Link to="approved" >
-              <AiIcons.AiFillHome />
+              <FaIcons.FaThumbsUp />
               <span>Approved Requests</span>
             </Link>
           </li>
           <li className="nav-text">
             <Link to="pending" >
-              <IoIcons.IoIosPaper />
+              <IoIcons.IoIosPause />
               <span>Pending Request</span>
             </Link>
           </li>
           <li className="nav-text">
             <Link to="rejected" >
-              <IoIcons.IoMdPeople />
+              <FaIcons.FaTimes />
               <span>Rejected Request</span>
             </Link>
           </li>
           <li className="nav-text">
             <Link to="ngo_donations" >
-              <IoIcons.IoMdHelpCircle />
+              <FaIcons.FaHands />
               <span>Donations</span>
             </Link>
           </li>
-          <li className="nav-text">
-            <Link to="ngo_reports" >
-              <IoIcons.IoMdPeople />
-              <span>Reports</span>
-            </Link>
-          </li>
+         
           <li className="nav-text">
             <Link to="edit_ngo" >
-              <IoIcons.IoMdPeople />
+              <FaIcons.FaEdit />
               <span>Edit NGO</span>
             </Link>
           </li>
