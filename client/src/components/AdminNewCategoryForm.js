@@ -1,7 +1,7 @@
 import React, { useState, useRef } from "react";
 import { FormField, Label, Input, Button, Error } from "./styles";
 
-function AdminNewCategoryForm({ setCategories, categories }) {
+function AdminNewCategoryForm({ setCategories, categories, token }) {
   const [category, setCategory] = useState("");
   const [message, setMessage] = useState("");
   const [errors, setErrors] = useState([]);
@@ -20,6 +20,7 @@ function AdminNewCategoryForm({ setCategories, categories }) {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`
       },
       body: JSON.stringify({ category_name: category }),
     }).then((res) => {

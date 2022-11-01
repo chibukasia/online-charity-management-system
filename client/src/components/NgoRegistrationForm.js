@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { FormField, Error, Input, Button, Label, Textarea } from "./styles";
 
 
-function NgoRegistrationForm() {
+function NgoRegistrationForm({token}) {
 
   // set the states  
   const [errors, setErrors] = useState([])
@@ -36,7 +36,8 @@ function NgoRegistrationForm() {
       fetch("/ngos", {
           method: "POST",
           headers: {
-              "Content-Type": "application/json"
+              "Content-Type": "application/json",
+              Authorization: `Bearer ${token}`
           },
           body: JSON.stringify(formData)
       })

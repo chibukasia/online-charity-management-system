@@ -3,7 +3,7 @@ import { FormField, Error, Input, Button, Label, Textarea } from "./styles";
 import './requestForm.css'
 import { useNavigate } from "react-router-dom";
 
-function DonationRequestForm({user, setNgoRequests, ngoRequests, ngo}) {
+function DonationRequestForm({user, setNgoRequests, ngoRequests, ngo, token}) {
   const [categoryNames, setCategoryNames] = useState([]);
   const [errors, setErrors] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
@@ -14,7 +14,12 @@ function DonationRequestForm({user, setNgoRequests, ngoRequests, ngo}) {
   // Get all the categories
   useEffect(() => {
    
-      fetch("/categories").then((res) => {
+      fetch("/categories",{
+        method: "GET",
+        headers: {
+          Authorization: `Bearer ${token}`
+        }
+      }).then((res) => {
         if (res.ok) {
           res.json().then((categories) => setCategoryNames(categories));
         } else {
@@ -45,6 +50,9 @@ function DonationRequestForm({user, setNgoRequests, ngoRequests, ngo}) {
     // POST the form data to the server
     fetch("/donation_requests",{
         method: "POST",
+        headers: {
+          Authorization: `Bearer ${token}`
+        },
         body: formData
     })
     .then(res=>{

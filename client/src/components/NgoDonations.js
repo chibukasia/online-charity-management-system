@@ -11,19 +11,6 @@ import React, { useEffect, useState } from 'react'
 import { useNavigate } from "react-router-dom";
 
 function NgoDonations({donations, user, ngo, ngoRequests}) {
-  // const [ngoDonations, setNgoDonations] = useState([])
-
-  // Get the donations made to a paticular NGO
-  // useEffect(()=>{
-  //   fetch("/ngo_donations")
-  //   .then(res=>{
-  //       if (res.ok){
-  //           res.json().then(data=>setNgoDonations(data))
-  //       }else{
-  //           res.json().then(err=>console.log(err))
-  //       }
-  //   })
-  // },[])
 
   const navigate = useNavigate()
 

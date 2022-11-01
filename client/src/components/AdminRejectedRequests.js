@@ -10,7 +10,7 @@ import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 import TableRows from "./TableRow";
 
-function AdminRejectedRequests({ donationRequests, setDonationRequests }) {
+function AdminRejectedRequests({ donationRequests, setDonationRequests, token }) {
   const rejectedRequests = donationRequests.filter(
     (request) => request.status == "rejected"
   );
@@ -35,7 +35,7 @@ function AdminRejectedRequests({ donationRequests, setDonationRequests }) {
         </TableHead>
         <TableBody>
         {rejectedRequests.map((row) => (
-            <TableRows row={row} key={row.id} setDonationRequests={setDonationRequests} donationRequests={donationRequests}/>            
+            <TableRows row={row} key={row.id} setDonationRequests={setDonationRequests} donationRequests={donationRequests} token={token}/>            
           ))}
         </TableBody>
       </Table>

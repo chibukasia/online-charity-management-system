@@ -9,14 +9,19 @@ import Paper from "@mui/material/Paper";
 
 import React, { useEffect, useState } from 'react'
 
-function DonorTable({user, donations}) {
+function DonorTable({user, donations, token}) {
   const [userDonations, setUserDonations] = useState([])
 
   // Filter to get user donations
   // const userDonations = donations.filter(donation=>donation.user_id === user.id)
 
   useEffect(()=>{
-    fetch('/user_donations')
+    fetch('/user_donations',{
+      method: "GET",
+      headers: {
+        Authorization: `Bearer ${token}`
+      }
+    })
     .then(res=>{
       if (res.ok){
         res.json().then(data=>setUserDonations(data))

@@ -20,7 +20,7 @@ Rails.application.routes.draw do
   # route for user login
   post '/user_login', to: 'sessions#create'
   # route to get user in session
-  get '/user_me', to: 'sessions#show'
+  get '/user_me', to: 'users#show'
   # route to logout user in session
   delete '/user_logout', to: 'sessions#destroy'
   # route to create a new admin
@@ -28,7 +28,7 @@ Rails.application.routes.draw do
   # route to login admin
   post '/admin_login', to: 'admin_sessions#create'
   # route to get admin in session
-  get '/admin', to: 'admin_sessions#show'
+  get '/admin', to: 'admins#show'
   # route to logout admin in session
   delete '/admin_logout', to: 'admin_sessions#destroy'
   # Get NGO of a user in session

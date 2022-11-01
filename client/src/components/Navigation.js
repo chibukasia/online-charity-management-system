@@ -3,15 +3,32 @@ import logo from '../assets/img/logo.png';
 import {Link } from 'react-router-dom'
 import MyImage from '../assets/img/avatar.png'
 
-function Navigation({user, setUser, admin}) {
+function Navigation({user, setUser, admin, setAdmin, token}) {
 
   // Handle logout or delete user session 
   function handleLogout(){
-    fetch("/user_logout", { method: "DELETE" }).then((r) => {
-      if (r.ok) {
-        setUser(null);
-      }
-    });
+    if (user){
+    // fetch("/user_logout", { method: "DELETE" }).then((r) => {
+    //   if (r.ok) {
+    //     setUser(null);
+    //   }
+    // });
+    setUser(null);
+    localStorage.removeItem("jwt")
+  }else if (admin){
+    // fetch("/admin_logout", { method: "DELETE" }).then((r) => {
+    //   if (r.ok) {
+    //     setAdmin(null);
+    //   }
+    // });
+    setAdmin(null);
+    localStorage.removeItem("jwt")
+    
+  }else{
+    return null
+  }
+
+  
     
   }
   return (

@@ -7,18 +7,13 @@ class SessionsController < ApplicationController
   def create
     user = User.find_by(username: params[:username])
       if user&.authenticate(params[:password]) #check if it's a valid user
-        session[:user_id] = user.id
-        session[:role] = user.role
-        render json: user, status: :created
+        # session[:user_id] = user.id
+        # session[:role] = user.role
+        token = encode_token({user_id: user.id})
+        render json: {user: user, jwt: token}, status: :accepted
       else
         render json: {errors: ["Invalid username or password"]}, status: :unauthorized
       end
-  end
-
-  #getting user in the session
-  def show
-    user = find_user
-    render json: user, status: :ok
   end
 
   #log out user ins session
@@ -29,10 +24,6 @@ class SessionsController < ApplicationController
 
   #private methods
   private
-
-  def find_user
-    User.find(session[:user_id])
-  end
 
   #user not_found
   def user_not_found

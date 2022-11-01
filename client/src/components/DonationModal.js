@@ -5,7 +5,7 @@ import { FormField, Error, Input, Button, Label } from "./styles";
 
 function DonationModal(props){
 
-  const[errors, setErrors] = useState([])
+  const [errors, setErrors] = useState([])
   const [data, setData] = useState('')
 
   const formReset = useRef()
@@ -35,7 +35,7 @@ function DonationModal(props){
     divColor = "open"
   }else{
     state="Closed"
-    divColor = "open"
+    divColor = "closed"
   }
 
   // Submit form data
@@ -45,7 +45,8 @@ function DonationModal(props){
       fetch("/donations",{
           method: "POST",
           headers: {
-              "Content-Type": "application/json"
+              "Content-Type": "application/json",
+              Authorization: `Bearer ${props.token}`
           },
           body: JSON.stringify({
               amount: data,
@@ -67,7 +68,8 @@ function DonationModal(props){
       fetch(`/donation_requests/${props.request.id}`,{
           method: "PATCH",
           headers: {
-              "Content-Type": "application/json"
+              "Content-Type": "application/json",
+              Authorization: `Bearer ${props.token}`
           },
           body: JSON.stringify({
               amount_raised: newAmount

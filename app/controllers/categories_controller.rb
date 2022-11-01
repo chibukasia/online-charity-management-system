@@ -16,7 +16,7 @@ class CategoriesController < ApplicationController
 
     # POST a new category
     def create
-        if session[:role] == "admin"
+        if current_admin
             category = Category.create!(category_params)
             render json: {body: category, message: "Category added succesfully!"}, status: :created
         else
@@ -27,7 +27,7 @@ class CategoriesController < ApplicationController
     # PATCH a category
     def update
         category = find_category
-        if session[:role] == "admin"
+        if current_admin
             category.update!(category_params)
             render json: category, status: :accepted
         else

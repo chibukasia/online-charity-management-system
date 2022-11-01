@@ -3,7 +3,7 @@ import Header from "./Header";
 import DonationRequestCard from "./DonationRequestCard";
 import HowItWorks from "./HowItWorks";
 import AboutUs from "./AboutUs";
-function LandingPage(){ 
+function LandingPage({token}){ 
     // use states
     const [latestRequests, setLatestRequests] = useState([])
     const [errors, setErrors] = useState([])
@@ -22,7 +22,7 @@ function LandingPage(){
 
     // Map through the the latests requests to the donation request cards 
     const cardsDisplay = latestRequests.map(request=>{
-        return <DonationRequestCard key={request.id} request={request} />
+        return <DonationRequestCard key={request.id} request={request} token={token}/>
     })
     return(
         <div className="landing-page" id="landingpage">

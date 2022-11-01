@@ -10,7 +10,7 @@ import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 import TableRows from "./TableRow";
 
-function AdminPendingRequests({ donationRequests, setDonationRequests }) {
+function AdminPendingRequests({ donationRequests, setDonationRequests, token }) {
   const pendingRequests = donationRequests.filter(
     (request) => request.status == "pending"
   );
@@ -35,7 +35,7 @@ function AdminPendingRequests({ donationRequests, setDonationRequests }) {
         </TableHead>
         <TableBody>
         {pendingRequests.map((row) => (
-            <TableRows row={row} key={row.id} setDonationRequests={setDonationRequests} donationRequests={donationRequests}/>           
+            <TableRows row={row} key={row.id} setDonationRequests={setDonationRequests} donationRequests={donationRequests} token={token}/>           
           ))}
         </TableBody>
       </Table>

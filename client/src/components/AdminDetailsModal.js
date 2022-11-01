@@ -51,7 +51,8 @@ function AdminDetailsModal(props) {
       fetch(url,{
           method: "PATCH",
           headers: {
-              "Content-Type": "application/json"
+              "Content-Type": "application/json",
+              Authorization: `Bearer ${props.token}`
           },
           body: JSON.stringify({
               status: "rejected",
@@ -77,7 +78,8 @@ function AdminDetailsModal(props) {
     fetch(url,{
         method: "PATCH",
         headers: {
-            "Content-Type": "application/json"
+            "Content-Type": "application/json",
+            Authorization: `Bearer ${props.token}`
         },
         body: JSON.stringify({
             status: "approved",

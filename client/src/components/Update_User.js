@@ -3,7 +3,7 @@ import './styles/Loader.css'
 import React, { useState } from "react";
 import { Button, Error, Input, FormField, Label } from "./styles";
 
-const EditUserProfile = ({user, setUser}) => {
+const EditUserProfile = ({user, setUser, token}) => {
     const [errors, setErrors] = useState([])
     const [show, setShow] = useState(false) 
     const [message, setMessage] = useState('')
@@ -37,7 +37,9 @@ const EditUserProfile = ({user, setUser}) => {
       fetch(`/users/${user.id}`, {
         method: "PATCH",
         headers: {
-          "Content-Type": "application/json"
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`
+          
         },
         body: JSON.stringify(data)
       })

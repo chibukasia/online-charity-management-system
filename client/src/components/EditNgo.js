@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { FormField, Error, Input, Button, Label, Textarea , Success} from "./styles";
 
-function EditNgo({ ngo, setNgo }) {
+function EditNgo({ ngo, setNgo, token }) {
   // set the states
   const [errors, setErrors] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
@@ -40,6 +40,7 @@ function EditNgo({ ngo, setNgo }) {
       method: "PATCH",
       headers: {
         "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`
       },
       body: JSON.stringify(formData),
     }).then((res) => {

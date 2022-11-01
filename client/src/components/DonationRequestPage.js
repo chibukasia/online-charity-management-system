@@ -4,7 +4,7 @@ import DonationModal from "./DonationModal";
 import ProgressBar from "./styles/ProgressBar";
 import './styles/Loader.css'
 
-function DonationRequestPage({ngoRequests, setDonations, donations, donationRequests, setDonationRequests}) {
+function DonationRequestPage({ngoRequests, setDonations, donations, donationRequests, setDonationRequests, token}) {
   //use state
   const [donationRequest, setDonationRequest] = useState([])
   const [errors, setErrors] = useState([])
@@ -88,6 +88,7 @@ function DonationRequestPage({ngoRequests, setDonations, donations, donationRequ
         setDonations={setDonations}
         donationRequests={donationRequests} 
         setDonationRequests={setDonationRequests}
+        token={token}
         />
     </div>
   );

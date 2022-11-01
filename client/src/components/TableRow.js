@@ -4,7 +4,7 @@ import TableCell from "@mui/material/TableCell";
 import AdminDetailsModal from "./AdminDetailsModal";
 import './styles/Loader.css'
 
-function TableRows({row, setDonationRequests, donationRequests}) {
+function TableRows({row, setDonationRequests, donationRequests, token}) {
 
     const [modalShow, setModalShow] = useState(false);
 
@@ -46,7 +46,7 @@ function TableRows({row, setDonationRequests, donationRequests}) {
       </TableCell>
       <TableCell className="tableCell">
         <button onClick={handleShow}>View Details</button>
-        <AdminDetailsModal show={modalShow} onHide={handlHide} request={row} setdonationrequests={setDonationRequests} donationrequests={donationRequests} />
+        <AdminDetailsModal show={modalShow} onHide={handlHide} request={row} setdonationrequests={setDonationRequests} donationrequests={donationRequests} token={token}/>
       </TableCell>
     </TableRow>
   );

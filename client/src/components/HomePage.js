@@ -1,14 +1,19 @@
 import React, { useEffect, useState } from "react"; 
 import DonationRequestCard from "./DonationRequestCard";
 
-function HomePage(){ 
+function HomePage({token}){ 
     // use states
     const [approvedRequests, setApprovedRequests] = useState([])
     const [errors, setErrors] = useState([])
 
     // Get all approved requests
     useEffect(()=>{
-        fetch("/approved_open_requests")
+        fetch("/approved_open_requests",{
+            method: "GET",
+            headers: {
+              Authorization: `Bearer ${token}`
+            }
+        })
         .then(res=>{
             if (res.ok){
                 res.json().then(data=>setApprovedRequests(data))
@@ -20,7 +25,7 @@ function HomePage(){
 
     // Map through the approved requests to the donation request cards 
     const cardsDisplay = approvedRequests.map(request=>{
-        return <DonationRequestCard key={request.id} request={request} />
+        return <DonationRequestCard key={request.id} request={request} token={token}/>
     })
     return(
         <div className="landing-page">
