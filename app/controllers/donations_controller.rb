@@ -19,6 +19,10 @@ class DonationsController < ApplicationController
         user = current_user
         if user && user.role == 'donor'
             donation = user.donations.create!(donation_params)
+            from = "chibukasianelson@gmail.com"
+            subject = "Donations Made"
+            content = "Thank you for being a cheerful giver and kind-hearted. We have received you donation of amount KSH: #{donation.amount}"
+            EmailService.call(from: from, to: current_user.email, subject: subject, content: content)
             render json: donation, status: :created, include: ['user','donation_request', 'donation_request.ngo', 'donation_request.category']
         else
             render json: {errors: ["You do not have access rights to donate"]}, status: :unauthorized

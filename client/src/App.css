@@ -76,6 +76,22 @@
   color: white;
   border-radius: 3px;
 }
+
+#home-header{
+  background-image: url(./assets/img/donate.png);
+  background-size: cover;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 500px;
+}
+
+.home-filter{
+  width: 80%;
+  margin: 10px auto;
+}
 /* Donation request cards */
 .card{
   margin: 10px;
@@ -182,6 +198,9 @@
     width: 100%;
     margin: 10px;
     text-align: center;
+  }
+  .home-filter{
+    width: 100%;
   }
   
 }

@@ -10,8 +10,6 @@ skip_before_action :authorize, only: [:create, :index]
   #posting a new admin
   def create
     admin = Admin.create!(admin_params)
-    # session[:admin_id] = admin.id 
-    # session[:role] = "admin"
     token = encode_token(admin_id: admin.id)
     render json: {admin: admin, jwt: token}, status: :created
   end
@@ -37,19 +35,9 @@ skip_before_action :authorize, only: [:create, :index]
   #the private methods
   private
 
-  #find the admin
-  # def find_admin
-  #   Admin.find(session[:admin_id])
-  # end
-
   # allowed params
   def admin_params
     params.permit(:username, :password, :password_confirmation)
   end
-
-  #admin not found
-  # def admin_not_found
-  #   render json: {errors: ["Admin not found"]}, status: :not_found
-  # end
 
 end

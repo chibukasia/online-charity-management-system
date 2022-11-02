@@ -3,32 +3,20 @@ import logo from '../assets/img/logo.png';
 import {Link } from 'react-router-dom'
 import MyImage from '../assets/img/avatar.png'
 
-function Navigation({user, setUser, admin, setAdmin, token}) {
+function Navigation({user, setUser, admin, setAdmin}) {
 
   // Handle logout or delete user session 
   function handleLogout(){
     if (user){
-    // fetch("/user_logout", { method: "DELETE" }).then((r) => {
-    //   if (r.ok) {
-    //     setUser(null);
-    //   }
-    // });
     setUser(null);
     localStorage.removeItem("jwt")
   }else if (admin){
-    // fetch("/admin_logout", { method: "DELETE" }).then((r) => {
-    //   if (r.ok) {
-    //     setAdmin(null);
-    //   }
-    // });
     setAdmin(null);
     localStorage.removeItem("jwt")
     
   }else{
     return null
   }
-
-  
     
   }
   return (
@@ -44,9 +32,6 @@ function Navigation({user, setUser, admin, setAdmin, token}) {
                 
                 
                 <Link className="nav-item" to='/' >Home</Link>
-                <a className="nav-item" href='#aboutus'>About Us</a>
-                <a className="nav-item" href='#how-it-works'>How it works</a>
-                <a className="nav-item" href='#fundraises'>Campaigns</a>
                 {user || admin ?(
                 <>                 
                   <Link className='nav-item' to='/home'>Fundraises</Link>
@@ -56,6 +41,9 @@ function Navigation({user, setUser, admin, setAdmin, token}) {
                   
                 ):(
                   <>
+                    <a className="nav-item" href='#aboutus'>About Us</a>
+                    <a className="nav-item" href='#how-it-works'>How it works</a>
+                    <a className="nav-item" href='#fundraises'>Campaigns</a>
                     <Link className="nav-item" to='/login'>Sign-In/Up</Link>
                   </>
                   

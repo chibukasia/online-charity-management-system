@@ -1,3 +1,5 @@
+# require 'sendgrid-ruby'
+# include SendGrid
 class UsersController < ApplicationController
 
   skip_before_action :authorize, only: [:create, :index]
@@ -11,10 +13,14 @@ class UsersController < ApplicationController
   #posting a new user
   def create
     user = User.create!(user_params)
-    # user sessions
-    # session[:user_id] = user.id
-    # session[:role] = user.role
     token = encode_token(user_id: user.id)
+
+    @from = "chibukasianelson@gmail.com"
+    @subject = "New User Account"
+    @content = "Thank you for registering with us #{user.first_name} #{user.last_name}. Your account has been created successfully"
+    EmailService.call(from: @from, to: user.email, subject: @subject, content: @content)
+
+    # UserNotifierMailer.send_signup_email(user).deliver
     render json: {user: user, jwt: token}, status: :created
   end
 
@@ -39,19 +45,10 @@ class UsersController < ApplicationController
   #the private methods
   private
 
-  #find user
-  # def find_user
-  #   User.find(session[:user_id])
-  # end
-
   #allowed params
   def user_params
     params.permit(:first_name, :last_name, :username, :email, :phone_number, :role, :password, :password_confirmation)
   end
 
-  #user not found
-  # def user_not_found
-  #   render json: {errors: ["User not found"]}, status: :not_found
-  # end
 
 end
