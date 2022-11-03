@@ -22,6 +22,10 @@ class NgosController < ApplicationController
         user = current_user
         if user && user.role == 'ngo'
             ngo = user.create_ngo!(ngo_params)
+            from = "chibukasianelson@gmail.com"
+            subject = "Organization registration"
+            content = "You have successfull registered your organization: #{ngo.organization_name}, with us. Welcome to our charity services"
+            EmailService.call(from: from, to: current_user.email, subject: subject, content: content)
             #user.ngo = ngo
             render json: ngo, status: :created
         else
@@ -33,6 +37,10 @@ class NgosController < ApplicationController
     def update
         ngo = find_ngo
         ngo.update!(ngo_params)
+        from = "chibukasianelson@gmail.com"
+        subject = "Organization Details Update"
+        content = "Your organization details have been updated succesfully"
+        EmailService.call(from: from, to: current_user.email, subject: subject, content: content)
         render json: {message: "Ngo updated successfullly", body: ngo}, status: :accepted
     end
 

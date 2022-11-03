@@ -20,7 +20,11 @@ class DonationRequestsController < ApplicationController
     def create
         # user = User.find(session[:user_id])
         if current_user && current_user.role == 'ngo'
+            from = "chibukasianelson@gmail.com"
+            subject = "Donation Request Application"
+            content = "Your donation request has been received. Wait for the approval of your request. Your request will only be seen to the donors once it has been approved"
             donation_request = DonationRequest.create!(donation_request_params)
+            EmailService.call(from: from, to: current_user.email, subject: subject, content: content)
             render json: donation_request, status: :created, serializer: CustomDonationRequestSerializer
         else
             render json: {errors: ["You do not have previlledges to create a donation request"]}, status: :unauthorized
@@ -31,6 +35,23 @@ class DonationRequestsController < ApplicationController
     def update
         donation_request = find_donation_request
         donation_request.update!(donation_request_params)
+
+        # find user
+        ngo = Ngo.find_by(id: donation_request.ngo_id)
+        user = User.find_by(id: ngo.user_id)
+        from = "chibukasianelson@gmail.com"
+        subject = "Donation Request Application"
+        content_donation = "You have received some donations from a cheerful giver"
+        content_accept = "Your donation request has been approved. You can now recieve donations from cheerful givers" 
+        content_reject = "After carefully reviewing you application, we regret to inform you that your application did not meet the minimal requirements and thus it was not accepted"
+        
+        if donation_request.status == "approved" && amount_raised = 0
+            EmailService.call(from: from, to: user.email, subject: subject, content: content_accept)
+        elsif donation_request.status == "rejected" 
+            EmailService.call(from: from, to: user.email, subject: subject, content: content_reject)
+        else
+            EmailService.call(from: from, to: user.email, subject: subject, content: content_donation)
+        end
         render json: donation_request, status: :accepted, serializer: CustomDonationRequestSerializer
     end
 
@@ -38,6 +59,12 @@ class DonationRequestsController < ApplicationController
     def destroy
         donation_request = find_donation_request
         donation_request.destroy
+        ngo = Ngo.find_by(id: donation_request.ngo_id)
+        user = User.find_by(id: ngo.user_id)
+        from = "chibukasianelson@gmail.com"
+        subject = "Donation Request Application"
+        content= "You have succesfully deleted #{donation_request.title} donation request"
+        EmailService.call(from: from, to: user.email, subject: subject, content: content)
         head :no_content
     end
 
