@@ -2,7 +2,7 @@ import React from "react";
 
 function AboutUs() {
   return (
-    <section className="page-section" id="about">
+    <section className="page-section" id="about" >
       <div className="container">
         <div className="text-center">
           <h2 className="section-heading text-uppercase">About</h2>
@@ -10,9 +10,9 @@ function AboutUs() {
             Learn more about us.
           </h3>
         </div>
-        <ul className="timeline">
+        <ul className="timeline" >
           <li>
-            <div className="timeline-image">
+            <div className="timeline-image" >
               <img className="rounded-circle img-fluid" />
             </div>
             <div className="timeline-panel">
