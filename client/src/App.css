@@ -192,7 +192,7 @@
 /* MOBILE VIEW */
 @media only screen and (max-width: 600px) {
   body {
-    background-color: lightblue;
+    background-color: rgb(241, 241, 241);
   }
 
   .landing-page-cards{
