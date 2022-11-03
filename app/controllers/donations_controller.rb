@@ -1,6 +1,13 @@
 class DonationsController < ApplicationController
 
     rescue_from ActiveRecord::RecordNotFound, with: :donation_not_found
+    @@gateway = Braintree::Gateway.new(
+        :environment => :sandbox,
+        :merchant_id => "csns526ww24dkygm",
+        :public_key => "yqng6wshc8fvyq8t",
+        :private_key => "89b11a65ed7fb6564280c0ea73d4a3dc",
+      )
+    
 
     # GET all the donations
     def index
@@ -14,13 +21,24 @@ class DonationsController < ApplicationController
         render json: donation, status: :ok, serializer: NgoCustomDonationSerializer
     end
 
+    def client_nonce
+        @nonce_from_the_client = params[:payment_method_nonce]
+    end
     # POST a new donation
     def create
         user = current_user
         if user && user.role == 'donor'
             donation = user.donations.create!(donation_params)
             # pass client_token to your front-end
-            @client_token = gateway.client_token.generate(customer_id: a_customer_id)
+
+            result = @@gateway.transaction.sale(
+                amount: donation.amount,
+                payment_method_nonce: @nonce_from_the_client,
+                #device_data: device_data_from_the_client,
+                options: {
+                  submit_for_settlement: true
+                }
+              )
             from = "chibukasianelson@gmail.com"
             subject = "Donations Made"
             content = "Thank you for being a cheerful giver and kind-hearted. We have received you donation of amount KSH: #{donation.amount}"
@@ -29,6 +47,12 @@ class DonationsController < ApplicationController
         else
             render json: {errors: ["You do not have access rights to donate"]}, status: :unauthorized
         end
+    end
+
+    # Generate token 
+    def client_token 
+        @client_token = @@gateway.client_token.generate
+        render json: {token: @client_token}
     end
 
     # PATCH a donation

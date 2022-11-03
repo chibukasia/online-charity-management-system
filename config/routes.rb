@@ -34,6 +34,10 @@ Rails.application.routes.draw do
   # Get NGO of a user in session
   get '/session_ngo', to: 'ngos#session_ngo'
 
+  # Get client token
+  get '/client_token', to: 'donations#client_token'
+
+  post '/client_nonce', to: 'donations#client_nonce'
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Defines the root path route ("/")
