@@ -41,6 +41,7 @@ function DonationRequestPage({ngoRequests, setDonations, donations, donationRequ
   }
   
   return (
+    <div className="request-page">
     <div className="form-div">
       <div>
         <h3>Donation Request Details</h3>
@@ -51,7 +52,7 @@ function DonationRequestPage({ngoRequests, setDonations, donations, donationRequ
       <div>
         <button type="button" onClick={handleShow}>Donate</button>
       </div>
-        <h4>category: {request.category.category_name}</h4>
+        <h4>Category: {request.category.category_name}</h4>
         <h5>Target Amount:</h5>
         <p>KSH {request.target_amount}</p>
         <h5>Amount Raised:</h5>
@@ -90,6 +91,7 @@ function DonationRequestPage({ngoRequests, setDonations, donations, donationRequ
         setDonationRequests={setDonationRequests}
         token={token}
         />
+    </div>
     </div>
   );
   }

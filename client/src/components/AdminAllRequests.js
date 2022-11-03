@@ -8,8 +8,15 @@ import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import TableRows from "./TableRow";
 import Paper from "@mui/material/Paper";
+import Pagination from "./Pagination";
 
 function AdminAllRequests({ donationRequests, setDonationRequests, token }) {
+    const [currentPage, setCurrentPage] = useState(1);
+    const requestPerPage = 10
+    const indexOfLastRecord = currentPage * requestPerPage;
+    const indexOfFirstRecord = indexOfLastRecord - requestPerPage;
+    const currentRecords = donationRequests.slice(indexOfFirstRecord, indexOfLastRecord);
+    const nPages = Math.ceil(donationRequests.length / requestPerPage)
   return (
     <>
       <h2>ALL REQUESTS</h2>
@@ -29,12 +36,15 @@ function AdminAllRequests({ donationRequests, setDonationRequests, token }) {
           </TableRow>
         </TableHead>
         <TableBody>
-          {donationRequests.map((row) => (
+          {currentRecords.map((row) => (
             <TableRows row={row} key={row.id} setDonationRequests={setDonationRequests} donationRequests={donationRequests} token={token}/>           
           ))}
         </TableBody>
       </Table>
     </TableContainer>
+    <div className="pagination">
+      <Pagination nPages={nPages} currentPage={currentPage} setCurrentPage={setCurrentPage}/>
+    </div>
     </>
   );
 }

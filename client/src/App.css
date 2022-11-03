@@ -90,7 +90,7 @@
 
 .home-filter{
   width: 80%;
-  margin: 10px auto;
+  margin: 0px auto;
 }
 /* Donation request cards */
 .card{
@@ -132,6 +132,14 @@
   flex-wrap: wrap;
 }
 
+.home-page{
+  background-image: url(./assets/img/bg2.jpg);
+  background-size: cover;
+}
+
+.request-page{
+  background-image: url(./assets/img/bg2.jpg);
+}
 .section-container{
   display: flex;
   flex-direction: row;
@@ -177,7 +185,10 @@
   background-color: #ce2417;
   color: white;
 }
-
+.pagination{
+  width: 100px;
+  margin: 5px auto;
+}
 /* MOBILE VIEW */
 @media only screen and (max-width: 600px) {
   body {

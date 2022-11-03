@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import RequestCard from "./RequestCard";
 import "./table.css";
 import Table from "@mui/material/Table";
@@ -9,12 +9,20 @@ import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 import TableRows from "./TableRow";
+import Pagination from "./Pagination";
 
 function AdminPendingRequests({ donationRequests, setDonationRequests, token }) {
+  const [currentPage, setCurrentPage] = useState(1);
+  const requestPerPage = 10
+  const indexOfLastRecord = currentPage * requestPerPage;
+  const indexOfFirstRecord = indexOfLastRecord - requestPerPage;
+
   const pendingRequests = donationRequests.filter(
     (request) => request.status == "pending"
   );
 
+  const currentRecords = pendingRequests.slice(indexOfFirstRecord, indexOfLastRecord);
+  const nPages = Math.ceil(pendingRequests.length / requestPerPage)
   return (
     <>
       <h2>PENDING REQUESTS</h2>
@@ -34,12 +42,15 @@ function AdminPendingRequests({ donationRequests, setDonationRequests, token }) 
           </TableRow>
         </TableHead>
         <TableBody>
-        {pendingRequests.map((row) => (
+        {currentRecords.map((row) => (
             <TableRows row={row} key={row.id} setDonationRequests={setDonationRequests} donationRequests={donationRequests} token={token}/>           
           ))}
         </TableBody>
       </Table>
     </TableContainer>
+    <div className="pagination">
+      <Pagination nPages={nPages} currentPage={currentPage} setCurrentPage={setCurrentPage}/>
+    </div>
     </>
   );
 }

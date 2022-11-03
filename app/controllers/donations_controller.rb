@@ -19,6 +19,8 @@ class DonationsController < ApplicationController
         user = current_user
         if user && user.role == 'donor'
             donation = user.donations.create!(donation_params)
+            # pass client_token to your front-end
+            @client_token = gateway.client_token.generate(customer_id: a_customer_id)
             from = "chibukasianelson@gmail.com"
             subject = "Donations Made"
             content = "Thank you for being a cheerful giver and kind-hearted. We have received you donation of amount KSH: #{donation.amount}"
