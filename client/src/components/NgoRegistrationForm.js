@@ -46,7 +46,7 @@ function NgoRegistrationForm({token}) {
               res.json().then(data=>{
                   console.log(data)
                   setIsLoading(true)
-                  navigate('/ngo_dashboard')
+                  navigate('/ngo_dashboard/ngo_requests')
               })
           }else{
               res.json().then(err=>setErrors(err.errors))

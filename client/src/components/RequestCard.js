@@ -29,7 +29,7 @@ function RequestCard({ request }) {
         <h5 className="card-title">{request.title}</h5>
         <p className="card-text">{request.summary}</p>
 
-        <button type="button" onClick={handleShow}>
+        <button type="button" onClick={handleShow} className="req-card-btn">
           View Details
         </button>
         <RequestDetailsModal show={modalShow} onHide={handlHide} request={request} />

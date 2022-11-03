@@ -15,7 +15,7 @@ function RequestDetailsModal(props) {
   }else if (percentage >25 && percentage <= 50){
     bgcolor = "yellow"
   }else if (percentage >50 && percentage <= 75){
-    bgcolor = '#DAF7A6'
+    bgcolor = '#66D6EF'
   }else{
     bgcolor='#0A7510'
   }

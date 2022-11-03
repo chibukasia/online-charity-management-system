@@ -24,7 +24,7 @@ function AdminDetailsModal(props) {
   } else if (percentage > 25 && percentage <= 50) {
     bgcolor = "yellow";
   } else if (percentage > 50 && percentage <= 75) {
-    bgcolor = "#DAF7A6";
+    bgcolor = "#66D6EF";
   } else {
     bgcolor = "#0A7510";
   }
@@ -139,7 +139,7 @@ function AdminDetailsModal(props) {
           <ProgressBar bgcolor={bgcolor} progress={percentage} height={30} />
           <h4>Request Description</h4>
           <p>{props.request.description}</p>
-          <h5>Supporting Image</h5>
+          <h5>Featured Image</h5>
           <img src={props.request.image_url} style={{ width: "400px" }} />
           <h5>Bank Statement</h5>
           <a

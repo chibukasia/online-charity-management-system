@@ -58,6 +58,12 @@ Rails.application.configure do
   # Highlight code that triggered database queries in logs.
   config.active_record.verbose_query_logs = true
 
+  gateway = Braintree::Gateway.new(
+    :environment => :sandbox,
+    :merchant_id => "csns526ww24dkygm",
+    :public_key => "yqng6wshc8fvyq8t",
+    :private_key => "89b11a65ed7fb6564280c0ea73d4a3dc",
+  )
 
   # Raises error for missing translations.
   # config.i18n.raise_on_missing_translations = true

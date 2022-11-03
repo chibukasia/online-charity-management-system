@@ -25,7 +25,7 @@ function DonationRequestPage({ngoRequests, setDonations, donations, donationRequ
   }else if (percentage >25 && percentage <= 50){
     bgcolor = "yellow"
   }else if (percentage >50 && percentage <= 75){
-    bgcolor = '#DAF7A6'
+    bgcolor = '#66D6EF'
   }else{
     bgcolor='#0A7510'
   }
@@ -41,6 +41,7 @@ function DonationRequestPage({ngoRequests, setDonations, donations, donationRequ
   }
   
   return (
+    <div className="request-page">
     <div className="form-div">
       <div>
         <h3>Donation Request Details</h3>
@@ -49,9 +50,9 @@ function DonationRequestPage({ngoRequests, setDonations, donations, donationRequ
       </div>
       <div className="category">
       <div>
-        <button type="button" onClick={handleShow}>Donate</button>
+        <button type="button" className="req-card-btn" style={{width: "150px", float: "right", borderRadius: "10px"}} onClick={handleShow}>Donate</button>
       </div>
-        <h4>category: {request.category.category_name}</h4>
+        <h4>Category: {request.category.category_name}</h4>
         <h5>Target Amount:</h5>
         <p>KSH {request.target_amount}</p>
         <h5>Amount Raised:</h5>
@@ -64,7 +65,7 @@ function DonationRequestPage({ngoRequests, setDonations, donations, donationRequ
         <p>
           {request.description}
         </p>
-        <h5>Supporting Image</h5>
+        <h5>Featured Image</h5>
         <img src={request.image_url} alt={request.title} style={{width: "450px", height: "450px"}}/>
         <hr/>
         <hr/>
@@ -90,6 +91,7 @@ function DonationRequestPage({ngoRequests, setDonations, donations, donationRequ
         setDonationRequests={setDonationRequests}
         token={token}
         />
+    </div>
     </div>
   );
   }

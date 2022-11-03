@@ -1,11 +1,19 @@
 import React, { useEffect, useState } from "react"; 
 import DonationRequestCard from "./DonationRequestCard";
+import Header from "./Header";
+import Pagination from "./Pagination";
 
 function HomePage({token}){ 
     // use states
     const [approvedRequests, setApprovedRequests] = useState([])
     const [errors, setErrors] = useState([])
     const [filter, setFilter] = useState('All')
+    const [currentPage, setCurrentPage] = useState(1);
+
+    const requestPerPage = 6
+
+    const indexOfLastRecord = currentPage * requestPerPage;
+    const indexOfFirstRecord = indexOfLastRecord - requestPerPage;
 
     // Get all approved requests
     useEffect(()=>{
@@ -24,19 +32,21 @@ function HomePage({token}){
         })
     },[])
 
+    const currentRecords = approvedRequests.slice(indexOfFirstRecord, indexOfLastRecord);
+    const nPages = Math.ceil(approvedRequests.length / requestPerPage)
 
     function handleClick(e){
         setFilter(e.target.value)
         console.log(filter)
     }
-    const options = approvedRequests.map(req=>req.category.category_name)
+    const options = currentRecords.map(req=>req.category.category_name)
 
     const setOptions = [...new Set(options)]
     const categoryOptions = setOptions.map(req=>{
         return <option value={req} key={req}>{req}</option>
     })
 
-    const filteredRequests = approvedRequests.filter(request=>{
+    const filteredRequests = currentRecords.filter(request=>{
         if (filter=="All") return true;
         return request.category.category_name === filter
     })
@@ -46,22 +56,26 @@ function HomePage({token}){
         return <DonationRequestCard key={request.id} request={request} token={token}/>
     })
     return(
-        <div className="landing-page">
+        <div className="home-page">
             
             
-            <div id = "home-header">
+            {/* <div id = "home-header">
                 <h1 style={{paddingTop: "50px", color: "#000", fontSize: "60px", fontStyle: "italic"}}>WE APPRECIATE YOUR KINDNESS</h1>
-            </div>
+            </div> */}
+            <Header />
             <div className="home-filter">
-                <h2 style={{textDecoration: "underline"}}>Ongoing Fundraises</h2>
-                <h4>Filter By Category</h4>
-                <select name="category_id" id="category_id" onClick={handleClick} style={{width: "200px"}}>
+                <h2 style={{color: "white"}}>ONGOING FUNDRAISES</h2>
+                <h4 style={{color: "white"}}>Filter By Category</h4>
+                <select name="category_id" id="category_id" onClick={handleClick} style={{width: "380px", height: "35px", borderRadius: "10px"}}>
                     <option value='All'>All</option>
                 {categoryOptions}
                 </select>
             </div>
             <div className="landing-page-cards">
                 {cardsDisplay}
+            </div>
+            <div className="pagination">
+                <Pagination nPages={nPages} currentPage={currentPage} setCurrentPage={setCurrentPage}/>
             </div>
         </div>
     )

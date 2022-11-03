@@ -12,19 +12,19 @@ function DonorDashboard({user}) {
       <ul className="nav-menu-items" >
             <li className="nav-text">
               <Link to="user_profile">
-                <FaIcons.FaUser />
+                <FaIcons.FaUser style={{width: "30px", height: "30px"}}/>
                 <span>My Profile </span>
               </Link>
             </li>
             <li className="nav-text">
               <Link to="edit_user_profile">
-                <FaIcons.FaEdit />
+                <FaIcons.FaEdit style={{width: "30px", height: "30px"}}/>
                 <span>Edit Profile</span>
               </Link>
             </li>
             <li className="nav-text">
               <Link to="donor_table">
-                <FaIcons.FaFileImage />
+                <FaIcons.FaFileImage style={{width: "30px", height: "30px"}}/>
                 <span>Donation Reports</span>
               </Link>
             </li>

@@ -9,51 +9,63 @@ import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
 import React, { useEffect, useState } from 'react'
 import { useNavigate } from "react-router-dom";
+import Pagination from "./Pagination";
 
 function NgoDonations({donations, user, ngo, ngoRequests}) {
 
+  const [currentPage, setCurrentPage] = useState(1);
+  const requestPerPage = 10
+  const indexOfLastRecord = currentPage * requestPerPage;
+  const indexOfFirstRecord = indexOfLastRecord - requestPerPage;
+  
   const navigate = useNavigate()
 
   if (user && ngo){
-  const ngoDonations = []
-  ngoRequests.forEach(req=>{
-    ngoDonations.push(req.donations)
-  })
+  const ngoDonations = donations.filter(donation=>donation.donation_request.ngo.id == ngo.id)
+  const currentRecords = ngoDonations.slice(indexOfFirstRecord, indexOfLastRecord);
+  const nPages = Math.ceil(ngoDonations.length / requestPerPage)
   
-  const mergedDonations = ngoDonations.flat(1)
-  // console.log(mergedDonations)
 
     
   return (
+    <>
     <TableContainer component={Paper} className="table">
       <Table sx={{ minWidth: 650 }} aria-label="simple table">
-        <TableHead>
+        <TableHead className="table-dark">
           <TableRow>
-            {/* <TableCell className="tableCell">Request Title</TableCell> */}
-            <TableCell className="tableCell">Amount Donated</TableCell>
-            {/* <TableCell className="tableCell">Target Amount</TableCell>
-            <TableCell className="tableCell">Total Amount</TableCell> */}
-            <TableCell className="tableCell">Date</TableCell>
+            <TableCell className="tableCell"  style={{color: "white"}}>Donors Name</TableCell>
+            <TableCell className="tableCell"  style={{color: "white"}}>Donors Email</TableCell>
+            <TableCell className="tableCell"  style={{color: "white"}}>Donors Phone</TableCell>
+            <TableCell className="tableCell"  style={{color: "white"}}>Request Title</TableCell>
+            <TableCell className="tableCell"  style={{color: "white"}}>Request Category</TableCell>
+            <TableCell className="tableCell"  style={{color: "white"}}>Amount Donated</TableCell>
+            <TableCell className="tableCell"  style={{color: "white"}}>Date</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
-          {mergedDonations.map((row) => (
+          {currentRecords.map((row) => (
             <TableRow key={row.id}>
-              {/* <TableCell className="tableCell">
+              <TableCell className="tableCell">{`${row.user.first_name} ${row.user.last_name}`}</TableCell>
+              <TableCell className="tableCell">{row.user.email}</TableCell>
+              <TableCell className="tableCell">{row.user.phone_number}</TableCell>
+              <TableCell className="tableCell">
                 <div className="cellWrapper">
-                  <img src={row.image_url} alt="" className="image" />
-                  {row.title}
+                  <img src={row.donation_request.image_url} alt="" className="image" />
+                  {row.donation_request.title}
                 </div>
-              </TableCell> */}
-              <TableCell className="tableCell">{row.amount}</TableCell>
-              {/* <TableCell className="tableCell">{row.target_amount}</TableCell>
-              <TableCell className="tableCell">{row.amount_raised}</TableCell> */}
+              </TableCell>
+              <TableCell className="tableCell">{row.donation_request.category.category_name}</TableCell>
+              <TableCell className="tableCell">{row.amount}</TableCell>             
               <TableCell className="tableCell">{new Date(row.created_at).toLocaleDateString()}</TableCell>
             </TableRow>
           ))}
         </TableBody>
       </Table>
     </TableContainer>
+    <div className="pagination">
+        <Pagination nPages={nPages} currentPage={currentPage} setCurrentPage={setCurrentPage}/>
+    </div>
+    </>
   );
           }else{
             return <div className="loader"></div>
