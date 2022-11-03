@@ -31,15 +31,15 @@ function NgoDonations({donations, user, ngo, ngoRequests}) {
     <>
     <TableContainer component={Paper} className="table">
       <Table sx={{ minWidth: 650 }} aria-label="simple table">
-        <TableHead>
+        <TableHead className="table-dark">
           <TableRow>
-            <TableCell className="tableCell">Donors Name</TableCell>
-            <TableCell className="tableCell">Donors Email</TableCell>
-            <TableCell className="tableCell">Donors Phone</TableCell>
-            <TableCell className="tableCell">Request Title</TableCell>
-            <TableCell className="tableCell">Request Category</TableCell>
-            <TableCell className="tableCell">Amount Donated</TableCell>
-            <TableCell className="tableCell">Date</TableCell>
+            <TableCell className="tableCell"  style={{color: "white"}}>Donors Name</TableCell>
+            <TableCell className="tableCell"  style={{color: "white"}}>Donors Email</TableCell>
+            <TableCell className="tableCell"  style={{color: "white"}}>Donors Phone</TableCell>
+            <TableCell className="tableCell"  style={{color: "white"}}>Request Title</TableCell>
+            <TableCell className="tableCell"  style={{color: "white"}}>Request Category</TableCell>
+            <TableCell className="tableCell"  style={{color: "white"}}>Amount Donated</TableCell>
+            <TableCell className="tableCell"  style={{color: "white"}}>Date</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
