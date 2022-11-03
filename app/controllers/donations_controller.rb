@@ -41,7 +41,7 @@ class DonationsController < ApplicationController
     # User donations
     def user_donations
         user = current_user # find user in session
-        if user && user.role
+        if user && user.role == 'donor'
             donations = Donation.where(user_id: user.id).order(created_at: :desc)
             render json: donations, status: :ok, include: ['user','donation_request', 'donation_request.ngo', 'donation_request.category']
         end

@@ -43,8 +43,9 @@ function DonorTable({user, donations, token}) {
       <Table sx={{ minWidth: 650 }} aria-label="simple table">
         <TableHead>
           <TableRow>
-            {/* <TableCell className="tableCell">Organization Name</TableCell> */}
             <TableCell className="tableCell"> Request Title</TableCell>
+            <TableCell className="tableCell"> Request Category</TableCell>
+            <TableCell className="tableCell">Organization Name</TableCell>
             <TableCell className="tableCell">Date</TableCell>
             <TableCell className="tableCell">Amount</TableCell>
           </TableRow>
@@ -52,18 +53,18 @@ function DonorTable({user, donations, token}) {
         <TableBody>
           {currentRecords.map((row) => (
             <TableRow key={row.id}>
-              {/* <TableCell className="tableCell">{row.donation_request.title}</TableCell> */}
               <TableCell className="tableCell">
                 <div className="cellWrapper">
                   <img src={row.donation_request.image_url} alt="" className="image" />
                   {row.donation_request.title}
                 </div>
               </TableCell>
-              
+              <TableCell className="tableCell">{row.donation_request.category.category_name}</TableCell>
+              <TableCell className="tableCell">{row.donation_request.ngo.organization_name}</TableCell>
               <TableCell className="tableCell">{new Date(row.created_at).toLocaleString()}</TableCell>
               <TableCell className="tableCell">{row.amount}</TableCell>
               {/* <TableCell className="tableCell">{row.category}</TableCell> */}
-                          </TableRow>
+            </TableRow>
           ))}
         </TableBody>
       </Table>

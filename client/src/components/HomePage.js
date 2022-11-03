@@ -39,7 +39,7 @@ function HomePage({token}){
         setFilter(e.target.value)
         console.log(filter)
     }
-    const options = approvedRequests.map(req=>req.category.category_name)
+    const options = currentRecords.map(req=>req.category.category_name)
 
     const setOptions = [...new Set(options)]
     const categoryOptions = setOptions.map(req=>{
@@ -64,7 +64,7 @@ function HomePage({token}){
             </div> */}
             <Header />
             <div className="home-filter">
-                <h2 style={{textDecoration: "underline", color: "white"}}>Ongoing Fundraises</h2>
+                <h2 style={{color: "white"}}>ONGOING FUNDRAISES</h2>
                 <h4 style={{color: "white"}}>Filter By Category</h4>
                 <select name="category_id" id="category_id" onClick={handleClick} style={{width: "380px", height: "35px", borderRadius: "10px"}}>
                     <option value='All'>All</option>

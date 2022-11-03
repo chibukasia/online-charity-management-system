@@ -14,7 +14,7 @@ function HowItWorks() {
         <div className="section-container">
           <div className="section-container-card">
             <span className="fa-stack fa-4x">
-              <FaIcons.FaMarker />
+              <FaIcons.FaMarker style={{color: "#66D6EF"}}/>
               {/* <i className="fa fa-shopping-cart fa-stack-1x fa-inverse" /> */}
             </span>
             <h4 className="my-3">Sign Up</h4>
@@ -26,7 +26,7 @@ function HowItWorks() {
           </div>
           <div className="section-container-card">
             <span className="fa-stack fa-4x">
-              <FaIcons.FaDonate />
+              <FaIcons.FaDonate style={{color: "#66D6EF"}}/>
               {/* <i className="fa fa-user-plus" aria-hidden="true"></i> */}
               {/* <i className="fa fa-shopping-cart fa-stack-1x fa-inverse" /> */}
             </span>
@@ -40,7 +40,7 @@ function HowItWorks() {
           </div>
           <div className="section-container-card">
             <span className="fa-stack fa-4x">
-              <FaIcons.FaRegRegistered />
+              <FaIcons.FaRegRegistered style={{color: "#66D6EF"}}/>
               {/* <i className="fa fa-shopping-cart fa-stack-1x fa-inverse" /> */}
             </span>
             <h4 className="my-3">Seek Donation</h4>

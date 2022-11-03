@@ -22,7 +22,7 @@ function Navigation({user, setUser, admin, setAdmin}) {
   return (
     <nav className="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" id="mainNav" >
           <div className="container">
-            <Link className="navbar-brand" to="/"><img className="navbar-brand-logo" src={logo} /></Link>
+            <Link className="navbar-brand" to="/"><img className="navbar-brand-logo" src={logo} />RAISEIT.ORG</Link>
             <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
               Menu
               <i className="fas fa-bars ms-1" />
@@ -32,11 +32,11 @@ function Navigation({user, setUser, admin, setAdmin}) {
                 
                 
                 <Link className="nav-item" to='/' >Home</Link>
-                {user || admin ?(
+                {user?(
                 <>                 
-                  <Link className='nav-item' to='/home'>Fundraises</Link>
+                  {user.role=="donor"?<Link className='nav-item' to='/home'>Fundraises</Link>: null}
                   <Link className="nav-item" to='/'  onClick={handleLogout}>Log Out</Link>
-                  <Link className='nav-item' to='/donor_dashboard/user_profile'> <img src={MyImage} title="View Profile" style={{width: "25px", height: "25px", borderRadius: "50%"}}/></Link>
+                  {user.role == "donor"? <Link className='nav-item' to='/donor_dashboard/user_profile'> <img src={MyImage} title="View Profile" style={{width: "25px", height: "25px", borderRadius: "50%"}}/></Link>:null}
                 </>
                   
                 ):(
@@ -48,6 +48,7 @@ function Navigation({user, setUser, admin, setAdmin}) {
                   </>
                   
                 )}
+
                 
                 
 

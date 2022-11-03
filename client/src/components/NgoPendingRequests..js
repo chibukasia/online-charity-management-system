@@ -1,10 +1,10 @@
-import React,{useState} from "react";
+import React, { useState } from "react";
 import RequestCard from "./RequestCard";
 import Pagination from "./Pagination";
 
 function NgoPendingRequests({ ngoRequests }) {
   const [currentPage, setCurrentPage] = useState(1);
-  const requestPerPage = 8
+  const requestPerPage = 8;
   const indexOfLastRecord = currentPage * requestPerPage;
   const indexOfFirstRecord = indexOfLastRecord - requestPerPage;
 
@@ -12,18 +12,25 @@ function NgoPendingRequests({ ngoRequests }) {
     (request) => request.status == "pending"
   );
 
-  const currentRecords = pendingRequests.slice(indexOfFirstRecord, indexOfLastRecord);
-  const nPages = Math.ceil(pendingRequests.length / requestPerPage)
+  const currentRecords = pendingRequests.slice(
+    indexOfFirstRecord,
+    indexOfLastRecord
+  );
+  const nPages = Math.ceil(pendingRequests.length / requestPerPage);
 
   const cardsDisplay = currentRecords.map((request) => {
     return <RequestCard key={request.id} request={request} />;
   });
   return (
     <>
-      {/* <h2>PENDING REQUESTS</h2> */}
-      {cardsDisplay}
+      <h2>PENDING REQUESTS</h2>
+      <div className="dashboard-container">{cardsDisplay}</div>
       <div className="pagination">
-        <Pagination nPages={nPages} currentPage={currentPage} setCurrentPage={setCurrentPage}/>
+        <Pagination
+          nPages={nPages}
+          currentPage={currentPage}
+          setCurrentPage={setCurrentPage}
+        />
       </div>
     </>
   );

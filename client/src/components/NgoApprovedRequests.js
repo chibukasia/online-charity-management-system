@@ -21,12 +21,16 @@ function NgoApprovedRequests({ ngoRequests }) {
   });
   return (
     <>
-      {/* <h2>APPROVED REQUESTS</h2> */}
-      {cardsDisplay}
-      <div className="pagination">
-        <Pagination nPages={nPages} currentPage={currentPage} setCurrentPage={setCurrentPage}/>
-      </div>
-    </>
+    <h2>APPROVED REQUESTS</h2>
+    <div className="dashboard-container">{cardsDisplay}</div>
+    <div className="pagination">
+      <Pagination
+        nPages={nPages}
+        currentPage={currentPage}
+        setCurrentPage={setCurrentPage}
+      />
+    </div>
+  </>
   );
 }
 

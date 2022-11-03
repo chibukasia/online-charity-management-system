@@ -10,8 +10,6 @@
     background-color: #060b26;
 }
 .dashboard-container{
-    float: right;
-    width: 80%;
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
@@ -19,6 +17,10 @@
     margin-left: auto;
     margin-right: auto;
     
+}
+.dashboard-cards{
+    float: right;
+    width: 80%;
 }
 .admin-dashboard-container{
     float: right;

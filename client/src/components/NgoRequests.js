@@ -16,10 +16,14 @@ function NgoRequests({ ngoRequests }) {
   });
   return (
     <>
-      {/* <h2>ALL DONATION REQUESTS</h2> */}
-      {cardsDisplay}
+      <h2>ALL REQUESTS</h2>
+      <div className="dashboard-container">{cardsDisplay}</div>
       <div className="pagination">
-        <Pagination nPages={nPages} currentPage={currentPage} setCurrentPage={setCurrentPage}/>
+        <Pagination
+          nPages={nPages}
+          currentPage={currentPage}
+          setCurrentPage={setCurrentPage}
+        />
       </div>
     </>
   );

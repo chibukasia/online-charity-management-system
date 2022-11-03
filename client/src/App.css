@@ -48,7 +48,7 @@
 }
 
 .nav-item{
-  color: white;
+  color: #66D6EF;
   font-size: 17px;
 }
 .footer{
@@ -89,7 +89,7 @@
 }
 
 .home-filter{
-  width: 80%;
+  width: 30%;
   margin: 0px auto;
 }
 /* Donation request cards */
@@ -123,6 +123,7 @@
 .landing-page h1, h2, h3{
   padding-top: 30px;
   text-align: center;
+  color: #66D6EF;
 }
 .landing-page-cards{
   width: 80%;
@@ -188,6 +189,10 @@
 .pagination{
   width: 100px;
   margin: 5px auto;
+}
+
+.req-card-btn{
+  background-color: #66D6EF;
 }
 /* MOBILE VIEW */
 @media only screen and (max-width: 600px) {

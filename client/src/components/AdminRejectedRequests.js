@@ -27,17 +27,17 @@ function AdminRejectedRequests({ donationRequests, setDonationRequests, token })
       <h2>REJECTED REQUESTS</h2>
       <TableContainer component={Paper} className="table">
       <Table sx={{ minWidth: 650 }} aria-label="simple table">
-        <TableHead>
+      <TableHead className="table-dark">
           <TableRow>
-            <TableCell className="tableCell">Organization Name</TableCell>
-            <TableCell className="tableCell">Request Title</TableCell>
-            <TableCell className="tableCell">Date</TableCell>
-            <TableCell className="tableCell">Amount Raised</TableCell>
-            <TableCell className="tableCell">Target Amount</TableCell>
-            <TableCell className="tableCell">Category</TableCell>
-            <TableCell className="tableCell">Status</TableCell>
-            <TableCell className="tableCell">State</TableCell>
-            <TableCell className="tableCell">Details</TableCell>
+            <TableCell className="tableCell"  style={{color: "white"}}>Organization Name</TableCell>
+            <TableCell className="tableCell"  style={{color: "white"}}>Request Title</TableCell>
+            <TableCell className="tableCell"  style={{color: "white"}}>Date</TableCell>
+            <TableCell className="tableCell"  style={{color: "white"}}>Amount Raised</TableCell>
+            <TableCell className="tableCell"  style={{color: "white"}}>Target Amount</TableCell>
+            <TableCell className="tableCell"  style={{color: "white"}}>Category</TableCell>
+            <TableCell className="tableCell"  style={{color: "white"}}>Status</TableCell>
+            <TableCell className="tableCell"  style={{color: "white"}}>State</TableCell>
+            <TableCell className="tableCell"  style={{color: "white"}}>Details</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>
