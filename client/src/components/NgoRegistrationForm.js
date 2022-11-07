@@ -57,6 +57,7 @@ function NgoRegistrationForm({token}) {
   return (
     <div className='form-div'>
         <form className='form' onSubmit={handleSubmit}>
+            <h2>Register Your Organization</h2>
             <FormField>
             {errors.map((err) => (
                 <Error key={err}>{err}</Error>

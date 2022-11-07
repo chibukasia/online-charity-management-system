@@ -22,15 +22,15 @@ function AdminTable({donations}) {
     <h2>ALL DONATIONS</h2>
     <TableContainer component={Paper} className="table">
       <Table sx={{ minWidth: 650 }} aria-label="simple table">
-        <TableHead>
+        <TableHead className="table-dark">
           <TableRow>
-            <TableCell className="tableCell"> Donor Name</TableCell>  
-            <TableCell className="tableCell"> Donor Email</TableCell>  
-            <TableCell className="tableCell"> Donor Phone</TableCell>         
-            <TableCell className="tableCell">Request Title</TableCell>
-            <TableCell className="tableCell">Organization Name</TableCell>
-            <TableCell className="tableCell">Amount</TableCell>
-            <TableCell className="tableCell">Date</TableCell>
+            <TableCell className="tableCell" style={{color: "white"}}> Donor Name</TableCell>  
+            <TableCell className="tableCell" style={{color: "white"}}> Donor Email</TableCell>  
+            <TableCell className="tableCell" style={{color: "white"}}> Donor Phone</TableCell>         
+            <TableCell className="tableCell" style={{color: "white"}}>Request Title</TableCell>
+            <TableCell className="tableCell" style={{color: "white"}}>Organization Name</TableCell>
+            <TableCell className="tableCell" style={{color: "white"}}>Amount</TableCell>
+            <TableCell className="tableCell" style={{color: "white"}}>Date</TableCell>
           </TableRow>
         </TableHead>
         <TableBody>

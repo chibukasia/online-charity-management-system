@@ -194,6 +194,11 @@
 .req-card-btn{
   background-color: #66D6EF;
 }
+
+.signup-login{
+  background-image: url(./assets/img/header-bg.jpg);
+  background-size: cover;
+}
 /* MOBILE VIEW */
 @media only screen and (max-width: 600px) {
   body {

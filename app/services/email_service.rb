@@ -8,7 +8,7 @@ class EmailService
     end
 
     def initialize()
-        @sendgrid = SendGrid::API.new(api_key: Rails.application.credentials.sendgrid)
+        @sendgrid = SendGrid::API.new(api_key: ENV['SENDGRID_API_KEY'])
     end 
 
     def send_mail(from:, to:, subject:, content:)
