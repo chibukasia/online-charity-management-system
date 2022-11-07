@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { FormField, Error, Input, Button, Label, Textarea , Success} from "./styles";
 
@@ -9,14 +9,19 @@ function EditNgo({ ngo, setNgo, token }) {
   const [message, setMessage] = useState(null);
   const [show, setShow] = useState(false)
   const [formData, setFormData] = useState({
-    organization_name: ngo.organization_name,
-    organization_email: ngo.organization_email,
-    organization_phone_number: ngo.organization_phone_number,
-    address: ngo.address,
-    registration_number: ngo.registration_number,
-    description: ngo.description,
+    organization_name: '',
+    organization_email: '',
+    organization_phone_number: '',
+    address: '',
+    registration_number: '',
+    description: '',
   });
 
+  useEffect(()=>{
+    if(ngo){
+      setFormData(ngo)
+    }
+  },[ngo])
   // Hide show
   function hideShow(){
     setShow(false)

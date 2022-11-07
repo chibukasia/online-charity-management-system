@@ -1,22 +1,29 @@
 import "./Profile.css"
 import './styles/Loader.css'
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { Button, Error, Input, FormField, Label } from "./styles";
+import { useNavigate } from "react-router-dom";
 
 const EditUserProfile = ({user, setUser, token}) => {
     const [errors, setErrors] = useState([])
     const [show, setShow] = useState(false) 
     const [message, setMessage] = useState('')
     
-    
+    const navigate = useNavigate()
+
     let [data, setData] = useState({
-      first_name: user.first_name,
-      last_name: user.last_name,
-      username: user.username,
-      email: user.email,
-      phone_number: user.phone_number
+      first_name: '',
+      last_name: '',
+      username: '',
+      email: '',
+      phone_number: ''
     })
 
+    useEffect(()=>{
+      if (user){
+        setData(user) 
+      }
+    },[user])
     // Handle form control
     function handleChange(e){
       let name = e.target.name 
