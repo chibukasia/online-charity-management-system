@@ -31,7 +31,7 @@ function DonorDashboard({user}) {
             
           </ul>
       </div>
-      <div className="dashboard-container">
+      <div className="dashboard-cards">
         <Outlet />
       </div>
       </div>

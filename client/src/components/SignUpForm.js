@@ -58,6 +58,7 @@ function SignUpForm({ onLogin }) {
 
   return (
     <form onSubmit={handleSubmit} className="signup-form">
+      <h2>Create a new account</h2>
       <FormField>
         {errors.map((err) => (
           <Error key={err}>{err}</Error>
